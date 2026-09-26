@@ -1,3 +1,15 @@
 import { Routes } from '@angular/router';
+import { HomeComponent } from './pages/home/home.component';
+import { CatalogoLivrosComponent } from './pages/catalogo-livros/catalogo-livros.component';
+import { CadastroLivrosComponent } from './pages/cadastro-livros/cadastro-livros.component';
+import { CarrinhoComponent } from './pages/carrinho/carrinho.component';
+import { AjudaFeedbackComponent } from './pages/ajuda-feedback/ajuda-feedback.component';
 
-export const routes: Routes = [];
+export const routes: Routes = [
+    { path: '', component: HomeComponent, title:"Home"},
+    { path: 'catalogo', component: CatalogoLivrosComponent, title:"Catálogo de Livros"},
+    { path: 'cadastro-usuario', component: CadastroLivrosComponent, title:"Cadastro de Usuário"},
+    { path: 'cadastro-livros', component: CadastroLivrosComponent, title:"Cadastro de Livros"},
+    { path: 'carrinho', component: CarrinhoComponent, title:"Carrinho"},
+    { path: 'ajuda-feedback', component: AjudaFeedbackComponent, title:"Ajuda e Feedback"},
+];
