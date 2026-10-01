@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Usuário</title>
+    <link rel="stylesheet" href="cadastro-usuario.component.css">
+</head>
+
+<body>
+    <main>
+        <section id="section-cadastro">
+            <div class="cadastro-container">
+                <form action="" id="cadastro-usuario">
+                    <div class="input-container">
+                        <label for="nome-input">Nome:</label>
+                        <input type="text" name="nome-input" id="nome-input" required>
+                    </div>
+
+                    <div class="input-container">
+                        <label for="email-input">E-mail:</label>
+                        <input type="email" name="email-input" id="email-input" required>
+                    </div>
+
+                    <div class="input-container">
+                        <label for="senha-input">Senha:</label>
+                        <input type="password" name="senha-input" id="senha-input" required>
+                    </div>
+
+                    <div class="input-container">
+                        <label for="confirmar-senha-input">Confirmar Senha:</label>
+                        <input type="password" name="confirmar-senha-input" id="confirmar-senha-input" required>
+                    </div>
+
+                    <section id="cadastro-controllers">         
+                        <div id="termos-input">
+                            <input type="checkbox" name="termos-checkbox" id="termos-checkbox" required>
+                            <label for="termos-checkbox">Aceito e Li os Termos e Condições</label>
+                        </div>
+
+                        <div id="cadastro-buttons">
+                            <button type="submit">Cadastrar</button>
+                            <button type="reset">Limpar</button>
+                        </div>
+                    </section>
+                </form>
+            </div>
+
+        </section>
+
+        <section id="section-information">
+            <div class="information-container">
+                <div class="information">
+                    <h1>Já tem uma conta? <br> Entre aqui mesmo, e aproveite imediatamente!</h1>
+                    <button>Entrar</button>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>
