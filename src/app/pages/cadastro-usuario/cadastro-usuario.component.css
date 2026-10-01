@@ -1,0 +1,147 @@
+/* TAG */
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: #ebebeb;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0 1rem;
+    height: 80%;
+    width: 80%;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+}
+
+section {
+    height: 80%;
+    width: 80%;
+}
+
+button {
+    width: 6rem;
+    height: 2rem;
+    border-radius: 5px;
+    border: none;
+    color: #FFFFFF;
+    background-color: rgb(154, 26, 26);
+    transition: ease-in-out, 0.3s;
+}
+
+button:hover {
+    transform: scale(1.1);
+    background-color: rgb(215, 51, 51);
+}
+
+.information {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    max-width: 25rem;
+    padding: 2rem;
+}
+
+/* ID */
+
+form#cadastro-usuario {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: min(100%, 600px);
+    padding: 2rem;
+}
+
+#section-cadastro {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    border-right: black dashed 3px;
+}
+
+#section-information {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border-radius: 0 10px 10px 0;
+    background-color: #f5f5f5;
+}
+
+section#cadastro-controllers {
+    display: flex;
+    height: 10%;
+    width: 100%;
+}
+
+div#termos-input {
+    width: 50%;
+}
+
+div#cadastro-buttons {
+    display: flex;
+    justify-content: flex-end;
+    width: 50%;
+    gap: 0.5rem;
+}
+
+div#termos-input {
+    display: flex;
+    align-items: center;
+    font-size: small;
+    gap: 0.5rem;
+}
+
+/* CLASS */
+
+div.cadastro-container {
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
+div.input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* SUB TAG */
+
+form#cadastro-usuario input {
+    height: 2rem;
+    font-size: large;
+    padding-left: 2%;
+    color: rgb(36, 36, 36);
+}
+
+.information h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    line-height: 1.4;
+}
+
+/* TIPO */
+
+button[type=reset] {
+    background-color: black;
+    box-sizing: border-box;
+}
+
+button[type=reset]:hover {
+    background-color: white;
+    color: black;
+    border: black 2px solid;
+}
