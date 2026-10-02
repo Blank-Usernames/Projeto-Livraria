@@ -1,0 +1,64 @@
+.Banner {
+    background:
+        linear-gradient(90deg,
+            rgba(37, 0, 0, 0.9) 20%,
+            rgba(0, 0, 0, 0.89) 80%);
+    padding: 10px 20px;
+    color: #fff9ef;
+}
+
+
+.BannerLados {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.BannerEsquerdo h2 {
+    font-size: 3.0rem;
+    letter-spacing: 1px;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+.BannerEsquerdo p {
+    color: #d8cfc7;
+    font-size: 17px;
+    line-height: 1.6;
+    max-width: 460px;
+
+}
+
+.BannerEsquerdo {
+    height: 100%;
+    flex-basis: 50%;
+}
+
+.BannerDireito {
+    display: flex;
+    flex-basis: 50%;
+    align-items: center;
+    justify-content: center;
+}
+
+.BannerDireito img {
+    width: 70%;
+}
+
+.BannerEsquerdo button {
+    background-color: #070707;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    padding: 0.8rem 3.0rem;
+    color: aliceblue;
+    font-weight: 600;
+    font-size: 15px;
+    transition: all 0.3s;
+}
+
+.BannerEsquerdo button:hover {
+    transform: translateY(-2px);
+    background-color: #2b0108;
+    box-shadow: 0 6px 20px rgba(7, 7, 7, 0.55);
+}

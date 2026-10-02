@@ -1,0 +1,96 @@
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    
+    background: linear-gradient(0deg, #800a0a 100%, #5c0a0a 80%);
+    padding: 40px;
+    gap: 20px;
+    color: #d8cfc7;
+    border-top: 2px solid #2b0505;
+}
+
+.rodape-coluna h3 {
+    color: #fff;
+    font-size: 15px;
+    margin-bottom: 15px;
+}
+
+.redesSociais{
+    display: flex;
+    gap: 40px;     
+}
+.redesSociais  a i{
+    color: #d8cfc7;
+    font-size: 30px;  
+    transition: color 0.2s ease, transform 0.4s ease;  
+}
+.redesSociais :hover{
+    opacity: 70%;
+    transform: translateY(3px)
+    
+}
+.rodape-coluna ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.rodape-coluna li {
+    margin-bottom: 10px;
+    color: #d8cfc7;
+    font-size: 14px;
+    line-height: 1.8;
+}
+.rodape-coluna a {
+    color: #d8cfc7;
+    text-decoration: none;
+    display: inline-block;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.rodape-coluna a:hover {
+    color: #d8cfc7;
+    transform: translateX(4px);
+}   
+
+
+.rodape {
+    display: flex;
+    color: #fff;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 20px 0;
+    background: linear-gradient(180deg, #800a0a 80%, #5c0a0a 100%);
+}
+
+.rodape h3{
+    font-size: 20px;
+    letter-spacing: 1.5px;
+}
+.rodape P{
+    font-size: 12px;
+    letter-spacing: 1.5px;
+}
+.formas-pagamento {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+    max-width: 260px;
+}
+
+.metodo-pagamento {
+    background-color: #fff;
+    border-radius: 8px;
+    height: 50px;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.metodo-pagamento i {
+    font-size: 20px;
+    color: #4b0c0c;
+}
