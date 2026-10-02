@@ -1,0 +1,162 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: rgb(248, 241, 241);
+}
+
+.TopoSecundario {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 40px;
+    height: 20px;
+    background: linear-gradient(180deg, #a81717 0%, #881919 70%);
+    font-size: 15px;
+}
+
+.MarcaSecundaria {
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    color: #e2e7e9;
+    font-weight: 600px;
+    letter-spacing: 1px;
+    font-family: fantasy;
+}
+
+.TopoSecundario nav ul {
+    text-transform: uppercase;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    font-weight: 300px;
+    list-style: none;
+    display: flex;
+    gap: 0px;
+    margin: 0;
+    padding: 0;
+}
+
+.TopoSecundario nav ul li {
+    padding: 0 15px;
+    border-right: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.TopoSecundario nav ul li:last-child {
+    border-right: none;
+    padding-right: 0;
+}
+
+.TopoSecundario nav ul li:first-child {
+    padding-left: 0;
+}
+
+.TopoSecundario nav a {
+    display: inline-block;
+    color: #F2F0EF;
+    text-decoration: none;
+    padding: 6px 10px;
+    border-radius: 4px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+
+}
+
+.TopoSecundario nav a:hover {
+    background-color: rgba(243, 240, 240, 0.1);
+    color: #fff;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    padding: 15px 40px;
+    gap: 40px;
+    background: linear-gradient(180deg, #800a0a 80%, #5c0a0a 100%);
+    border-bottom: 2px solid #2b0505;
+
+}
+
+.BarraPesquisa {
+    display: flex;
+    align-items: center;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    overflow: hidden;
+    width: 600px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+    justify-self: center;
+}
+
+.iconeBusca {
+    background-color: #1d060a;
+    border: none;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.iconeBusca:hover {
+    background-color: #3d151c;
+}
+
+.BarraPesquisa input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #333;
+    font-weight: 700;
+    padding: 8px 12px;
+    font-size: 12px;
+    letter-spacing: 1px;
+    width: 100%;
+
+}
+
+.acoesUsuarios ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: self-end;
+    gap: 4px;
+}
+
+.acoesUsuarios ul li a {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    text-decoration: none;
+    color: #F2F0EF;
+    font-size: 18px;
+}
+
+nav.acoesUsuarios a:hover {
+    text-decoration: underline;
+    transform: translateY(-2px);
+    transition: all 0.2s;
+}
+
+.BlocoDireita {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.iconeCarrinho {
+    background: none;
+    font-size: large;
+    border: none;
+    color: #F2F0EF;
+    padding: 0;
+    cursor: pointer;
+}
+
+.iconeCarrinho:hover {
+    color: rgb(195, 208, 221);
+}
