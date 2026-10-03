@@ -11,10 +11,18 @@
 <body>
     <main>
         <section id="section-cadastro">
-            <div class="cadastro-container">
+            <div id="cadastro-container">
+                <div class="form-title">
+                    <h1>Cadastro</h1>
+                </div>
                 <form action="" id="cadastro-usuario">
                     <div class="input-container">
                         <label for="nome-input">Nome:</label>
+                        <input type="text" name="nome-input" id="nome-input" required>
+                    </div>
+
+                    <div class="input-container">
+                        <label for="cpf-input">CPF:</label>
                         <input type="text" name="nome-input" id="nome-input" required>
                     </div>
 
@@ -33,10 +41,10 @@
                         <input type="password" name="confirmar-senha-input" id="confirmar-senha-input" required>
                     </div>
 
-                    <section id="cadastro-controllers">         
+                    <section id="cadastro-controllers">
                         <div id="termos-input">
                             <input type="checkbox" name="termos-checkbox" id="termos-checkbox" required>
-                            <label for="termos-checkbox">Aceito e Li os Termos e Condições</label>
+                            <label for="termos-checkbox">Aceito e Li os <a href="">Termos e Condições</a></label>
                         </div>
 
                         <div id="cadastro-buttons">
@@ -44,17 +52,50 @@
                             <button type="reset">Limpar</button>
                         </div>
                     </section>
+
+                    <div id="login-able">
+                        <a href="">Já possuí uma conta?</a>
+                    </div>
                 </form>
             </div>
 
         </section>
 
-        <section id="section-information">
-            <div class="information-container">
-                <div class="information">
-                    <h1>Já tem uma conta? <br> Entre aqui mesmo, e aproveite imediatamente!</h1>
-                    <button>Entrar</button>
+        <section id="section-login">
+            <div id="login-container">
+                <div class="form-title">
+                    <h1>Login</h1>
                 </div>
+                <form action="" id="login-usuario">
+                    <div class="input-container">
+                        <label for="nome-input">Nome:</label>
+                        <input type="text" name="nome-input" id="nome-input" required>
+                    </div>
+
+                    <div class="input-container">
+                        <label for="senha-input">Senha:</label>
+                        <input type="password" name="senha-input" id="senha-input" required>
+                    </div>
+
+                    <section id="login-controllers">         
+                        <div id="login-buttons">
+                            <button type="submit">Entrar</button>
+                        </div>
+                    </section>
+                </form>
+
+                <hr>
+
+                <div id="information-container">
+                    <div id="information-image">
+                        <img src="" alt="">
+                    </div>
+                    <div id="information-text">
+                        <p>
+                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Totam soluta quas quidem ipsa facilis? Dignissimos minima, aut vero dicta qui ipsa unde alias officia temporibus cupiditate enim quam facere impedit.
+                        </p>
+                    </div>
+                </div>                
             </div>
         </section>
     </main>

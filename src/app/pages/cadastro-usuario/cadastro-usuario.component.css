@@ -26,6 +26,15 @@ section {
     width: 80%;
 }
 
+h1 {
+    color: #3b3b3b;
+}
+
+hr {
+    width: 90%;
+    border: black solid 0.2%;
+}
+
 button {
     width: 6rem;
     height: 2rem;
@@ -41,22 +50,37 @@ button:hover {
     background-color: rgb(215, 51, 51);
 }
 
-.information {
+/* ID */
+
+div#cadastro-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 1.5rem;
-    max-width: 25rem;
-    padding: 2rem;
+    height: 100%;
+    width: 100%;
 }
 
-/* ID */
+div#login-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
 
 form#cadastro-usuario {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-between;
     width: min(100%, 600px);
+    height: 100%;
+    padding: 2rem;
+}
+
+form#login-usuario {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: min(100%, 600px);
+    gap: 1rem;
     padding: 2rem;
 }
 
@@ -68,20 +92,31 @@ form#cadastro-usuario {
     border-right: black dashed 3px;
 }
 
-#section-information {
+#section-login {
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    text-align: center;
     border-radius: 0 10px 10px 0;
-    background-color: #f5f5f5;
 }
 
 section#cadastro-controllers {
     display: flex;
     height: 10%;
     width: 100%;
+}
+
+section#login-controllers {
+    display: flex;
+    height: 40%;
+    width: 100%;
+}
+
+div#information-text {
+    padding: 2rem;
+    font-weight: bold;
+    font-size: large;
+    color: #3b3b3b;
 }
 
 div#termos-input {
@@ -91,8 +126,16 @@ div#termos-input {
 div#cadastro-buttons {
     display: flex;
     justify-content: flex-end;
+    align-items: center;
     width: 50%;
     gap: 0.5rem;
+}
+
+div#login-buttons {
+    display: flex;
+    justify-content: flex-start;
+    width: 50%;
+    gap: 0.5rem;   
 }
 
 div#termos-input {
@@ -104,12 +147,6 @@ div#termos-input {
 
 /* CLASS */
 
-div.cadastro-container {
-    display: flex;
-    height: 100%;
-    width: 100%;
-}
-
 div.input-container {
     display: flex;
     flex-direction: column;
@@ -118,30 +155,33 @@ div.input-container {
     box-sizing: border-box;
 }
 
+div.form-title {
+    padding: 0 2rem;
+}
+
 /* SUB TAG */
 
-form#cadastro-usuario input {
+form input {
     height: 2rem;
     font-size: large;
     padding-left: 2%;
     color: rgb(36, 36, 36);
 }
 
-.information h1 {
-    margin: 0;
-    font-size: 1.5rem;
-    line-height: 1.4;
+div#login-able a {
+    font-size: small;
 }
 
 /* TIPO */
 
 button[type=reset] {
-    background-color: black;
     box-sizing: border-box;
+    border: black 2px solid;
+    background-color: white;
+    color: black;
 }
 
 button[type=reset]:hover {
-    background-color: white;
-    color: black;
-    border: black 2px solid;
+    background-color: black;
+    color: #FFFFFF;
 }
