@@ -1,0 +1,102 @@
+.carrinho-container {
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.lista-produtos {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.produto-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  border: 1px solid #e0e0e0;
+  padding: 15px;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.capa {
+  width: 70px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.detalhes {
+  flex: 1;
+}
+
+.detalhes h3 {
+  margin: 0 0 5px 0;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.detalhes .autor {
+  margin: 0 0 5px 0;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.detalhes .preco {
+  margin: 0 0 5px 0;
+  color: #2c3e50;
+  font-weight: bold;
+}
+
+.detalhes .quantidade {
+  margin: 0;
+  color: #777;
+  font-size: 0.85rem;
+}
+
+.subtotal {
+  font-weight: bold;
+  color: #2c3e50;
+  font-size: 1rem;
+}
+
+.resumo-carrinho {
+  border-top: 2px solid #eee;
+  padding-top: 20px;
+  text-align: right;
+}
+
+.resumo-carrinho h3 {
+  margin-top: 0;
+  color: #333;
+}
+
+.linha-total {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+}
+
+.valor-total {
+  font-size: 1.5rem;
+  color: #27ae60;
+  margin-left: 10px;
+}
+
+.btn-voltar {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #3498db;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+.btn-voltar:hover {
+  background-color: #2980b9;
+}

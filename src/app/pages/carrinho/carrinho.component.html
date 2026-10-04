@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<div class="carrinho-container">
+  <h2>Meu Carrinho de Compras</h2>
+
+  <div class="lista-produtos">
+    <div class="produto-card" *ngFor="let item of itens">
+      <img [src]="item.imagem" [alt]="item.titulo" class="capa">
+      <div class="detalhes">
+        <h3>{{ item.titulo }}</h3>
+        <p class="autor">{{ item.autor }}</p>
+        <p class="preco">R$ {{ item.preco.toFixed(2) }}</p>
+        <p class="quantidade">Quantidade: {{ item.quantidade }}</p>
+      </div>
+      <div class="subtotal">
+        Subtotal: R$ {{ (item.preco * item.quantidade).toFixed(2) }}
+      </div>
+    </div>
+  </div>
+
+  
+  <div class="resumo-carrinho">
+    <h3>Resumo do Pedido</h3>
+    <div class="linha-total">
+      <span>Total a pagar:</span>
+      <strong class="valor-total">R$ {{ valorTotal.toFixed(2) }}</strong>
+    </div>
+    <a routerLink="/" class="btn-voltar">Continuar Comprando</a>
+  </div>
+</div>
+    
+</body>
+</html>
