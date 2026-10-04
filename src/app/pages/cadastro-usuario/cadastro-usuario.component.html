@@ -12,10 +12,11 @@
     <main>
         <section id="section-cadastro">
             <div id="cadastro-container">
-                <div class="form-title">
-                    <h1>Cadastro</h1>
-                </div>
                 <form action="" id="cadastro-usuario">
+                    <div class="form-title">
+                        <h1>Cadastro</h1>
+                    </div>
+
                     <div class="input-container">
                         <label for="nome-input">Nome:</label>
                         <input type="text" name="nome-input" id="nome-input" required>
@@ -23,7 +24,7 @@
 
                     <div class="input-container">
                         <label for="cpf-input">CPF:</label>
-                        <input type="text" name="nome-input" id="nome-input" required>
+                        <input type="text" name="cpf-input" id="cpf-input" required>
                     </div>
 
                     <div class="input-container">
@@ -44,7 +45,7 @@
                     <section id="cadastro-controllers">
                         <div id="termos-input">
                             <input type="checkbox" name="termos-checkbox" id="termos-checkbox" required>
-                            <label for="termos-checkbox">Aceito e Li os <a href="">Termos e Condições</a></label>
+                            <label for="termos-checkbox">Aceito e li os <a href="">Termos e Condições</a></label>
                         </div>
 
                         <div id="cadastro-buttons">
@@ -52,32 +53,32 @@
                             <button type="reset">Limpar</button>
                         </div>
                     </section>
-
-                    <div id="login-able">
-                        <a href="">Já possuí uma conta?</a>
-                    </div>
                 </form>
+                <div id="login-able">
+                    <a href="">Já possuí uma conta?</a>
+                </div>
             </div>
 
         </section>
 
         <section id="section-login">
             <div id="login-container">
-                <div class="form-title">
-                    <h1>Login</h1>
-                </div>
                 <form action="" id="login-usuario">
-                    <div class="input-container">
-                        <label for="nome-input">Nome:</label>
-                        <input type="text" name="nome-input" id="nome-input" required>
+                    <div class="form-title">
+                        <h1>Login</h1>
                     </div>
 
                     <div class="input-container">
-                        <label for="senha-input">Senha:</label>
-                        <input type="password" name="senha-input" id="senha-input" required>
+                        <label for="login-nome">Nome:</label>
+                        <input type="text" name="login-nome" id="login-nome" required>
                     </div>
 
-                    <section id="login-controllers">         
+                    <div class="input-container">
+                        <label for="login-senha">Senha:</label>
+                        <input type="password" name="login-senha" id="login-senha" required>
+                    </div>
+
+                    <section id="login-controllers">
                         <div id="login-buttons">
                             <button type="submit">Entrar</button>
                         </div>
@@ -87,15 +88,12 @@
                 <hr>
 
                 <div id="information-container">
-                    <div id="information-image">
-                        <img src="" alt="">
-                    </div>
                     <div id="information-text">
                         <p>
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Totam soluta quas quidem ipsa facilis? Dignissimos minima, aut vero dicta qui ipsa unde alias officia temporibus cupiditate enim quam facere impedit.
+                            Crie sua conta e aproveite todos os benefícios! Tenha acesso aos nossos recursos e desfrute de uma experiência completa e personalizada.
                         </p>
                     </div>
-                </div>                
+                </div>
             </div>
         </section>
     </main>
