@@ -1,5 +1,5 @@
 .carrinho-container {
-  max-width: 800px;
+  max-width: 900px;
   margin: 30px auto;
   padding: 20px;
   font-family: Arial, sans-serif;
@@ -15,17 +15,16 @@
 .produto-card {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 15px;
   border: 1px solid #e0e0e0;
   padding: 15px;
   border-radius: 8px;
   background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
 .capa {
-  width: 70px;
-  height: 100px;
+  width: 60px;
+  height: 90px;
   object-fit: cover;
   border-radius: 4px;
 }
@@ -37,66 +36,128 @@
 .detalhes h3 {
   margin: 0 0 5px 0;
   font-size: 1.1rem;
-  color: #333;
 }
 
 .detalhes .autor {
   margin: 0 0 5px 0;
   color: #666;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
 }
 
 .detalhes .preco {
-  margin: 0 0 5px 0;
+  margin: 0;
   color: #2c3e50;
   font-weight: bold;
 }
 
-.detalhes .quantidade {
-  margin: 0;
-  color: #777;
-  font-size: 0.85rem;
+.controle-qtd {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 4px 8px;
+}
+
+.controle-qtd button {
+  background: #f0f0f0;
+  border: 1px solid #ccc;
+  width: 28px;
+  height: 28px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.controle-qtd button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.controle-qtd span {
+  font-weight: bold;
+  min-width: 20px;
+  text-align: center;
 }
 
 .subtotal {
   font-weight: bold;
   color: #2c3e50;
-  font-size: 1rem;
-}
-
-.resumo-carrinho {
-  border-top: 2px solid #eee;
-  padding-top: 20px;
+  min-width: 90px;
   text-align: right;
 }
 
-.resumo-carrinho h3 {
-  margin-top: 0;
-  color: #333;
+.btn-remover {
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.resumo-carrinho {
+  background: #fdfdfd;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #eaeaea;
+}
+
+.opcoes-pagamento {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 15px 0 20px 0;
+}
+
+.opcoes-pagamento label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 0.95rem;
 }
 
 .linha-total {
-  font-size: 1.2rem;
-  margin-bottom: 15px;
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+  text-align: right;
 }
 
 .valor-total {
-  font-size: 1.5rem;
   color: #27ae60;
   margin-left: 10px;
 }
 
+.acoes {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .btn-voltar {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #3498db;
+  padding: 10px 18px;
+  background-color: #7f8c8d;
   color: white;
   text-decoration: none;
   border-radius: 5px;
-  font-weight: bold;
-  transition: background-color 0.2s;
 }
 
-.btn-voltar:hover {
-  background-color: #2980b9;
+.btn-finalizar {
+  padding: 12px 24px;
+  background-color: #27ae60;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-finalizar:hover {
+  background-color: #219150;
+}
+
+.vazio-box {
+  text-align: center;
+  padding: 40px;
 }

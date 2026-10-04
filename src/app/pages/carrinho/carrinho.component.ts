@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 interface ItemCarrinho {
@@ -14,11 +15,13 @@ interface ItemCarrinho {
 @Component({
   selector: 'app-carrinho',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './carrinho.component.html',
   styleUrl: './carrinho.component.css'
 })
 export class CarrinhoComponent {
+  formaPagamentoSelecionada: string = 'pix';
+
   itens: ItemCarrinho[] = [
     {
       id: 1,
@@ -38,8 +41,29 @@ export class CarrinhoComponent {
     }
   ];
 
-  // Cálculo automático da soma dos valores dos livros 
+  aumentarQuantidade(item: ItemCarrinho): void {
+    item.quantidade++;
+  }
+
+  diminuirQuantidade(item: ItemCarrinho): void {
+    if (item.quantidade > 1) {
+      item.quantidade--;
+    }
+  }
+
+  removerItem(id: number): void {
+    this.itens = this.itens.filter(item => item.id !== id);
+  }
+
   get valorTotal(): number {
     return this.itens.reduce((soma, item) => soma + (item.preco * item.quantidade), 0);
+  }
+
+  finalizarCompra(): void {
+    if (this.itens.length === 0) {
+      alert('Seu carrinho está vazio!');
+      return;
+    }
+    alert(`Pedido realizado com sucesso! Forma de pagamento: ${this.formaPagamentoSelecionada.toUpperCase()}`);
   }
 }
