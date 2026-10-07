@@ -1,0 +1,71 @@
+<div class="carrinho-container">
+  <h2>Meu Carrinho de Compras</h2>
+
+  <div class="conteudo-carrinho" *ngIf="itens.length > 0; else carrinhoVazio">
+    <!-- Lista de Produtos -->
+    <div class="lista-produtos">
+      <div class="produto-card" *ngFor="let item of itens">
+        <img [src]="item.imagem" [alt]="item.titulo" class="capa">
+        
+        <div class="detalhes">
+          <h3>{{ item.titulo }}</h3>
+          <p class="autor">{{ item.autor }}</p>
+          <p class="preco">R$ {{ item.preco.toFixed(2) }}</p>
+        </div>
+
+        <!-- Controle de Quantidade (+ e -) -->
+        <div class="controle-qtd">
+          <button type="button" (click)="diminuirQuantidade(item)" [disabled]="item.quantidade <= 1">-</button>
+          <span>{{ item.quantidade }}</span>
+          <button type="button" (click)="aumentarQuantidade(item)">+</button>
+        </div>
+
+        <div class="subtotal">
+          R$ {{ (item.preco * item.quantidade).toFixed(2) }}
+        </div>
+
+        <button type="button" class="btn-remover" (click)="removerItem(item.id)" title="Remover item">
+          🗑️
+        </button>
+      </div>
+    </div>
+
+    <!-- Resumo e Pagamento -->
+    <div class="resumo-carrinho">
+      <h3>Formas de Pagamento</h3>
+      <div class="opcoes-pagamento">
+        <label>
+          <input type="radio" name="pagamento" value="pix" [(ngModel)]="formaPagamentoSelecionada">
+          <span>⚡ PIX (Aprovação imediata)</span>
+        </label>
+        <label>
+          <input type="radio" name="pagamento" value="cartao" [(ngModel)]="formaPagamentoSelecionada">
+          <span>💳 Cartão de Crédito (até 3x sem juros)</span>
+        </label>
+        <label>
+          <input type="radio" name="pagamento" value="boleto" [(ngModel)]="formaPagamentoSelecionada">
+          <span>📄 Boleto Bancário</span>
+        </label>
+      </div>
+
+      <div class="linha-total">
+        <span>Total a pagar:</span>
+        <strong class="valor-total">R$ {{ valorTotal.toFixed(2) }}</strong>
+      </div>
+
+      <div class="acoes">
+        <a routerLink="/" class="btn-voltar">Continuar Comprando</a>
+        <button type="button" class="btn-finalizar" (click)="finalizarCompra()">
+          Ir para o Pagamento
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #carrinhoVazio>
+    <div class="vazio-box">
+      <p>Seu carrinho está vazio.</p>
+      <a routerLink="/" class="btn-voltar">Voltar para a Loja</a>
+    </div>
+  </ng-template>
+</div>
