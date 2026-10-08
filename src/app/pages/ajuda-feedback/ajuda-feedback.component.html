@@ -6,189 +6,88 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ajuda e Feedback - Ars Libris</title>
     <link rel="stylesheet" href="ajuda-feedback.component.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
+    <!-- O SEU CABEÇALHO ENTRA AQUI -->
 
-    <main class="help-page-container">
-        <!-- Área de Destaque -->
-        <section class="help-hero">
-            <div class="hero-content">
-                <h1>Como podemos ajudar?</h1>
-                <p>Encontre respostas rápidas ou entre em contato com nossa equipe.</p>
-                <div class="search-bar">
-                    <input type="text" placeholder="Digite sua dúvida aqui...">
-                    <button type="button"><i class="fas fa-search"></i> Buscar</button>
-                </div>
-            </div>
-        </section>
+    <div id="pagina-ajuda">
 
-        <div class="content-wrapper">
-            <!-- FAQ Section -->
-            <section class="faq-section">
-                <h2>Perguntas Frequentes (FAQ)</h2>
-
-                <div class="faq-grid">
-                    <div class="faq-item">
-                        <details name="faq">
-                            <summary>
-                                <span class="summary-title">Como rastrear o pedido do meu livro?</span>
-                                <i class="fas fa-chevron-down icon"></i>
-                            </summary>
-                            <div class="faq-content">
-                                <p>Para rastrear seu pedido, faça login na sua conta, vá até a aba <strong>"Meus
-                                        Pedidos"</strong>, selecione o pedido desejado e clique em "Rastrear Entrega".
-                                    Você também receberá atualizações por e-mail.</p>
-                            </div>
-                        </details>
-                    </div>
-
-                    <div class="faq-item">
-                        <details name="faq">
-                            <summary>
-                                <span class="summary-title">Quais as formas de pagamento aceitas?</span>
-                                <i class="fas fa-chevron-down icon"></i>
-                            </summary>
-                            <div class="faq-content">
-                                <p>Aceitamos as principais bandeiras de cartão de crédito (Visa, Mastercard, Amex,
-                                    Discover), PayPal, Pix, Boleto Bancário e Bitcoin.</p>
-                            </div>
-                        </details>
-                    </div>
-
-                    <div class="faq-item">
-                        <details name="faq">
-                            <summary>
-                                <span class="summary-title">Como solicitar a troca de um livro?</span>
-                                <i class="fas fa-chevron-down icon"></i>
-                            </summary>
-                            <div class="faq-content">
-                                <p>A solicitação de troca pode ser feita em até 7 dias corridos após o recebimento.
-                                    Acesse <strong>"Trocas e Devoluções"</strong> no rodapé do site para preencher o
-                                    formulário específico.</p>
-                            </div>
-                        </details>
-                    </div>
-
-                    <div class="faq-item">
-                        <details name="faq">
-                            <summary>
-                                <span class="summary-title">Qual é a política de frete grátis?</span>
-                                <i class="fas fa-chevron-down icon"></i>
-                            </summary>
-                            <div class="faq-content">
-                                <p>Oferecemos frete grátis para compras acima de <strong>R$ 150,00</strong> para as
-                                    regiões Sul e Sudeste, e acima de <strong>R$ 250,00</strong> para as demais regiões
-                                    do Brasil.</p>
-                            </div>
-                        </details>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Grid Contato e Feedback -->
-            <div class="contact-feedback-grid">
-
-                <!-- Informações de Contato -->
-                <section class="contact-info-card">
-                    <div class="card-header">
-                        <h2>Fale Conosco</h2>
-                        <p>Nossa equipe está pronta para te atender.</p>
-                    </div>
-                    <div class="contact-methods">
-                        <div class="method">
-                            <i class="fas fa-envelope"></i>
-                            <div>
-                                <h3>E-mail</h3>
-                                <a href="mailto:ArsLibris@gmail.com.br">ArsLibrisgmail.com.br</a>
-                            </div>
-                        </div>
-                        <div class="method">
-                            <i class="fab fa-whatsapp"></i>
-                            <div>
-                                <h3>WhatsApp / Telefone</h3>
-                                <p>(11) 4002-8922</p>
-                            </div>
-                        </div>
-                        <div class="method">
-                            <i class="far fa-clock"></i>
-                            <div>
-                                <h3>Horário de Atendimento</h3>
-                                <p>Segunda a Sexta: 09h às 18h<br>Sábados: 09h às 14h</p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Formulário de Feedback -->
-                <section class="feedback-form-card">
-                    <h2>Envie seu Feedback</h2>
-                    <form action="#" method="POST" class="modern-form">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="nome">Nome Completo</label>
-                                <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="email">E-mail</label>
-                                <input type="email" id="email" name="email" placeholder="seu@email.com" required>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Assunto</label>
-                            <div class="radio-group">
-                                <label class="radio-btn">
-                                    <input type="radio" name="assunto" value="duvida" checked>
-                                    <span>Dúvida</span>
-                                </label>
-                                <label class="radio-btn">
-                                    <input type="radio" name="assunto" value="sugestao">
-                                    <span>Sugestão</span>
-                                </label>
-                                <label class="radio-btn">
-                                    <input type="radio" name="assunto" value="elogio">
-                                    <span>Elogio</span>
-                                </label>
-                                <label class="radio-btn">
-                                    <input type="radio" name="assunto" value="reclamacao">
-                                    <span>Reclamação</span>
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Avalie sua Experiência (Opcional)</label>
-                            <div class="star-rating-modern">
-                                <input type="radio" id="star5" name="rating" value="5" /><label for="star5"
-                                    title="5 estrelas"><i class="fas fa-star"></i></label>
-                                <input type="radio" id="star4" name="rating" value="4" /><label for="star4"
-                                    title="4 estrelas"><i class="fas fa-star"></i></label>
-                                <input type="radio" id="star3" name="rating" value="3" /><label for="star3"
-                                    title="3 estrelas"><i class="fas fa-star"></i></label>
-                                <input type="radio" id="star2" name="rating" value="2" /><label for="star2"
-                                    title="2 estrelas"><i class="fas fa-star"></i></label>
-                                <input type="radio" id="star1" name="rating" value="1" /><label for="star1"
-                                    title="1 estrela"><i class="fas fa-star"></i></label>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="mensagem">Mensagem</label>
-                            <textarea id="mensagem" name="mensagem" rows="4" placeholder="Escreva sua mensagem aqui..."
-                                required></textarea>
-                        </div>
-
-                        <div class="form-actions">
-                            <button type="reset" class="btn-secondary">Limpar</button>
-                            <button type="submit" class="btn-primary">Enviar Mensagem</button>
-                        </div>
-                    </form>
-                </section>
+        <!-- Faixa escura no topo -->
+        <div class="faixa-topo">
+            <h1>Como podemos ajudar?</h1>
+            <p>Encontre respostas rápidas ou fale com a nossa equipa.</p>
+            <div class="caixa-busca">
+                <input type="text" id="campo-busca" placeholder="Digite a sua dúvida...">
+                <button id="botao-buscar">Buscar</button>
             </div>
         </div>
-    </main>
+
+        <!-- Área central com o conteúdo -->
+        <div class="conteudo-ajuda">
+
+            <!-- Bloco de Perguntas Frequentes -->
+            <div class="seccao-perguntas">
+                <h2>Perguntas Frequentes (FAQ)</h2>
+                <ul class="lista-perguntas">
+                    <li>
+                        <strong>Como rastrear o pedido do meu livro?</strong>
+                        <p>Faça login, vá à aba "Meus Pedidos" e clique em "Rastrear Entrega".</p>
+                    </li>
+                    <li>
+                        <strong>Quais as formas de pagamento aceites?</strong>
+                        <p>Aceitamos cartão de crédito, PayPal, Pix e Boleto Bancário.</p>
+                    </li>
+                    <li>
+                        <strong>Qual é a política de frete grátis?</strong>
+                        <p>Oferecemos frete grátis para compras acima de R$ 150,00.</p>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Bloco inferior dividido em duas partes -->
+            <div class="area-contato-formulario">
+
+                <!-- Informações de contacto -->
+                <div class="info-contato">
+                    <h2>Fale Conosco</h2>
+                    <p><strong>E-mail:</strong> ArsLibrisgmail.com.br</p>
+                    <p><strong>Telefone:</strong> (11) 4002-8922</p>
+                    <p><strong>Horário:</strong> Segunda a Sexta: 09h às 18h</p>
+                </div>
+
+                <!-- Formulário -->
+                <div class="caixa-formulario">
+                    <h2>Envie o seu Feedback</h2>
+                    <form action="#">
+                        <label for="nome-usuario">Nome Completo:</label><br>
+                        <input type="text" id="nome-usuario" name="nome"><br><br>
+
+                        <label for="email-usuario">E-mail:</label><br>
+                        <input type="email" id="email-usuario" name="email"><br><br>
+
+                        <label>Assunto:</label><br>
+                        <input type="radio" id="assunto-duvida" name="assunto" value="duvida" checked>
+                        <label for="assunto-duvida">Dúvida</label>
+
+                        <input type="radio" id="assunto-sugestao" name="assunto" value="sugestao">
+                        <label for="assunto-sugestao">Sugestão</label>
+
+                        <input type="radio" id="assunto-reclamacao" name="assunto" value="reclamacao">
+                        <label for="assunto-reclamacao">Reclamação</label><br><br>
+
+                        <label for="mensagem-texto">Mensagem:</label><br>
+                        <textarea id="mensagem-texto" name="mensagem" rows="5"></textarea><br><br>
+
+                        <button type="submit" id="botao-enviar">Enviar Mensagem</button>
+                        <button type="reset" id="botao-limpar">Limpar</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
 
 </body>
 
