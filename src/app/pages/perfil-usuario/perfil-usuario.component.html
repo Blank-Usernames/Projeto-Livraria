@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Perfil</title>
+    <link rel="stylesheet" href="perfil-usuario.component.css">
+</head>
+
+<body>
+    <main>
+        <section id="section-perfil">
+            <div id="perfil-container">
+                <form action="" id="perfil-usuario">
+                    <div class="section-title">
+                        <h1>Meu Perfil</h1>
+                    </div>
+
+                    <div class="input-container">
+                        <label for="nome-input">Nome:</label>
+                        <input type="text" name="nome-input" id="nome-input" required>
+                    </div>
+
+                    <div class="input-container">
+                        <label for="cpf-input">CPF:</label>
+                        <input type="text" name="cpf-input" id="cpf-input" readonly>
+                    </div>
+
+                    <div class="input-container">
+                        <label for="email-input">E-mail:</label>
+                        <input type="email" name="email-input" id="email-input" required>
+                    </div>
+
+                    <div class="input-container">
+                        <label for="senha-input">Senha:</label>
+                        <input type="password" name="senha-input" id="senha-input" required>
+                    </div>
+
+                    <div class="input-container">
+                        <label for="confirmar-senha-input">Confirmar Senha:</label>
+                        <input type="password" name="confirmar-senha-input" id="confirmar-senha-input" required>
+                    </div>
+
+                    <section id="perfil-controllers">
+                        <div id="perfil-buttons">
+                            <button type="submit">Atualizar</button>
+                            <button class="button-alter" type="button">Cancelar</button>
+                        </div>
+                    </section>
+                </form>
+
+                <hr>
+
+                <section id="deletar-zone">
+                    <div id="deletar-container">
+                        <div id="deletar-info">
+                            <h2>Deletar Conta</h2>
+                            <p>
+                                A exclusão da conta é permanente e não poderá ser desfeita.
+                                Todos os dados associados à sua conta serão removidos.
+                            </p>
+                            <div id="deletar-controllers">
+                                <button class="delete-button" type="button">Deletar</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>

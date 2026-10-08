@@ -1,0 +1,96 @@
+<div class="carrinho-page">
+  <div class="breadcrumb">
+    <span>PRINCIPAL</span> &gt; <span class="active">CARRINHO DE COMPRAS</span>
+  </div>
+
+  <h1 class="titulo-pagina">Carrinho de Compras</h1>
+
+  <div class="carrinho-layout" *ngIf="itens.length > 0; else carrinhoVazio">
+    <!-- Coluna da Esquerda: Produtos -->
+    <div class="coluna-produtos">
+      <div class="filtro-organizar">
+        <label>Organizar por</label>
+        <div class="controles-filtro">
+          <select>
+            <option>Nome</option>
+            <option>Preço</option>
+          </select>
+          <label class="radio-label"><input type="radio" name="ordem" checked> de A a Z</label>
+          <label class="radio-label"><input type="radio" name="ordem"> de Z a A</label>
+        </div>
+      </div>
+
+      <div class="lista-itens">
+        <div class="item-linha" *ngFor="let item of itens">
+          <img [src]="item.imagem" [alt]="item.titulo" class="item-capa">
+          
+          <div class="item-info">
+            <span class="item-codigo">(Cód. item: {{ item.codigoItem }})</span>
+            <h3 class="item-titulo">{{ item.titulo }}</h3>
+            <p class="item-autor">{{ item.autor }}</p>
+            <div class="item-preco-unitario">
+              <span>Preço</span>
+              <strong>R$ {{ item.preco.toFixed(2).replace('.', ',') }}</strong>
+            </div>
+          </div>
+
+          <div class="item-qtd-box">
+            <div class="seletor-qtd">
+              <button type="button" (click)="diminuirQuantidade(item)">-</button>
+              <span>{{ item.quantidade }}</span>
+              <button type="button" (click)="aumentarQuantidade(item)">+</button>
+            </div>
+            <button type="button" class="btn-remover-link" (click)="removerItem(item.id)">
+              Remover produto
+            </button>
+          </div>
+
+          <div class="item-total-box">
+            <span class="label-total">Total</span>
+            <strong class="valor-item-total">R$ {{ (item.preco * item.quantidade).toFixed(2).replace('.', ',') }}</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Coluna da Direita: Desconto, Frete e Resumo -->
+    <div class="coluna-resumo">
+      <!-- Obter Desconto -->
+      <div class="caixa-sidebar">
+        <h4>Obter Desconto</h4>
+        <div class="campo-com-botao">
+          <input type="text" placeholder="Insira o código do cupom" [(ngModel)]="cupomDesconto">
+          <button type="button" class="btn-vermelho">Aplicar</button>
+        </div>
+      </div>
+
+      <!-- Totais e Ações -->
+      <div class="caixa-sidebar caixa-totais">
+        <div class="linha-valores">
+          <span>Sub-Total</span>
+          <strong>R$ {{ valorSubTotal.toFixed(2).replace('.', ',') }}</strong>
+        </div>
+        <div class="linha-valores">
+          <span>Total</span>
+          <strong>R$ {{ valorTotal.toFixed(2).replace('.', ',') }}</strong>
+        </div>
+
+        <a routerLink="/" class="btn-vermelho-largo">Continuar comprando</a>
+        <button type="button" class="btn-vermelho-largo">Finalizar</button>
+      </div>
+
+      <div class="link-remover-todos-container">
+        <button type="button" class="btn-remover-todos" (click)="removerTodos()">
+          Remover todos os produtos
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #carrinhoVazio>
+    <div class="vazio-box">
+      <p>Seu carrinho está vazio.</p>
+      <a routerLink="/" class="btn-vermelho-largo">Voltar para a Loja</a>
+    </div>
+  </ng-template>
+</div>

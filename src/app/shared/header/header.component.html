@@ -3,7 +3,7 @@
         <div class="MarcaSecundaria">Ars Libris</div>
         <nav>
             <ul>
-                <li><a href="#">Inicio</a></li>
+                <li><a routerLink="/">Inicio</a></li>
                 <li><a href="#">Novidades</a></li>
                 <li><a href="#">Ajuda</a></li>
                 <li><a href="#">Localização</a></li>
@@ -23,21 +23,21 @@
             <nav class="acoesUsuarios">
                 <ul>
                     <li>
-                        <a href="#">
+                        <a routerLink="/cadastro-usuario">
                             <i class="fa-solid fa-user"></i>
                             Entrar
                         </a>
                     </li>
                     <li>
-                        <a href="#">/ Criar Conta</a>
+                        <a routerLink="/cadastro-usuario">/ Criar Conta</a>
                     </li>
 
                 </ul>
             </nav>
             <div class="botaoCarrinho">
-                <button class="iconeCarrinho" aria-label="ver carrinho">
+                <a routerLink="/carrinho" class="iconeCarrinho" aria-label="ver carrinho">
                     <i class="fa-sharp fa-solid fa-cart-shopping"></i>
-                </button>
+                </a>
             </div>
         </div>
 
