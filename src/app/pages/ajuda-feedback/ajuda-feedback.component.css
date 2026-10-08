@@ -27,7 +27,7 @@ body {
     margin-top: 0;
 }
 
-/* Barra de pesquisa simples */
+/* Barra de pesquisa*/
 .caixa-busca input {
     padding: 10px;
     width: 300px;
@@ -71,7 +71,7 @@ body {
     padding: 10px 0;
 }
 
-/* Organização lado a lado (Flexbox básico) */
+/* Organização lado a lado */
 .area-contato-formulario {
     display: flex;
     justify-content: space-between;
