@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -9,5 +10,16 @@ import { RouterLink } from '@angular/router';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
+  constructor(private router: Router) { }
+  isLogado: boolean = false;
 
+  ngOnInit() {
+    this.isLogado = localStorage.getItem('usuarioLogado') === 'true';
+  }
+
+  sair() {
+    localStorage.removeItem('usuarioLogado');
+    this.isLogado = false;
+    this.router.navigate(['/']);
+  }
 }
