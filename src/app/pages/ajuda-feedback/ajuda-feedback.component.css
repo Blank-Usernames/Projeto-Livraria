@@ -1,0 +1,194 @@
+:root {
+    --primary-red: #7E1214; /* Tom de vermelho escuro extraído das imagens */
+    --bg-main: #f4f4f4; /* Fundo mais claro para leitura conforme wireframe */
+    --text-light: #ffffff;
+    --box-bg: #d9d9d9;
+    --input-bg: #ffffff;
+    --text-dark: #111111;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-dark);
+}
+
+
+main {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.help-search {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    background: #ccc;
+    padding: 20px;
+    border-radius: 4px;
+}
+
+.help-search input {
+    width: 70%;
+    padding: 12px;
+    border: none;
+    outline: none;
+}
+
+.help-search button {
+    padding: 12px 25px;
+    background: #000;
+    color: #fff;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+h2 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+/* FAQ */
+.faq-container {
+    background: var(--box-bg);
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 4px;
+}
+
+details {
+    margin-bottom: 15px;
+}
+
+summary {
+    font-weight: 700;
+    cursor: pointer;
+    outline: none;
+    list-style: none; /* Hide default arrow */
+    font-size: 14px;
+}
+
+summary::-webkit-details-marker {
+    display: none;
+}
+
+details p {
+    margin-top: 5px;
+    padding-left: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #444;
+}
+
+/* CONTACT INFO */
+.contact-info {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.contact-box {
+    background: var(--box-bg);
+    padding: 25px;
+    display: inline-block;
+    text-align: center;
+    width: 400px;
+    max-width: 100%;
+    border-radius: 4px;
+}
+
+.contact-box p {
+    margin: 8px 0;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+/* FEEDBACK FORM */
+.feedback-form {
+    background: var(--box-bg);
+    padding: 30px;
+    border-radius: 4px;
+    margin-bottom: 50px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.form-group input[type="text"], 
+.form-group input[type="email"], 
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    outline: none;
+}
+
+.row-group {
+    display: flex;
+    align-items: center;
+}
+
+.row-group label {
+    margin-bottom: 0;
+    margin-right: 20px;
+    min-width: 150px;
+}
+
+.radio-options, .star-rating {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.selecione {
+    margin-right: 5px;
+}
+
+.star-rating i {
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.form-actions {
+    text-align: right;
+    margin-top: 20px;
+}
+
+.form-actions button {
+    padding: 10px 25px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 2px;
+}
+
+.btn-limpar {
+    background: #000;
+    color: #fff;
+    margin-right: 10px;
+}
+
+.btn-enviar {
+    background: #000;
+    color: #fff;
+}

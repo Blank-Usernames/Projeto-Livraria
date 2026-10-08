@@ -1,11 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ajuda e Feedback</title>
+    <link rel="stylesheet" href="ajuda-feedback.component.css">
 </head>
 <body>
-        
+    <main>
+        <div class="help-search">
+            <input type="text" placeholder="Buscar na central de ajuda...">
+            <button>Buscar</button>
+        </div>
+
+        <section class="faq-section">
+            <h2>Perguntas Frequentes - FAQ</h2>
+            <div class="faq-container">
+                <details open>
+                    <summary><i class="fas fa-caret-down"></i> Como rastrear o pedido do meu livro?</summary>
+                    <p>R: Acesse meus pedidos no meu menu.</p>
+                </details>
+                <details>
+                    <summary><i class="fas fa-caret-right"></i> Quais as formas de pagamento aceitas?</summary>
+                    <p>Aceitamos cartões de crédito, boleto bancário, Pix e criptomoedas.</p>
+                </details>
+                <details>
+                    <summary><i class="fas fa-caret-right"></i> Como solicitar a troca de um livro?</summary>
+                    <p>Você pode solicitar a troca em até 7 dias após o recebimento através da sua conta.</p>
+                </details>
+                <details>
+                    <summary><i class="fas fa-caret-right"></i> Política de frete grátis</summary>
+                    <p>Oferecemos frete grátis para compras acima de R$ 150,00.</p>
+                </details>
+            </div>
+        </section>
+
+        <section class="contact-info">
+            <h2>Informações para Contato</h2>
+            <div class="contact-box">
+                <p><strong>Email:</strong> suporte&#64;livraria.com</p>
+                <p><strong>WhatsApp:</strong> (11) 99999-9999</p>
+                <p><strong>Horário de Atendimento:</strong> Seg a Sex, 8h-18h</p>
+            </div>
+        </section>
+
+        <section class="feedback-form">
+            <h2>Formulário de Feedback & Fale Conosco</h2>
+            <form action="#" method="POST">
+                <div class="form-group">
+                    <label for="nome">Nome Completo:</label>
+                    <input type="text" id="nome" name="nome" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">E-mail:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group row-group">
+                    <label>Assunto:</label>
+                    <div class="radio-options">
+                        <span class="selecione">Selecione:</span>
+                        <label><input type="radio" name="assunto" value="duvida"> Dúvida</label>
+                        <label><input type="radio" name="assunto" value="sugestao"> Sugestão</label>
+                        <label><input type="radio" name="assunto" value="elogio"> Elogio</label>
+                        <label><input type="radio" name="assunto" value="reclamacao"> Reclamação</label>
+                    </div>
+                </div>
+                <div class="form-group row-group">
+                    <label>Avalie sua Experiência:</label>
+                    <div class="star-rating">
+                        <span class="selecione">Selecione:</span>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="mensagem">Mensagem:</label>
+                    <textarea id="mensagem" name="mensagem" rows="4" required></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="reset" class="btn-limpar">Limpar</button>
+                    <button type="submit" class="btn-enviar">Enviar</button>
+                </div>
+            </form>
+        </section>
+    </main>
 </body>
+
 </html>
