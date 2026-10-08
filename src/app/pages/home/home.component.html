@@ -14,13 +14,13 @@
 
 <section class="secao-produtos">
   <div class="subtitulo">
-    <h2 class="titulo-secao">Novidades da Semana</h2>
+    <h2 class="titulo-secao">Destaques da Semana</h2>
   </div>
 
 
 
   <div class="colunas">
-    @for (livro of livros; track livro.titulo) {
+    @for (livro of livroDestaques; track livro.titulo) {
     <div class="card-produto" (click)="abrirModal(livro)">
       <img class="capa-produto" [src]="livro.imagem" [alt]="'Capa do livro ' + livro.titulo">
       <h3 class="nome-produto">{{ livro.titulo }}</h3>
@@ -34,13 +34,31 @@
 
 <section class="secao-produtos">
   <div class="subtitulo">
-    <h2 class="titulo-secao">Favoritos de Vocês</h2>
+    <h2 class="titulo-secao">Best Selling</h2>
   </div>
 
 
 
   <div class="colunas">
     @for (livro of maisVendidos; track livro.titulo) {
+    <div class="card-produto" (click)="abrirModal(livro)">
+      <img class="capa-produto" [src]="livro.imagem" [alt]="'Capa do livro ' + livro.titulo">
+      <h3 class="nome-produto">{{ livro.titulo }}</h3>
+      <p class="autor-produto">{{ livro.autor }}</p>
+      <p class="preco-produto">{{ livro.preco }}</p>
+      <button class="btn-comprar" (click)="adicionarCarrinho($event, livro)">Comprar</button>
+    </div>
+    }
+  </div>
+</section>
+
+<section class="secao-produtos">
+  <div class="subtitulo">
+    <h2 class="titulo-secao">Lançamentos</h2>
+  </div>
+
+  <div class="colunas">
+    @for (livro of livroRecentes; track livro.titulo) {
     <div class="card-produto" (click)="abrirModal(livro)">
       <img class="capa-produto" [src]="livro.imagem" [alt]="'Capa do livro ' + livro.titulo">
       <h3 class="nome-produto">{{ livro.titulo }}</h3>
@@ -68,7 +86,12 @@
 
       <div class="modal-botoes">
         <button class="btn-comprar" (click)="adicionarCarrinho($event, livroSelecionado)">Comprar</button>
-        <a href="#" class="btn-editar">Editar Produto</a>
+        @if (isLogado) {
+          <button class="btn-editar" (click)="goToCadastroLivros()">Editar Produto</button>
+        } @else {
+
+        }
+        
       </div>
     </div>
   </div>

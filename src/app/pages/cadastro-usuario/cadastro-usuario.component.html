@@ -44,7 +44,7 @@
 
                     <section id="cadastro-controllers">
                         <div id="termos-input">
-                            <input type="checkbox" name="termos-checkbox" id="termos-checkbox" required>
+                            <input type="checkbox" name="termos-checkbox" id="termos-checkbox" [(ngModel)]="checkboxTermos" required (change)="validarFormularioCadastro()">
                             <label for="termos-checkbox">Aceito e li os <a href="">Termos e Condições</a></label>
                         </div>
 
@@ -80,7 +80,7 @@
 
                     <section id="login-controllers">
                         <div id="login-buttons">
-                            <button type="submit" [disabled]="isDisabledLogin">Entrar</button>
+                            <button type="submit" [disabled]="isDisabledLogin" (click)="login()">Entrar</button>
                         </div>
                     </section>
                 </form>

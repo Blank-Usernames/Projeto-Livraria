@@ -4,10 +4,13 @@
         <nav>
             <ul>
                 <li><a routerLink="/">Inicio</a></li>
-                <li><a href="#">Novidades</a></li>
-                <li><a href="#">Ajuda</a></li>
-                <li><a href="#">Localização</a></li>
-                <li><a href="#">Envios</a></li>
+                <li><a routerLink="/catalogo">Catálogo</a></li>
+                <li><a routerLink="/ajuda-feedback">Ajuda</a></li>
+                @if (isLogado) {
+                <li><a routerLink="/cadastro-livros">Cadastrar Livro</a></li>
+                } @else {
+
+                }
             </ul>
         </nav>
     </div>
@@ -21,6 +24,7 @@
         </div>
         <div class="BlocoDireita">
             <nav class="acoesUsuarios">
+                @if (!isLogado) {
                 <ul>
                     <li>
                         <a routerLink="/cadastro-usuario">
@@ -33,6 +37,20 @@
                     </li>
 
                 </ul>
+                } @else {
+                    <ul>
+                    <li>
+                        <a (click)="sair()">
+                            <i class="fa-solid fa-user"></i>
+                            Sair
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="/perfil-usuario">/ Meu Perfil</a>
+                    </li>
+
+                </ul>
+                }
             </nav>
             <div class="botaoCarrinho">
                 <a routerLink="/carrinho" class="iconeCarrinho" aria-label="ver carrinho">
