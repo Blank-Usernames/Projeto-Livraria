@@ -70,6 +70,24 @@
   </div>
 </section>
 
+<section class="secao-produtos">
+  <div class="subtitulo">
+    <h2 class="titulo-secao">Melhores Stephen King</h2>
+  </div>
+
+  <div class="colunas">
+    @for (livro of stephen; track livro.titulo) {
+    <div class="card-produto" (click)="abrirModal(livro)">
+      <img class="capa-produto" [src]="livro.imagem" [alt]="'Capa do livro ' + livro.titulo">
+      <h3 class="nome-produto">{{ livro.titulo }}</h3>
+      <p class="autor-produto">{{ livro.autor }}</p>
+      <p class="preco-produto">{{ livro.preco }}</p>
+      <button class="btn-comprar" (click)="adicionarCarrinho($event, livro)">Comprar</button>
+    </div>
+    }
+  </div>
+</section>
+
 
 @if (livroSelecionado) {
 <div class="modal-overlay" (click)="fecharModal()">
