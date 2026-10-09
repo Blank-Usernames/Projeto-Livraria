@@ -45,7 +45,12 @@ button {
     transition: ease-in-out, 0.3s;
 }
 
-button:hover {
+button:disabled {
+    background-color: rgb(62, 59, 59);
+    transition: ease-in-out, 0.3s;
+}
+
+button:not(:disabled):hover {
     transform: scale(1.1);
     background-color: rgb(215, 51, 51);
 }

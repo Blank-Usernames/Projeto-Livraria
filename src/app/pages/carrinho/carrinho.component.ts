@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 
 interface ItemCarrinho {
   id: number;
+  codigoItem: string;
   titulo: string;
   autor: string;
   preco: number;
@@ -20,24 +21,27 @@ interface ItemCarrinho {
   styleUrl: './carrinho.component.css'
 })
 export class CarrinhoComponent {
-  formaPagamentoSelecionada: string = 'pix';
-
+  cupomDesconto: string = '';
+  cepFrete: string = '';
+  
   itens: ItemCarrinho[] = [
     {
       id: 1,
-      titulo: 'Dom Casmurro',
-      autor: 'Machado de Assis',
-      preco: 39.90,
+      codigoItem: '01',
+      titulo: 'A Maldição da Residência Hill',
+      autor: 'Shirley Jackson',
+      preco: 44.90,
       quantidade: 1,
-      imagem: 'https://via.placeholder.com/90x130?text=Dom+Casmurro'
+      imagem: 'Imagens_Livros/livro4.png'
     },
     {
       id: 2,
-      titulo: 'O Pequeno Príncipe',
-      autor: 'Antoine de Saint-Exupéry',
-      preco: 34.90,
+      codigoItem: '02',
+      titulo: 'Panico o legado do grito',
+      autor: 'Padraic Maroney',
+      preco: 66.56,
       quantidade: 1,
-      imagem: 'https://via.placeholder.com/90x130?text=Pequeno+Principe'
+      imagem: 'Imagens_Livros/livro2.png'
     }
   ];
 
@@ -55,15 +59,15 @@ export class CarrinhoComponent {
     this.itens = this.itens.filter(item => item.id !== id);
   }
 
-  get valorTotal(): number {
+  removerTodos(): void {
+    this.itens = [];
+  }
+
+  get valorSubTotal(): number {
     return this.itens.reduce((soma, item) => soma + (item.preco * item.quantidade), 0);
   }
 
-  finalizarCompra(): void {
-    if (this.itens.length === 0) {
-      alert('Seu carrinho está vazio!');
-      return;
-    }
-    alert(`Pedido realizado com sucesso! Forma de pagamento: ${this.formaPagamentoSelecionada.toUpperCase()}`);
+  get valorTotal(): number {
+    return this.valorSubTotal;
   }
 }

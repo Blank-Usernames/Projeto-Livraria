@@ -1,12 +1,99 @@
 <div class="Banner">
-        <div class="BannerLados">
-            <div class="BannerEsquerdo">
-                <h2>Pânico — o novo livro chegou.</h2>
-                <p>Uma nova história está prestes a começar. Mas desta vez, quem será a próxima vitima?</p>
-                <button>Comprar Agora &#8594;</button>
-            </div>
-            <div class="BannerDireito">
-                <img src="Imagens_Livros/livroPan.png" alt="Livro-Panico-Novo">
-            </div>
-        </div>
+  <div class="BannerLados">
+    <div class="BannerEsquerdo">
+      <h2>Pânico — o novo livro chegou.</h2>
+      <p>Uma nova história está prestes a começar. Mas desta vez, quem será a próxima vitima?</p>
+      <button>Comprar Agora &#8594;</button>
     </div>
+    <div class="BannerDireito">
+      <img src="Imagens_Livros/livroPan.png" alt="Livro-Panico-Novo">
+    </div>
+  </div>
+</div>
+
+
+<section class="secao-produtos">
+  <div class="subtitulo">
+    <h2 class="titulo-secao">Destaques da Semana</h2>
+  </div>
+
+
+
+  <div class="colunas">
+    @for (livro of livroDestaques; track livro.titulo) {
+    <div class="card-produto" (click)="abrirModal(livro)">
+      <img class="capa-produto" [src]="livro.imagem" [alt]="'Capa do livro ' + livro.titulo">
+      <h3 class="nome-produto">{{ livro.titulo }}</h3>
+      <p class="autor-produto">{{ livro.autor }}</p>
+      <p class="preco-produto">{{ livro.preco }}</p>
+      <button class="btn-comprar" (click)="adicionarCarrinho($event, livro)">Comprar</button>
+    </div>
+    }
+  </div>
+</section>
+
+<section class="secao-produtos">
+  <div class="subtitulo">
+    <h2 class="titulo-secao">Best Selling</h2>
+  </div>
+
+
+
+  <div class="colunas">
+    @for (livro of maisVendidos; track livro.titulo) {
+    <div class="card-produto" (click)="abrirModal(livro)">
+      <img class="capa-produto" [src]="livro.imagem" [alt]="'Capa do livro ' + livro.titulo">
+      <h3 class="nome-produto">{{ livro.titulo }}</h3>
+      <p class="autor-produto">{{ livro.autor }}</p>
+      <p class="preco-produto">{{ livro.preco }}</p>
+      <button class="btn-comprar" (click)="adicionarCarrinho($event, livro)">Comprar</button>
+    </div>
+    }
+  </div>
+</section>
+
+<section class="secao-produtos">
+  <div class="subtitulo">
+    <h2 class="titulo-secao">Lançamentos</h2>
+  </div>
+
+  <div class="colunas">
+    @for (livro of livroRecentes; track livro.titulo) {
+    <div class="card-produto" (click)="abrirModal(livro)">
+      <img class="capa-produto" [src]="livro.imagem" [alt]="'Capa do livro ' + livro.titulo">
+      <h3 class="nome-produto">{{ livro.titulo }}</h3>
+      <p class="autor-produto">{{ livro.autor }}</p>
+      <p class="preco-produto">{{ livro.preco }}</p>
+      <button class="btn-comprar" (click)="adicionarCarrinho($event, livro)">Comprar</button>
+    </div>
+    }
+  </div>
+</section>
+
+
+@if (livroSelecionado) {
+<div class="modal-overlay" (click)="fecharModal()">
+  <div class="modal-conteudo" (click)="$event.stopPropagation()">
+    <button class="modal-fechar" (click)="fecharModal()" aria-label="Fechar">&times;</button>
+
+    <img [src]="livroSelecionado.imagem" [alt]="'Capa do livro ' + livroSelecionado.titulo">
+
+    <div class="modal-info">
+      <h3>{{ livroSelecionado.titulo }}</h3>
+      <p class="modal-autor">{{ livroSelecionado.autor }}</p>
+      <p class="modal-descricao">{{ livroSelecionado.descricao }}</p>
+      <p class="modal-preco">{{ livroSelecionado.preco }}</p>
+
+      <div class="modal-botoes">
+        <button class="btn-comprar" (click)="adicionarCarrinho($event, livroSelecionado)">Comprar</button>
+        @if (isLogado) {
+          <button class="btn-editar" (click)="goToCadastroLivros()">Editar Produto</button>
+        } @else {
+
+        }
+        
+      </div>
+    </div>
+  </div>
+</div>
+}

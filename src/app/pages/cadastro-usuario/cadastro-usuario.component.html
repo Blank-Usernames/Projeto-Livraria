@@ -19,37 +19,37 @@
 
                     <div class="input-container">
                         <label for="nome-input">Nome:</label>
-                        <input type="text" name="nome-input" id="nome-input" required>
+                        <input type="text" name="nome-input" id="nome-input" [(ngModel)]="nomeUsuarioCad" required (keyup)="validarFormularioCadastro()">
                     </div>
 
                     <div class="input-container">
                         <label for="cpf-input">CPF:</label>
-                        <input type="text" name="cpf-input" id="cpf-input" required>
+                        <input type="text" name="cpf-input" id="cpf-input" [(ngModel)]="cpf" required (keyup)="validarFormularioCadastro()">
                     </div>
 
                     <div class="input-container">
                         <label for="email-input">E-mail:</label>
-                        <input type="email" name="email-input" id="email-input" required>
+                        <input type="email" name="email-input" id="email-input" [(ngModel)]="email" required (keyup)="validarFormularioCadastro()">
                     </div>
 
                     <div class="input-container">
                         <label for="senha-input">Senha:</label>
-                        <input type="password" name="senha-input" id="senha-input" required>
+                        <input type="password" name="senha-input" id="senha-input" [(ngModel)]="senhaUsuarioCad" required (keyup)="validarFormularioCadastro()">
                     </div>
 
                     <div class="input-container">
                         <label for="confirmar-senha-input">Confirmar Senha:</label>
-                        <input type="password" name="confirmar-senha-input" id="confirmar-senha-input" required>
+                        <input type="password" name="confirmar-senha-input" id="confirmar-senha-input" [(ngModel)]="confirmarSenha" required (keyup)="validarFormularioCadastro()">
                     </div>
 
                     <section id="cadastro-controllers">
                         <div id="termos-input">
-                            <input type="checkbox" name="termos-checkbox" id="termos-checkbox" required>
+                            <input type="checkbox" name="termos-checkbox" id="termos-checkbox" [(ngModel)]="checkboxTermos" required (change)="validarFormularioCadastro()">
                             <label for="termos-checkbox">Aceito e li os <a href="">Termos e Condições</a></label>
                         </div>
 
                         <div id="cadastro-buttons">
-                            <button type="submit">Cadastrar</button>
+                            <button type="submit" [disabled]="isDisabledCadastro">Cadastrar</button>
                             <button type="reset">Limpar</button>
                         </div>
                     </section>
@@ -70,17 +70,17 @@
 
                     <div class="input-container">
                         <label for="login-nome">Nome:</label>
-                        <input type="text" name="login-nome" id="login-nome" required>
+                        <input type="text" name="login-nome" id="login-nome" [(ngModel)]="nomeUsuario" required (keyup)="validarFormularioLogin()">
                     </div>
 
                     <div class="input-container">
                         <label for="login-senha">Senha:</label>
-                        <input type="password" name="login-senha" id="login-senha" required>
+                        <input type="password" name="login-senha" id="login-senha" [(ngModel)]="senhaUsuario" required (keyup)="validarFormularioLogin()">
                     </div>
 
                     <section id="login-controllers">
                         <div id="login-buttons">
-                            <button type="submit">Entrar</button>
+                            <button type="submit" [disabled]="isDisabledLogin" (click)="login()">Entrar</button>
                         </div>
                     </section>
                 </form>
