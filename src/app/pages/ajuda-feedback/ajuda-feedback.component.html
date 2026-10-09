@@ -70,7 +70,7 @@ Brasil</p>
                         <input type="email" id="email-usuario" name="email" [(ngModel)]="emailUsuario"><br><br>
 
                         <label>Assunto:</label><br>
-                        <input type="radio" id="assunto-duvida" name="assunto" value="duvida" [(ngModel)]="assunto">
+                        <input type="radio" id="assunto-duvida" name="assunto" value="duvida" [(ngModel)]="assunto" checked>
                         <label for="assunto-duvida">Dúvida</label>
 
                         <input type="radio" id="assunto-sugestao" name="assunto" value="sugestao" [(ngModel)]="assunto">
@@ -85,7 +85,7 @@ Brasil</p>
                             [(ngModel)]="mensagemTexto"></textarea><br><br>
 
                         <button type="submit" id="botao-enviar">Enviar Mensagem</button>
-                        <button type="button" id="botao-limpar" (click)="limparFormulario()">Limpar</button>
+                        <button type="reset" id="botao-limpar">Limpar</button>
                     </form>
                 </div>
 
