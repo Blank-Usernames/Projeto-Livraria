@@ -8,7 +8,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './ajuda-feedback.component.css'
 })
 export class AjudaFeedbackComponent {
-  
+
   termoBusca: string = '';
 
   // Variaveis formulario
@@ -35,18 +35,9 @@ export class AjudaFeedbackComponent {
     }
     if (this.mensagemTexto.trim() === '') {
       alert('Atenção: Por favor, escreva uma mensagem antes de enviar!');
-      return; 
+      return;
     }
 
     alert(`Obrigado pelo seu feedback, ${this.nomeUsuario}! Sua mensagem foi registrada.`);
-    this.limparFormulario();
-  }
-
-  // Método para limpar os dados
-  limparFormulario(): void {
-    this.nomeUsuario = '';
-    this.emailUsuario = '';
-    this.assunto = 'duvida';
-    this.mensagemTexto = '';
   }
 }

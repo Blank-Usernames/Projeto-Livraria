@@ -47,7 +47,8 @@ export class CadastroUsuarioComponent {
   login() {
     if (this.nomeUsuario === 'admin' && this.senhaUsuario === '1234') {
       localStorage.setItem('usuarioLogado', 'true');
-      this.router.navigate(['/catalogo']);
+      window.location.reload();   
+      window.location.href = '/';
     } else {
       alert('Usuário ou senha incorretos!');
     }

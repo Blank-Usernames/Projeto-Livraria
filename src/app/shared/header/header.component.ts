@@ -20,6 +20,7 @@ export class HeaderComponent {
   sair() {
     localStorage.removeItem('usuarioLogado');
     this.isLogado = false;
-    this.router.navigate(['/']);
+    window.location.reload();
+    window.location.href = '/';
   }
 }
