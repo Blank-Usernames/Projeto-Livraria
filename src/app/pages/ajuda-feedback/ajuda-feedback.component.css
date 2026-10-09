@@ -1,0 +1,129 @@
+* {
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    margin: 0;
+    background-color: #f2f2f2;
+}
+
+/* Espaçamento da página */
+#pagina-ajuda {
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+/* Estilo do cabeçalho da ajuda */
+.faixa-topo {
+    background-color: #333333;
+    color: white;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.faixa-topo h1 {
+    color: #fdfdfd;
+    margin-top: 0;
+}
+
+/* Barra de pesquisa*/
+.caixa-busca input {
+    padding: 10px;
+    width: 300px;
+    border: 1px solid #ccc;
+}
+
+#botao-buscar {
+    padding: 10px 20px;
+    background-color: #7E1214;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+/* Limitador de largura para não ocupar tada a tela */
+.conteudo-ajuda {
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 30px;
+}
+
+/* Caixa branca para as perguntas */
+.seccao-perguntas {
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #cccccc;
+    margin-bottom: 30px;
+}
+
+.seccao-perguntas h2 {
+    color: #7E1214;
+}
+
+.lista-perguntas {
+    border-bottom: 1px solid #eeeeee;
+    padding: 10px 0;
+}
+
+.item-pergunta{
+    margin-top: 15px;
+    cursor: pointer;
+}
+
+/* Organização lado a lado */
+.area-contato-formulario {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Caixa de informações */
+.info-contato {
+    background-color: white;
+    width: 35%;
+    padding: 20px;
+    border: 1px solid #cccccc;
+}
+
+.info-contato h2 {
+    color: #7E1214;
+}
+
+/* Caixa do formulário */
+.caixa-formulario {
+    background-color: white;
+    width: 60%;
+    padding: 20px;
+    border: 1px solid #cccccc;
+}
+
+.caixa-formulario h2 {
+    color: #7E1214;
+}
+
+/* Inputs do formulário ocupando 100% da caixa */
+.caixa-formulario input[type="text"],
+.caixa-formulario input[type="email"],
+.caixa-formulario textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #999999;
+}
+
+/* Botões ao final do formulário */
+#botao-enviar {
+    background-color: #7E1214;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+}
+
+#botao-limpar {
+    background-color: #dddddd;
+    color: black;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+}

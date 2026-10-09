@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajuda e Feedback - Ars Libris</title>
+    <link rel="stylesheet" href="ajuda-feedback.component.css">
+</head>
+
+<body>
+    
+
+    <div id="pagina-ajuda">
+
+        <!-- Faixa escura no topo -->
+        <div class="faixa-topo">
+            <h1>Como podemos ajudar?</h1>
+            <p>Encontre respostas rápidas ou fale com a nossa equipe.</p>
+            <div class="caixa-busca">
+                <input type="text" [(ngModel)]="termoBusca" placeholder="Digite a sua dúvida...">
+
+                <button (click)="buscar()" id="botao-buscar">Buscar</button>
+            </div>
+        </div>
+
+        <!-- Área central com o conteúdo -->
+        <div class="conteudo-ajuda">
+
+            <!-- Perguntas Frequentes FAQ -->
+            <div class="seccao-perguntas">
+                <h2>Perguntas Frequentes (FAQ)</h2>
+                <div class="lista-perguntas">
+                    <details class="item-pergunta">
+                        <summary><strong>Como rastrear o pedido do meu livro?</strong></summary>
+                        <p>Faça login, vá à aba "Meus Pedidos" e clique em "Rastrear Entrega".</p>
+                    </details>
+                    <details class="item-pergunta">
+                        <summary><strong>Quais as formas de pagamento aceites?</strong></summary>
+                        <p>Aceitamos cartão de crédito, PayPal, Pix e Boleto Bancário.</p>
+                    </details>
+                    <details class="item-pergunta">
+                        <summary><strong>Qual é a política de frete grátis?</strong></summary>
+                        <p>Oferecemos frete grátis para compras acima de R$ 150,00.</p>
+                    </details>
+                </div>
+            </div>
+            <!-- Fale Conosco -->
+            <div class="area-contato-formulario">
+
+                <div class="info-contato">
+                    <h2>Fale Conosco</h2>
+                    <p><strong>E-mail:</strong> ArsLibrisgmail.com.br</p>
+                    <p><strong>Telefone:</strong> (11) 4002-8922</p>
+                    <p><strong>Horário:</strong> Segunda-Feira a Sexta-Feira: 09h às 18h</p>
+                    <p><strong>Endereço:</strong> Av. Paulista, 1578 — Bela Vista - São Paulo — SP, 01310-200
+Brasil</p>
+
+                </div>
+                <!-- Formulário contato -->
+                <div class="caixa-formulario">
+                    <h2>Envie o seu Feedback</h2>
+
+                   <form (ngSubmit)="enviarFormulario()">
+
+                        <label for="nome-usuario">Nome Completo:*</label><br>
+                        <input type="text" id="nome-usuario" name="nome" [(ngModel)]="nomeUsuario"><br><br>
+
+                        <label for="email-usuario">E-mail:*</label><br>
+                        <input type="email" id="email-usuario" name="email" [(ngModel)]="emailUsuario"><br><br>
+
+                        <label>Assunto:</label><br>
+                        <input type="radio" id="assunto-duvida" name="assunto" value="duvida" [(ngModel)]="assunto">
+                        <label for="assunto-duvida">Dúvida</label>
+
+                        <input type="radio" id="assunto-sugestao" name="assunto" value="sugestao" [(ngModel)]="assunto">
+                        <label for="assunto-sugestao">Sugestão</label>
+
+                        <input type="radio" id="assunto-reclamacao" name="assunto" value="reclamacao"
+                            [(ngModel)]="assunto">
+                        <label for="assunto-reclamacao">Reclamação</label><br><br>
+
+                        <label for="mensagem-texto">Mensagem:*</label><br>
+                        <textarea id="mensagem-texto" name="mensagem" rows="5"
+                            [(ngModel)]="mensagemTexto"></textarea><br><br>
+
+                        <button type="submit" id="botao-enviar">Enviar Mensagem</button>
+                        <button type="button" id="botao-limpar" (click)="limparFormulario()">Limpar</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
