@@ -8,16 +8,16 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './ajuda-feedback.component.css'
 })
 export class AjudaFeedbackComponent {
-  // Variáveis que vão "conversar" diretamente com o HTML
+  
   termoBusca: string = '';
 
-  // Variáveis do formulário
+  // Variaveis formulario
   nomeUsuario: string = '';
   emailUsuario: string = '';
   assunto: string = 'duvida'; // Valor padrão marcado
   mensagemTexto: string = '';
 
-  // Método chamado ao clicar no botão Buscar
+  // Método botão Buscar
   buscar(): void {
     if (this.termoBusca.trim() === '') {
       alert('Por favor, digite uma dúvida antes de buscar.');
@@ -27,7 +27,7 @@ export class AjudaFeedbackComponent {
     }
   }
 
-  // Método chamado ao submeter o formulário
+  // Método evio formulario
   enviarFormulario(): void {
     if (this.nomeUsuario.trim() === '' || this.emailUsuario.trim() === '') {
       alert('Atenção: Os campos Nome e E-mail são obrigatórios!');
