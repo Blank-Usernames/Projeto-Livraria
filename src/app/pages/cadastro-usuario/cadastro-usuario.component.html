@@ -11,49 +11,88 @@
 <body>
     <main>
         <section id="section-cadastro">
-            <div class="cadastro-container">
+            <div id="cadastro-container">
                 <form action="" id="cadastro-usuario">
+                    <div class="form-title">
+                        <h1>Cadastro</h1>
+                    </div>
+
                     <div class="input-container">
                         <label for="nome-input">Nome:</label>
-                        <input type="text" name="nome-input" id="nome-input" required>
+                        <input type="text" name="nome-input" id="nome-input" [(ngModel)]="nomeUsuarioCad" required (keyup)="validarFormularioCadastro()">
+                    </div>
+
+                    <div class="input-container">
+                        <label for="cpf-input">CPF:</label>
+                        <input type="text" name="cpf-input" id="cpf-input" [(ngModel)]="cpf" required (keyup)="validarFormularioCadastro()">
                     </div>
 
                     <div class="input-container">
                         <label for="email-input">E-mail:</label>
-                        <input type="email" name="email-input" id="email-input" required>
+                        <input type="email" name="email-input" id="email-input" [(ngModel)]="email" required (keyup)="validarFormularioCadastro()">
                     </div>
 
                     <div class="input-container">
                         <label for="senha-input">Senha:</label>
-                        <input type="password" name="senha-input" id="senha-input" required>
+                        <input type="password" name="senha-input" id="senha-input" [(ngModel)]="senhaUsuarioCad" required (keyup)="validarFormularioCadastro()">
                     </div>
 
                     <div class="input-container">
                         <label for="confirmar-senha-input">Confirmar Senha:</label>
-                        <input type="password" name="confirmar-senha-input" id="confirmar-senha-input" required>
+                        <input type="password" name="confirmar-senha-input" id="confirmar-senha-input" [(ngModel)]="confirmarSenha" required (keyup)="validarFormularioCadastro()">
                     </div>
 
-                    <section id="cadastro-controllers">         
+                    <section id="cadastro-controllers">
                         <div id="termos-input">
-                            <input type="checkbox" name="termos-checkbox" id="termos-checkbox" required>
-                            <label for="termos-checkbox">Aceito e Li os Termos e Condições</label>
+                            <input type="checkbox" name="termos-checkbox" id="termos-checkbox" [(ngModel)]="checkboxTermos" required (change)="validarFormularioCadastro()">
+                            <label for="termos-checkbox">Aceito e li os <a href="">Termos e Condições</a></label>
                         </div>
 
                         <div id="cadastro-buttons">
-                            <button type="submit">Cadastrar</button>
+                            <button type="submit" [disabled]="isDisabledCadastro">Cadastrar</button>
                             <button type="reset">Limpar</button>
                         </div>
                     </section>
                 </form>
+                <div id="login-able">
+                    <a href="">Já possuí uma conta?</a>
+                </div>
             </div>
 
         </section>
 
-        <section id="section-information">
-            <div class="information-container">
-                <div class="information">
-                    <h1>Já tem uma conta? <br> Entre aqui mesmo, e aproveite imediatamente!</h1>
-                    <button>Entrar</button>
+        <section id="section-login">
+            <div id="login-container">
+                <form action="" id="login-usuario">
+                    <div class="form-title">
+                        <h1>Login</h1>
+                    </div>
+
+                    <div class="input-container">
+                        <label for="login-nome">Nome:</label>
+                        <input type="text" name="login-nome" id="login-nome" [(ngModel)]="nomeUsuario" required (keyup)="validarFormularioLogin()">
+                    </div>
+
+                    <div class="input-container">
+                        <label for="login-senha">Senha:</label>
+                        <input type="password" name="login-senha" id="login-senha" [(ngModel)]="senhaUsuario" required (keyup)="validarFormularioLogin()">
+                    </div>
+
+                    <section id="login-controllers">
+                        <div id="login-buttons">
+                            <button type="submit" [disabled]="isDisabledLogin" (click)="login()">Entrar</button>
+                        </div>
+                    </section>
+                </form>
+
+                <hr>
+
+                <div id="information-container">
+                    <div id="information-text">
+                        <p>
+                            Crie sua conta e aproveite todos os benefícios! Tenha acesso aos nossos recursos e desfrute de uma experiência completa e personalizada.
+                        </p>
+                    </div>
                 </div>
             </div>
         </section>
