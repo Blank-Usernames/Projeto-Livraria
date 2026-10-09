@@ -8,7 +8,7 @@ body {
     background-color: #f2f2f2;
 }
 
-/* Espaçamento geral da página */
+/* Espaçamento da página */
 #pagina-ajuda {
     width: 100%;
     margin-bottom: 50px;
@@ -42,7 +42,7 @@ body {
     cursor: pointer;
 }
 
-/* Limitador de largura para não ocupar o ecrã todo */
+/* Limitador de largura para não ocupar tada a tela */
 .conteudo-ajuda {
     width: 80%;
     margin: 0 auto;
@@ -62,13 +62,13 @@ body {
 }
 
 .lista-perguntas {
-    list-style-type: none;
-    padding: 0;
-}
-
-.lista-perguntas li {
     border-bottom: 1px solid #eeeeee;
     padding: 10px 0;
+}
+
+.item-pergunta{
+    margin-top: 15px;
+    cursor: pointer;
 }
 
 /* Organização lado a lado */
