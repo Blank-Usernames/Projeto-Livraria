@@ -85,35 +85,35 @@ export class HomeComponent {
     },
 
     {
-      titulo: 'Template',
-      autor: 'John Doe',
-      preco: 'R$ 00,00',
-      imagem: 'Imagens_Livros/template.png',
-      descricao: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus consectetur aperiam distinctio omnis error officiis voluptatem neque accusantium! Laboriosam ducimus id maxime perspiciatis suscipit earum exercitationem, iure sapiente illum. Eum?Laudantium nesciunt, ad, unde hic doloremque debitis distinctio nulla quo ab molestias facere consequatur ea dignissimos! Dolorem iste et harum expedita repudiandae repellendus laboriosam odio impedit, unde non ratione quaerat.'
+      titulo: 'Coraline',
+      autor: 'Neil Gaiman',
+      preco: 'R$ 80,00',
+      imagem: 'Imagens_Livros/livro20.png',
+      descricao: 'Certas portas não devem ser abertas. E Coraline descobre isso pouco tempo depois de chegar com os pais à sua nova casa, um apartamento em um casarão antigo ocupado por vizinhos excêntricos e envolto por uma névoa insistente, um mundo de estranhezas e magia, o tipo de universo que apenas Neil Gaiman pode criar...'
     },
 
     {
-      titulo: 'Template',
-      autor: 'John Doe',
-      preco: 'R$ 00,00',
-      imagem: 'Imagens_Livros/template.png',
-      descricao: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus consectetur aperiam distinctio omnis error officiis voluptatem neque accusantium! Laboriosam ducimus id maxime perspiciatis suscipit earum exercitationem, iure sapiente illum. Eum?Laudantium nesciunt, ad, unde hic doloremque debitis distinctio nulla quo ab molestias facere consequatur ea dignissimos! Dolorem iste et harum expedita repudiandae repellendus laboriosam odio impedit, unde non ratione quaerat.'
+      titulo: 'O Silencio Dos Inocentes',
+      autor: 'Thomas Harris',
+      preco: 'R$ 46,00',
+      imagem: 'Imagens_Livros/livro16.png',
+      descricao: 'Cinco mulheres são brutalmente assassinadas em diferentes localidades dos Estados Unidos. Para chegar até o sanguinário assassino, a jovem agente do FBI, Clarice Starling, entrevista o ardiloso psiquiatra Hannibal Lecter, cuja mente psicopata está perigosamente voltada para o crime. Ao seguir as pistas apontadas pelo dr. Lecter, Clarice envolve-se em uma teia mortífera surpreendente. O texto de Thomas Harris é arrepiante.'
     },
 
     {
-      titulo: 'Template',
-      autor: 'John Doe',
-      preco: 'R$ 00,00',
-      imagem: 'Imagens_Livros/template.png',
-      descricao: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus consectetur aperiam distinctio omnis error officiis voluptatem neque accusantium! Laboriosam ducimus id maxime perspiciatis suscipit earum exercitationem, iure sapiente illum. Eum?Laudantium nesciunt, ad, unde hic doloremque debitis distinctio nulla quo ab molestias facere consequatur ea dignissimos! Dolorem iste et harum expedita repudiandae repellendus laboriosam odio impedit, unde non ratione quaerat.'
+      titulo: 'Dracula',
+      autor: 'Dracula',
+      preco: 'R$ 69,00',
+      imagem: 'Imagens_Livros/livro17.png',
+      descricao: 'A viagem de Jonathan Harker: O jovem advogado inglês Jonathan Harker viaja até a Transilvânia (Romênia) para ajudar o misterioso Conde Drácula a fechar a compra de propriedades em Londres. Ao chegar ao castelo, Jonathan percebe que é um prisioneiro de uma criatura imortal e sobrenatural, conseguindo escapar com vida de volta à Inglaterra..'
     },
 
     {
-      titulo: 'Template',
-      autor: 'John Doe',
-      preco: 'R$ 00,00',
-      imagem: 'Imagens_Livros/template.png',
-      descricao: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus consectetur aperiam distinctio omnis error officiis voluptatem neque accusantium! Laboriosam ducimus id maxime perspiciatis suscipit earum exercitationem, iure sapiente illum. Eum?Laudantium nesciunt, ad, unde hic doloremque debitis distinctio nulla quo ab molestias facere consequatur ea dignissimos! Dolorem iste et harum expedita repudiandae repellendus laboriosam odio impedit, unde non ratione quaerat.'
+      titulo: 'A Incendiaria',
+      autor: 'Stephen King',
+      preco: 'R$ 45,00',
+      imagem: 'Imagens_Livros/livro15.png',
+      descricao: 'Andy e Vicky eram apenas universitários precisando de renda extra quando se voluntariaram para um experimento científico de uma organização governamental clandestina conhecida como “a Oficina”. Jamais poderiam imaginar que esse dinheiro viria acompanhado de estranhos poderes psíquicos, que assumiriam efeitos ainda mais perigosos quando os dois se apaixonassem e tivessem uma filha, Charlie. Desde pequena, Charlie demonstra ter herdado forças incontroláveis que a definem como pirocinética, ou seja, capaz de criar fogo só com a mente. Agora, o governo está à caça da garotinha, tentando capturá-la para utilizar seu poder como arma militar. Acompanhada do pai, Charlie percorre o país em uma fuga desesperada, e percebe que talvez seu poder seja sua única chance de escapar..'
     }
   ];
 
@@ -129,43 +129,91 @@ export class HomeComponent {
     {
       titulo: 'Template',
       autor: 'John Doe',
-      preco: 'R$ 00,00',
-      imagem: 'Imagens_Livros/template.png',
+      preco: 'R$ 60,00',
+      imagem: 'Imagens_Livros/livro25.png',
       descricao: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus consectetur aperiam distinctio omnis error officiis voluptatem neque accusantium! Laboriosam ducimus id maxime perspiciatis suscipit earum exercitationem, iure sapiente illum. Eum?Laudantium nesciunt, ad, unde hic doloremque debitis distinctio nulla quo ab molestias facere consequatur ea dignissimos! Dolorem iste et harum expedita repudiandae repellendus laboriosam odio impedit, unde non ratione quaerat.'
     },
 
     {
       titulo: 'Template',
       autor: 'John Doe',
-      preco: 'R$ 00,00',
-      imagem: 'Imagens_Livros/template.png',
+      preco: 'R$ 70,00',
+      imagem: 'Imagens_Livros/livro26.png',
       descricao: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus consectetur aperiam distinctio omnis error officiis voluptatem neque accusantium! Laboriosam ducimus id maxime perspiciatis suscipit earum exercitationem, iure sapiente illum. Eum?Laudantium nesciunt, ad, unde hic doloremque debitis distinctio nulla quo ab molestias facere consequatur ea dignissimos! Dolorem iste et harum expedita repudiandae repellendus laboriosam odio impedit, unde non ratione quaerat.'
     },
 
     {
       titulo: 'Template',
       autor: 'John Doe',
-      preco: 'R$ 00,00',
-      imagem: 'Imagens_Livros/template.png',
+      preco: 'R$ 65,00',
+      imagem: 'Imagens_Livros/livro30.png',
       descricao: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus consectetur aperiam distinctio omnis error officiis voluptatem neque accusantium! Laboriosam ducimus id maxime perspiciatis suscipit earum exercitationem, iure sapiente illum. Eum?Laudantium nesciunt, ad, unde hic doloremque debitis distinctio nulla quo ab molestias facere consequatur ea dignissimos! Dolorem iste et harum expedita repudiandae repellendus laboriosam odio impedit, unde non ratione quaerat.'
     },
 
     {
       titulo: 'Template',
       autor: 'John Doe',
-      preco: 'R$ 00,00',
-      imagem: 'Imagens_Livros/template.png',
+      preco: 'R$ 55,00',
+      imagem: 'Imagens_Livros/livro28.png',
       descricao: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus consectetur aperiam distinctio omnis error officiis voluptatem neque accusantium! Laboriosam ducimus id maxime perspiciatis suscipit earum exercitationem, iure sapiente illum. Eum?Laudantium nesciunt, ad, unde hic doloremque debitis distinctio nulla quo ab molestias facere consequatur ea dignissimos! Dolorem iste et harum expedita repudiandae repellendus laboriosam odio impedit, unde non ratione quaerat.'
     },
 
     {
       titulo: 'Template',
       autor: 'John Doe',
-      preco: 'R$ 00,00',
-      imagem: 'Imagens_Livros/template.png',
+      preco: 'R$ 37,00',
+      imagem: 'Imagens_Livros/livro29.png',
       descricao: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus consectetur aperiam distinctio omnis error officiis voluptatem neque accusantium! Laboriosam ducimus id maxime perspiciatis suscipit earum exercitationem, iure sapiente illum. Eum?Laudantium nesciunt, ad, unde hic doloremque debitis distinctio nulla quo ab molestias facere consequatur ea dignissimos! Dolorem iste et harum expedita repudiandae repellendus laboriosam odio impedit, unde non ratione quaerat.'
     }
   ]
+
+  stephen:Livro[]= [
+    {
+      titulo:'IT A COISA',
+      autor:'Stephen King',
+      preco:'56,90',
+      imagem:'Imagens_Livros/livro11.png',
+      descricao:'Um grupo de crianças se une para investigar o misterioso desaparecimento de vários jovens em sua cidade. Eles descobrem que o culpado é Pennywise, um palhaço cruel que se alimenta de seus medos e cuja violência teve origem há vários século'
+    },
+    {
+      titulo:'The Mist',
+      autor:'Stephen King',
+      preco:'54,90',
+      imagem:'Imagens_Livros/livro13.png',
+      descricao:'Um homem cambaleou para dentro do mercado... Algo na névoa!, gritou ele Após uma tempestade de verão atípica, David Drayton, seu filho Billy e o vizinho Brent Norton se juntam a dezenas de outras pessoas e vão ao mercado local para reabastecer os suprimentos. Lá, ficam presos por uma estranha névoa que envolveu a cidade. Forças violentas, ocultas na névoa, começam a emergir. E há outra ameaça chocante vinda de dentro: um grupo de sobreviventes, liderado por um fanático religioso, exige um sacrifício. Agora, David e seu filho precisam tentar escapar. Mas o que está lá fora pode ser ainda mais perigoso. Esta emocionante novela explora o horror tanto do inimigo que você conhece quanto daquele que você só pode imaginar '
+    },
+    {
+      titulo:'O CEMITÉRIO',
+      autor:'Stephen King',
+      preco:'70,90',
+      imagem:'Imagens_Livros/livro19.png',
+      descricao:'O livro que inspirou o filme O cemitério maldito. Louis Creed, um jovem médico de Chicago, acredita que encontrou seu lugar em uma pequena cidade do Maine. A boa casa, o trabalho na universidade e a felicidade da esposa e dos filhos lhe trazem a certeza de que fez a melhor escolha. Num dos primeiros passeios pela região, conhecem um cemitério no bosque próximo à sua casa. Ali, gerações de crianças enterraram seus animais de estimação. Mas, para além dos pequenos túmulos, há um outro cemitério. Uma terra maligna que atrai pessoas com promessas sedutoras. Um universo dominado por forças estranhas capazes de tornar real o que sempre pareceu impossível. A princípio, Louis Creed se diverte com as histórias fantasmagóricas do vizinho Crandall'
+    },
+    {
+      titulo:'MISERY',
+      autor:'Stephen King',
+      preco:'60,90',
+      imagem:'Imagens_Livros/livro14.png',
+      descricao:'Paul Sheldon é um escritor famoso, reconhecido por uma série de best-sellers protagonizados pela mesma personagem: Misery Chastain. Annie Wilkes é uma enfermeira aposentada, leitora voraz e obcecada pela história de Misery. Quando Paul sofre um acidente de carro em uma nevasca, ele é resgatado justamente por Annie, e esse encontro entre fã e autor é o ponto de partida de uma das tramas mais aterrorizantes de Stephen King. Insatisfeita com o final do último livro da série, a fã isola o autor debilitado em um quarto em sua casa. Com torturas, ameaças e uma vigilância persistente, ela faz de tudo para obrigá-lo a reescrever a narrativa com o final que ela considera apropriado. Considerada uma das vilãs mais assustadoras e complexas do universo King e interpretada por Kathy Bates no filme que se tornou um clássico, Annie Wilkes é a figura que faz de Misery um livro essencial.'
+    },
+    {
+      titulo:'MR mercedes',
+      autor:'Stephen King',
+      preco:'66,50',
+      imagem:'Imagens_Livros/livro23.png',
+      descricao:'Ainda é madrugada e, em uma falida cidade do Meio-Oeste dos Estados Unidos, centenas de pessoas fazem fila em uma feira de empregos, desesperadas para conseguir trabalho. De repente, um único carro surge, avançando para a multidão. O motorista do Mercedes acelera, recua, acelera novamente e não descansa até atropelar o máximo de pessoas que consegue, deixando oito mortos e vários feridos. Ele escapa impune. Meses depois, ao receber uma carta de alguém que se autodenomina o Assassino do Mercedes, o ex-detetive Bill Hodges desperta de sua aposentadoria deprimida e resolve encontrar o culpado por conta própria. E assim segue a narrativa policial brilhante de Mr. Mercedes , em que Stephen King pega na mão do leitor e o conduz tanto pelo psicológico angustiado do detetive quanto pela mente obsessiva e traumatizada do assassino.'
+    },
+    {
+      titulo:'CARRIE',
+      autor:'Stephen King',
+      preco:'60,90',
+      imagem:'Imagens_Livros/livro24.png',
+      descricao:'Carrie White é uma adolescente tímida, solitária e oprimida pela mãe, cristã ferrenha que vê pecado em tudo. A rotina na escola não alivia o dia a dia em casa. Para os colegas e professores, ela é estranha, não se encaixa e, por consequência, é alvo constante de bullying. O que ninguém sabe ainda é que, por trás da aparência frágil e indefesa, Carrie esconde um enorme poder: ela consegue mover objetos com a mente. Trancar portas. Derrubar velas. Dom ou maldição, isso mudará para sempre o destino das pessoas que algum dia lhe fizeram mal.'
+    }
+
+  ]
+
+  
 
   ngOnInit() {
     this.isLogado = localStorage.getItem('usuarioLogado') === 'true';
