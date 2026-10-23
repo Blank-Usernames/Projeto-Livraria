@@ -20,12 +20,12 @@
 
 
   <div class="colunas">
-    @for (livro of livroDestaques; track livro.titulo) {
+    @for (livro of livrosDestaque; track livro.tituloLivro) {
     <div class="card-produto" (click)="abrirModal(livro)">
-      <img class="capa-produto" [src]="livro.imagem" [alt]="'Capa do livro ' + livro.titulo">
-      <h3 class="nome-produto">{{ livro.titulo }}</h3>
-      <p class="autor-produto">{{ livro.autor }}</p>
-      <p class="preco-produto">{{ livro.preco }}</p>
+      <img class="capa-produto" [src]="livro.imagemLivro" [alt]="'Capa do livro ' + livro.tituloLivro">
+      <h3 class="nome-produto">{{ livro.tituloLivro }}</h3>
+      <p class="autor-produto">{{ livro.autorLivro }}</p>
+      <p class="preco-produto">{{ formatarPreco(livro.precoLivro) }}</p>
       <button class="btn-comprar" (click)="adicionarCarrinho($event, livro)">Comprar</button>
     </div>
     }
@@ -40,12 +40,12 @@
 
 
   <div class="colunas">
-    @for (livro of maisVendidos; track livro.titulo) {
+    @for (livro of livrosMaisVendidos; track livro.tituloLivro) {
     <div class="card-produto" (click)="abrirModal(livro)">
-      <img class="capa-produto" [src]="livro.imagem" [alt]="'Capa do livro ' + livro.titulo">
-      <h3 class="nome-produto">{{ livro.titulo }}</h3>
-      <p class="autor-produto">{{ livro.autor }}</p>
-      <p class="preco-produto">{{ livro.preco }}</p>
+      <img class="capa-produto" [src]="livro.imagemLivro" [alt]="'Capa do livro ' + livro.tituloLivro">
+      <h3 class="nome-produto">{{ livro.tituloLivro }}</h3>
+      <p class="autor-produto">{{ livro.autorLivro }}</p>
+      <p class="preco-produto">{{ formatarPreco(livro.precoLivro) }}</p>
       <button class="btn-comprar" (click)="adicionarCarrinho($event, livro)">Comprar</button>
     </div>
     }
@@ -58,12 +58,12 @@
   </div>
 
   <div class="colunas">
-    @for (livro of livroRecentes; track livro.titulo) {
+    @for (livro of livroRecentes; track livro.tituloLivro) {
     <div class="card-produto" (click)="abrirModal(livro)">
-      <img class="capa-produto" [src]="livro.imagem" [alt]="'Capa do livro ' + livro.titulo">
-      <h3 class="nome-produto">{{ livro.titulo }}</h3>
-      <p class="autor-produto">{{ livro.autor }}</p>
-      <p class="preco-produto">{{ livro.preco }}</p>
+      <img class="capa-produto" [src]="livro.imagemLivro" [alt]="'Capa do livro ' + livro.tituloLivro">
+      <h3 class="nome-produto">{{ livro.tituloLivro }}</h3>
+      <p class="autor-produto">{{ livro.autorLivro }}</p>
+      <p class="preco-produto">{{ formatarPreco(livro.precoLivro) }}</p>
       <button class="btn-comprar" (click)="adicionarCarrinho($event, livro)">Comprar</button>
     </div>
     }
@@ -76,12 +76,12 @@
   </div>
 
   <div class="colunas">
-    @for (livro of stephen; track livro.titulo) {
+    @for (livro of livroStephen; track livro.tituloLivro) {
     <div class="card-produto" (click)="abrirModal(livro)">
-      <img class="capa-produto" [src]="livro.imagem" [alt]="'Capa do livro ' + livro.titulo">
-      <h3 class="nome-produto">{{ livro.titulo }}</h3>
-      <p class="autor-produto">{{ livro.autor }}</p>
-      <p class="preco-produto">{{ livro.preco }}</p>
+      <img class="capa-produto" [src]="livro.imagemLivro" [alt]="'Capa do livro ' + livro.tituloLivro">
+      <h3 class="nome-produto">{{ livro.tituloLivro }}</h3>
+      <p class="autor-produto">{{ livro.autorLivro }}</p>
+      <p class="preco-produto">{{ formatarPreco(livro.precoLivro)}}</p>
       <button class="btn-comprar" (click)="adicionarCarrinho($event, livro)">Comprar</button>
     </div>
     }
@@ -94,13 +94,13 @@
   <div class="modal-conteudo" (click)="$event.stopPropagation()">
     <button class="modal-fechar" (click)="fecharModal()" aria-label="Fechar">&times;</button>
 
-    <img [src]="livroSelecionado.imagem" [alt]="'Capa do livro ' + livroSelecionado.titulo">
+    <img [src]="livroSelecionado.imagemLivro" [alt]="'Capa do livro ' + livroSelecionado.tituloLivro">
 
     <div class="modal-info">
-      <h3>{{ livroSelecionado.titulo }}</h3>
-      <p class="modal-autor">{{ livroSelecionado.autor }}</p>
+      <h3>{{ livroSelecionado.tituloLivro }}</h3>
+      <p class="modal-autor">{{ livroSelecionado.autorLivro }}</p>
       <p class="modal-descricao">{{ livroSelecionado.descricao }}</p>
-      <p class="modal-preco">{{ livroSelecionado.preco }}</p>
+      <p class="modal-preco">{{ formatarPreco(livroSelecionado.precoLivro) }}</p>
 
       <div class="modal-botoes">
         <button class="btn-comprar" (click)="adicionarCarrinho($event, livroSelecionado)">Comprar</button>
