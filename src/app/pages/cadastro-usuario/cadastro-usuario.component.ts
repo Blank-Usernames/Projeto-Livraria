@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ClienteService } from '../../services/cliente.service';
+import { Cliente } from '../../models/Cliente';
 
 @Component({
   selector: 'app-cadastro-usuario',
@@ -9,15 +11,14 @@ import { Router } from '@angular/router';
   styleUrl: './cadastro-usuario.component.css'
 })
 export class CadastroUsuarioComponent {
-  constructor(private router: Router) { }
   isDisabledLogin: boolean = true;
   isDisabledCadastro: boolean = true;
 
-  nomeUsuario: string = "";
-  senhaUsuario: string = "";
+  nomeUsuarioLog: string = "";
+  senhaUsuarioLog: string = "";
 
   validarFormularioLogin() {
-    if (this.nomeUsuario.trim() !== '' && this.senhaUsuario.trim() !== '') {
+    if (this.nomeUsuarioLog.trim() !== '' && this.senhaUsuarioLog.trim() !== '') {
       this.isDisabledLogin = false;
     } else {
       this.isDisabledLogin = true;
@@ -45,12 +46,26 @@ export class CadastroUsuarioComponent {
   }
 
   login() {
-    if (this.nomeUsuario === 'admin' && this.senhaUsuario === '1234') {
+    if (this.nomeUsuarioLog === 'admin' && this.senhaUsuarioLog === '1234') {
       localStorage.setItem('usuarioLogado', 'true');
       window.location.reload();   
       window.location.href = '/';
     } else {
       alert('Usuário ou senha incorretos!');
     }
+  }
+
+  cliente: Cliente = {} as Cliente;
+  private service = inject(ClienteService);
+  private router = inject(Router);
+
+  cadastrarUsuario() {
+    this.service.incluir(this.cliente).subscribe({
+      next: (cliente) => {
+        this.cliente = cliente;
+        alert(`Livro ${this.cliente.nomeUsuario} cadastrado com sucesso!`);
+        this.router.navigate(['/catalogo']);
+      }
+    });
   }
 }

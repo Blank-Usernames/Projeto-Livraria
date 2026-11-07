@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Component, inject, OnInit } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { CarrinhoService } from '../../services/carrinho.service';
 import { ItemCarrinho } from '../../models/Carrinho';
 
@@ -13,11 +13,20 @@ import { ItemCarrinho } from '../../models/Carrinho';
   styleUrl: './carrinho.component.css'
 })
 export class CarrinhoComponent implements OnInit {
-  private service = inject(CarrinhoService);
-
   itens: ItemCarrinho[] = [];
 
+  itensNew: ItemCarrinho = {} as ItemCarrinho;
+  private service = inject(CarrinhoService);
+  private router = inject(Router);
+
+
   ngOnInit(): void {
+    this.service.listar().subscribe({
+        next: (itensNew) => {
+          this.itens = itensNew;
+        }
+      });
+
     this.itens = this.service.listarCarrinho();
   }
 
