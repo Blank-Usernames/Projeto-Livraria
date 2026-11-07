@@ -1,12 +1,28 @@
 import { Injectable } from '@angular/core';
 import { Livro } from '../models/Livro';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class LivroService {
 
-  constructor() { }
+  private readonly API = 'http://localhost:3000/livro';
+
+  constructor(private http: HttpClient) { }
+
+  listar(): Observable<Livro[]> {
+    return this.http.get<Livro[]>(this.API);
+  }
+
+  incluir(livro: Livro): Observable<Livro> {
+    return this.http.post<Livro>(this.API, livro);
+  }
+  excluir(id: string): Observable<void> {
+    return this.http.delete<void>(`${this.API}/${id}`);
+  }
 
   livroDestaques(): Livro[] {
     return [
