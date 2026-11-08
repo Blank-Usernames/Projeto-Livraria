@@ -8,16 +8,47 @@ import { Livro } from '../../models/Livro';
   templateUrl: './catalogo-livros.component.html',
   styleUrl: './catalogo-livros.component.css'
 })
-export class CatalogoLivrosComponent  implements OnInit {
-
+export class CatalogoLivrosComponent implements OnInit {
   private service = inject(LivroService);
-  listaLivros: Livro[] =[];
 
-    ngOnInit(): void {
-      this.service.listar().subscribe({
-        next: (livro) => {
-          this.listaLivros = livro;
-        }
-      });
-    }
+  livros: Livro[] = [];
+  livrosTerror: Livro[] = [];
+  livrosSuspense: Livro[] = [];
+  livrosRomance: Livro[] = [];
+
+  ngOnInit(): void {
+    this.service.listar().subscribe({
+      next: (livros) => {
+        this.livros = livros;
+        this.separarPorGenero();
+      },
+    });
+  }
+
+  separarPorGenero() {
+    this.livrosTerror = this.livros.filter(livro => livro.genero === 'Terror');
+    this.livrosSuspense = this.livros.filter(livro => livro.genero === 'Suspense');
+  }
+
+  formatarPreco(preco: number): string {
+    return preco.toLocaleString('pt-BR', {
+      style: 'currency',
+      currency: 'BRL'
+    });
+  }
+
+  livroSelecionado: Livro | null = null;
+
+  abrirModal(livro: Livro) {
+    this.livroSelecionado = livro;
+  }
+
+  fecharModal() {
+    this.livroSelecionado = null;
+  }
+
+  adicionarCarrinho(event: Event, livro: Livro) {
+    event.stopPropagation();
+    alert(`${livro.tituloLivro} adicionado ao carrinho! (ainda não funcional)`);
+  }
 }

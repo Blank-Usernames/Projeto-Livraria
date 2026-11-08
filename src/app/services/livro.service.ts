@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class LivroService {
 
+
   private readonly API = 'http://localhost:3000/livro';
 
   constructor(private http: HttpClient) { }
@@ -23,6 +24,16 @@ export class LivroService {
   excluir(id: string): Observable<void> {
     return this.http.delete<void>(`${this.API}/${id}`);
   }
+
+  todosLivros(): Livro[] {
+    return [
+      ...this.livroDestaques(),
+      ...this.livrosMaisVendidos(),
+      ...this.livroRecentes(),
+      ...this.livroStephen()
+    ];
+  }
+
 
   livroDestaques(): Livro[] {
     return [
