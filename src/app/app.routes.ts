@@ -15,8 +15,9 @@ export const routes: Routes = [
     { path: 'catalogo', component: CatalogoLivrosComponent, title:"Catálogo de Livros"},
     { path: 'cadastro-usuario', component: CadastroUsuarioComponent, title:"Cadastro de Usuário"},
     { path: 'cadastro-livros', component: CadastroLivrosComponent, title:"Cadastro de Livros"},
+    { path: 'cadastro-livros-editar/:id', component: CadastroLivrosComponent, title:"Cadastro de Livros"},
     { path: 'carrinho', component: CarrinhoComponent, title:"Carrinho"},
     { path: 'ajuda-feedback', component: AjudaFeedbackComponent, title:"Ajuda e Feedback"},
     { path: 'perfil-usuario', component: PerfilUsuarioComponent, title:"Perfil de Usuário"},
-    {path: 'admin-usuario',component:AdminUsuarioComponent,title:"Administração de Usuarios"},
+    { path: 'admin-usuario',component:AdminUsuarioComponent,title:"Administração de Usuarios"},
 ];

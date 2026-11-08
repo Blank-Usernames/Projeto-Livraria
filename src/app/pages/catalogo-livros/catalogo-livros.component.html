@@ -48,14 +48,14 @@
       <h2 class="titulo-secao">Catálogo Geral</h2>
 
       <div class="colunas">
-        @for (livro of livros; track livro.idLivro) {
-          <div class="card-produto" (click)="abrirModal(livro)">
-            <img class="capa-produto" [src]="livro.imagemLivro" [alt]="'Capa do livro ' + livro.tituloLivro">
-            <h3 class="nome-produto">{{ livro.tituloLivro }}</h3>
-            <p class="autor-produto">{{ livro.autorLivro }}</p>
-            <p class="preco-produto">{{ formatarPreco(livro.precoLivro) }}</p>
-            <button class="btn-comprar" (click)="adicionarCarrinho($event, livro)">Comprar</button>
-          </div>
+        @for (livro of livros; track livro.id) {
+        <div class="card-produto" (click)="abrirModal(livro)">
+          <img class="capa-produto" [src]="livro.imagemLivro" [alt]="'Capa do livro ' + livro.tituloLivro">
+          <h3 class="nome-produto">{{ livro.tituloLivro }}</h3>
+          <p class="autor-produto">{{ livro.autorLivro }}</p>
+          <p class="preco-produto">{{ "R$ " + livro.precoLivro }}</p>
+          <button class="btn-comprar" (click)="adicionarCarrinho($event, livro)">Comprar</button>
+        </div>
         }
       </div>
     </section>
@@ -64,14 +64,14 @@
       <h2 class="titulo-secao">Terror</h2>
 
       <div class="colunas">
-        @for (livro of livrosTerror; track livro.idLivro) {
-          <div class="card-produto" (click)="abrirModal(livro)">
-            <img class="capa-produto" [src]="livro.imagemLivro" [alt]="'Capa do livro ' + livro.tituloLivro">
-            <h3 class="nome-produto">{{ livro.tituloLivro }}</h3>
-            <p class="autor-produto">{{ livro.autorLivro }}</p>
-            <p class="preco-produto">{{ formatarPreco(livro.precoLivro) }}</p>
-            <button class="btn-comprar" (click)="adicionarCarrinho($event, livro)">Comprar</button>
-          </div>
+        @for (livro of livrosTerror; track livro.id) {
+        <div class="card-produto" (click)="abrirModal(livro)">
+          <img class="capa-produto" [src]="livro.imagemLivro" [alt]="'Capa do livro ' + livro.tituloLivro">
+          <h3 class="nome-produto">{{ livro.tituloLivro }}</h3>
+          <p class="autor-produto">{{ livro.autorLivro }}</p>
+          <p class="preco-produto">{{ "R$ " + livro.precoLivro }}</p>
+          <button class="btn-comprar" (click)="adicionarCarrinho($event, livro)">Comprar</button>
+        </div>
         }
       </div>
     </section>
@@ -80,34 +80,34 @@
       <h2 class="titulo-secao">Suspense</h2>
 
       <div class="colunas">
-        @for (livro of livrosSuspense; track livro.idLivro) {
-          <div class="card-produto" (click)="abrirModal(livro)">
-            <img class="capa-produto" [src]="livro.imagemLivro" [alt]="'Capa do livro ' + livro.tituloLivro">
-            <h3 class="nome-produto">{{ livro.tituloLivro }}</h3>
-            <p class="autor-produto">{{ livro.autorLivro }}</p>
-            <p class="preco-produto">{{ formatarPreco(livro.precoLivro) }}</p>
-            <button class="btn-comprar" (click)="adicionarCarrinho($event, livro)">Comprar</button>
-          </div>
+        @for (livro of livrosSuspense; track livro.id) {
+        <div class="card-produto" (click)="abrirModal(livro)">
+          <img class="capa-produto" [src]="livro.imagemLivro" [alt]="'Capa do livro ' + livro.tituloLivro">
+          <h3 class="nome-produto">{{ livro.tituloLivro }}</h3>
+          <p class="autor-produto">{{ livro.autorLivro }}</p>
+          <p class="preco-produto">{{ "R$ " + livro.precoLivro }}</p>
+          <button class="btn-comprar" (click)="adicionarCarrinho($event, livro)">Comprar</button>
+        </div>
         }
       </div>
     </section>
 
     @if (livrosRomance.length > 0) {
-      <section class="secao-produtos">
-        <h2 class="titulo-secao">Romance</h2>
+    <section class="secao-produtos">
+      <h2 class="titulo-secao">Romance</h2>
 
-        <div class="colunas">
-          @for (livro of livrosRomance; track livro.idLivro) {
-            <div class="card-produto" (click)="abrirModal(livro)">
-              <img class="capa-produto" [src]="livro.imagemLivro" [alt]="'Capa do livro ' + livro.tituloLivro">
-              <h3 class="nome-produto">{{ livro.tituloLivro }}</h3>
-              <p class="autor-produto">{{ livro.autorLivro }}</p>
-              <p class="preco-produto">{{ formatarPreco(livro.precoLivro) }}</p>
-              <button class="btn-comprar" (click)="adicionarCarrinho($event, livro)">Comprar</button>
-            </div>
-          }
+      <div class="colunas">
+        @for (livro of livrosRomance; track livro.id) {
+        <div class="card-produto" (click)="abrirModal(livro)">
+          <img class="capa-produto" [src]="livro.imagemLivro" [alt]="'Capa do livro ' + livro.tituloLivro">
+          <h3 class="nome-produto">{{ livro.tituloLivro }}</h3>
+          <p class="autor-produto">{{ livro.autorLivro }}</p>
+          <p class="preco-produto">{{ "R$ " + livro.precoLivro}}</p>
+          <button class="btn-comprar" (click)="adicionarCarrinho($event, livro)">Comprar</button>
         </div>
-      </section>
+        }
+      </div>
+    </section>
     }
 
   </div>
@@ -115,23 +115,27 @@
 </div>
 
 @if (livroSelecionado) {
-  <div class="modal-overlay" (click)="fecharModal()">
-    <div class="modal-conteudo" (click)="$event.stopPropagation()">
-      <button class="modal-fechar" (click)="fecharModal()" aria-label="Fechar">&times;</button>
+<div class="modal-overlay" (click)="fecharModal()">
+  <div class="modal-conteudo" (click)="$event.stopPropagation()">
+    <button class="modal-fechar" (click)="fecharModal()" aria-label="Fechar">&times;</button>
 
-      <img [src]="livroSelecionado.imagemLivro" [alt]="'Capa do livro ' + livroSelecionado.tituloLivro">
+    <img [src]="livroSelecionado.imagemLivro" [alt]="'Capa do livro ' + livroSelecionado.tituloLivro">
 
-      <div class="modal-info">
-        <h3>{{ livroSelecionado.tituloLivro }}</h3>
-        <p class="modal-autor">{{ livroSelecionado.autorLivro }}</p>
-        <p class="modal-descricao">{{ livroSelecionado.descricao }}</p>
-        <p class="modal-preco">{{ formatarPreco(livroSelecionado.precoLivro) }}</p>
+    <div class="modal-info">
+      <h3>{{ livroSelecionado.tituloLivro }}</h3>
+      <p class="modal-autor">{{ livroSelecionado.autorLivro }}</p>
+      <p class="modal-descricao">{{ livroSelecionado.descricao }}</p>
+      <p class="modal-preco">{{ "R$ " + livroSelecionado.precoLivro }}</p>
 
-        <div class="modal-botoes">
-          <button class="btn-comprar" (click)="adicionarCarrinho($event, livroSelecionado)">Comprar</button>
-          <a href="#" class="btn-editar">Editar Produto</a>
-        </div>
+      <div class="modal-botoes">
+        <button class="btn-comprar" (click)="adicionarCarrinho($event, livroSelecionado)">Comprar</button>
+        @if (isLogado) {
+        <button class="btn-editar" [routerLink]="['/cadastro-livros-editar', livroSelecionado.id]">Editar Produto</button>
+        } @else {
+
+        }
       </div>
     </div>
   </div>
+</div>
 }

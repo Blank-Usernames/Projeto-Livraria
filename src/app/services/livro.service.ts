@@ -9,8 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class LivroService {
 
-
-  private readonly API = 'http://localhost:3000/livro';
+  private readonly API = 'http://localhost:3000/livros';
 
   constructor(private http: HttpClient) { }
 
@@ -23,6 +22,14 @@ export class LivroService {
   }
   excluir(id: string): Observable<void> {
     return this.http.delete<void>(`${this.API}/${id}`);
+  }
+
+  buscarPorId(id: string): Observable<Livro> {
+    return this.http.get<Livro>(`${this.API}/${id}`);
+  }
+
+  editar(livro: Livro): Observable<Livro> {
+    return this.http.put<Livro>(`${this.API}/${livro.id}`, livro);
   }
 
   todosLivros(): Livro[] {
@@ -38,7 +45,7 @@ export class LivroService {
   livroDestaques(): Livro[] {
     return [
       {
-        idLivro: 1,
+        id: "1",
         tituloLivro: 'Pânico',
         autorLivro: 'Padraic Maroney',
         genero: 'Terror',
@@ -49,7 +56,7 @@ export class LivroService {
         imagemLivro: 'Imagens_Livros/livro2.png'
       },
       {
-        idLivro: 2,
+        id: "2",
         tituloLivro: 'O Exorcista',
         autorLivro: 'William Peter Blatty',
         genero: 'Terror',
@@ -60,7 +67,7 @@ export class LivroService {
         imagemLivro: 'Imagens_Livros/livro7.png'
       },
       {
-        idLivro: 3,
+        id: "3",
         tituloLivro: 'Nosferatu - Saga DarkSide',
         autorLivro: 'Bram Stoke',
         genero: 'Terror',
@@ -71,7 +78,7 @@ export class LivroService {
         imagemLivro: 'Imagens_Livros/livro5.png'
       },
       {
-        idLivro: 4,
+        id: "4",
         tituloLivro: 'Histórias de Terror',
         autorLivro: 'Usborne',
         genero: 'Terror',
@@ -82,7 +89,7 @@ export class LivroService {
         imagemLivro: 'Imagens_Livros/livro3.png'
       },
       {
-        idLivro: 5,
+        id: "5",
         tituloLivro: 'A Maldição da Residência Hill',
         autorLivro: 'Shirley Jackson',
         genero: 'Terror',
@@ -93,7 +100,7 @@ export class LivroService {
         imagemLivro: 'Imagens_Livros/livro4.png'
       },
       {
-        idLivro: 6,
+        id: "6",
         tituloLivro: 'Terras de Sonhos e Acasos',
         autorLivro: 'Filipe de Campos Ribeiro',
         genero: 'Suspense',
@@ -109,7 +116,7 @@ export class LivroService {
   livrosMaisVendidos(): Livro[] {
     return [
       {
-        idLivro: 7,
+        id: "7",
         tituloLivro: '1984',
         autorLivro: 'George Orwell',
         genero: 'Ficção',
@@ -120,7 +127,7 @@ export class LivroService {
         imagemLivro: 'Imagens_Livros/livro9.jpg'
       },
       {
-        idLivro: 8,
+        id: "8",
         tituloLivro: 'Diário de Um Banana',
         autorLivro: 'Jeff Kinney',
         genero: 'Comédia',
@@ -131,7 +138,7 @@ export class LivroService {
         imagemLivro: 'Imagens_Livros/livro10.jpg'
       },
       {
-        idLivro: 9,
+        id: "9",
         tituloLivro: 'Coraline',
         autorLivro: 'Neil Gaiman',
         genero: 'Terror',
@@ -142,7 +149,7 @@ export class LivroService {
         imagemLivro: 'Imagens_Livros/livro20.png'
       },
       {
-        idLivro: 10,
+        id: "10",
         tituloLivro: 'O Silencio Dos Inocentes',
         autorLivro: 'Thomas Harris',
         genero: 'Terror',
@@ -153,7 +160,7 @@ export class LivroService {
         imagemLivro: 'Imagens_Livros/livro16.png'
       },
       {
-        idLivro: 11,
+        id: "11",
         tituloLivro: 'Dracula',
         autorLivro: 'Bram Stoker',
         genero: 'Terror',
@@ -164,7 +171,7 @@ export class LivroService {
         imagemLivro: 'Imagens_Livros/livro17.png'
       },
       {
-        idLivro: 12,
+        id: "12",
         tituloLivro: 'A Incendiaria',
         autorLivro: 'Stephen King',
         genero: 'Terror',
@@ -180,7 +187,7 @@ export class LivroService {
   livroRecentes(): Livro[] {
     return [
       {
-        idLivro: 13,
+        id: "13",
         tituloLivro: 'O Livro Maldito',
         autorLivro: 'David Herick e Van R. Souza',
         genero: 'Terror',
@@ -191,7 +198,7 @@ export class LivroService {
         imagemLivro: 'Imagens_Livros/livro8.png'
       },
       {
-        idLivro: 14,
+        id: "14",
         tituloLivro: 'Template',
         autorLivro: 'John Doe',
         genero: 'Template',
@@ -202,7 +209,7 @@ export class LivroService {
         imagemLivro: 'Imagens_Livros/livro25.png'
       },
       {
-        idLivro: 15,
+        id: "15",
         tituloLivro: 'Template',
         autorLivro: 'John Doe',
         genero: 'Template',
@@ -213,7 +220,7 @@ export class LivroService {
         imagemLivro: 'Imagens_Livros/livro26.png'
       },
       {
-        idLivro: 16,
+        id: "16",
         tituloLivro: 'Template',
         autorLivro: 'John Doe',
         genero: 'Template',
@@ -224,7 +231,7 @@ export class LivroService {
         imagemLivro: 'Imagens_Livros/livro30.png'
       },
       {
-        idLivro: 17,
+        id: "17",
         tituloLivro: 'Template',
         autorLivro: 'John Doe',
         genero: 'Template',
@@ -235,7 +242,7 @@ export class LivroService {
         imagemLivro: 'Imagens_Livros/livro28.png'
       },
       {
-        idLivro: 18,
+        id: "18",
         tituloLivro: 'Template',
         autorLivro: 'John Doe',
         genero: 'Template',
@@ -251,7 +258,7 @@ export class LivroService {
   livroStephen(): Livro[] {
     return [
       {
-        idLivro: 19,
+        id: "19",
         tituloLivro: 'It: A Coisa',
         autorLivro: 'Stephen King',
         genero: 'Terror',
@@ -262,7 +269,7 @@ export class LivroService {
         imagemLivro: 'Imagens_Livros/livro11.png'
       },
       {
-        idLivro: 20,
+        id: "20",
         tituloLivro: 'The Mist',
         autorLivro: 'Stephen King',
         genero: 'Terror',
@@ -273,7 +280,7 @@ export class LivroService {
         imagemLivro: 'Imagens_Livros/livro13.png'
       },
       {
-        idLivro: 21,
+        id: "21",
         tituloLivro: 'O Cemitério',
         autorLivro: 'Stephen King',
         genero: 'Terror',
@@ -284,7 +291,7 @@ export class LivroService {
         imagemLivro: 'Imagens_Livros/livro19.png'
       },
       {
-        idLivro: 22,
+        id: "22",
         tituloLivro: 'Misery',
         autorLivro: 'Stephen King',
         genero: 'Terror',
@@ -295,7 +302,7 @@ export class LivroService {
         imagemLivro: 'Imagens_Livros/livro14.png'
       },
       {
-        idLivro: 23,
+        id: "23",
         tituloLivro: 'Mr. Mercedes',
         autorLivro: 'Stephen King',
         genero: 'Terror',
@@ -306,7 +313,7 @@ export class LivroService {
         imagemLivro: 'Imagens_Livros/livro23.png'
       },
       {
-        idLivro: 24,
+        id: "24",
         tituloLivro: 'Carrie',
         autorLivro: 'Stephen King',
         genero: 'Terror',
