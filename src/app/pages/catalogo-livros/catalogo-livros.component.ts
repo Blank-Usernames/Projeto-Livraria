@@ -17,8 +17,15 @@ export class CatalogoLivrosComponent implements OnInit {
   livrosRomance: Livro[] = [];
 
   ngOnInit(): void {
-    this.livros = this.service.todosLivros();
+    this.service.listar().subscribe({
+      next: (livros) => {
+        this.livros = livros;
+        this.separarPorGenero();
+      },
+    });
+  }
 
+  separarPorGenero() {
     this.livrosTerror = this.livros.filter(livro => livro.genero === 'Terror');
     this.livrosSuspense = this.livros.filter(livro => livro.genero === 'Suspense');
   }
