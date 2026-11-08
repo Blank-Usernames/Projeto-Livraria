@@ -1,28 +1,45 @@
 {
-    "clientes": [
-        {
-
-        },
-        {
-           
-        }
-    ],
-
-    "livros": [
-        {
-            
-        },
-        {
-           
-        }
-    ],
-
-    "carrinho": [
-        {
-            
-        },
-        {
-           
-        }
-    ]
+  "clientes": [
+    {},
+    {}
+  ],
+  "livros": [
+    {
+      "tituloLivro": "Nosferatu - Saga DarkSide",
+      "autorLivro": "Bram Stoke",
+      "genero": "Terror",
+      "descricao": "Uma antiga presença retorna das sombras trazendo consigo uma maldição que atravessa gerações. Em uma cidade mergulhada em medo e mistério, uma série de acontecimentos inexplicáveis leva os moradores a descobrir que o verdadeiro perigo pode estar mais próximo do que imaginam...",
+      "dataLancamento": "2024-12-16",
+      "qtdPagina": "240",
+      "precoLivro": "109,90",
+      "imagemLivro": "Imagens_Livros/livro5.png",
+      "id": "t_ArH7c"
+    },
+    {
+      "tituloLivro": "Histórias de Terror",
+      "autorLivro": "Usborne",
+      "genero": "Terror",
+      "imagemLivro": "Imagens_Livros/livro3.png",
+      "descricao": "Prepare-se para mergulhar em um mundo repleto de mistérios, criaturas assustadoras e acontecimentos sobrenaturais. Entre casas mal-assombradas, fantasmas misteriosos e encontros arrepiantes, cada história revela um novo pesadelo capaz de despertar a imaginação e desafiar até os leitores mais corajosos.",
+      "dataLancamento": "2024-11-23",
+      "qtdPagina": "24",
+      "precoLivro": "78,99",
+      "id": "i5GMTSP"
+    },
+    {
+      "tituloLivro": "Pânico",
+      "autorLivro": "Padraic Maroney",
+      "genero": "Terror",
+      "descricao": "Após anos de silêncio, Ghostface está de volta a Woodsboro, mas desta vez seus crimes parecem estar ligados a um segredo do passado que ninguém deveria descobrir. Enquanto um novo grupo de jovens tenta sobreviver aos ataques, eles percebem que o assassino conhece cada passo deles — e que, para escapar, precisarão descobrir quem está por trás da máscara antes do último grito.",
+      "dataLancamento": "2025-05-26",
+      "qtdPagina": "304",
+      "precoLivro": "49,90",
+      "imagemLivro": "Imagens_Livros/livro2.png",
+      "id": "jcuDKHh"
+    }
+  ],
+  "carrinho": [
+    {},
+    {}
+  ]
 }
