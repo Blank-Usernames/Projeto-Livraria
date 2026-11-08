@@ -32,7 +32,7 @@ button {
     height: 2rem;
     border-radius: 5px;
     border: none;
-    color: #FFFFFF;
+    color: #FFFFFF; 
     background-color: rgb(154, 26, 26);
     transition: ease-in-out 0.3s;
     cursor: pointer;

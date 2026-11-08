@@ -1,0 +1,144 @@
+.content-container {
+    width: 80%;
+    margin: 50px auto 0;
+}
+
+.subtitulo {
+    color: #5c0a0a;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.cabecalho {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;     
+    margin-bottom: 30px;
+}
+
+.cabecalho h1 {
+    margin: 8px 0;
+    color: #172033;
+    font-size: 32px;
+}
+
+.cabecalho p {
+    margin: 0;
+    color: #475569;
+    font-size: 16px;
+}
+
+.botao-novo {
+    padding: 11px 20px;
+    color: #ffffff;
+    background-color: #0055b8;
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.botao-novo:hover {
+    background-color: #003b7a;
+}
+
+.tabela-container {
+    overflow-x: auto;
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    background-color: #f8fafc;
+}
+
+th {
+    padding: 16px;
+    color: #172033;
+    font-size: 14px;
+    font-weight: 700;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+td {
+    padding: 16px;
+    color: #475569;
+    font-size: 15px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+tbody tr:hover {
+    background-color: #f8fafc;
+}
+
+.acoes {
+    white-space: nowrap;
+}
+
+.botao-editar,
+.botao-excluir {
+    padding: 8px 14px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.botao-editar {
+    margin-right: 8px;
+    color: #ffffff;
+    background-color: rgb(154, 26, 26);;
+    transition: ease-in 0.2s;
+}
+
+.botao-editar:hover {
+    transform: scale(1.1);
+    background-color: rgb(215, 51, 51);
+}
+
+
+.botao-excluir[type="button"] {
+    background-color: black;
+    color: white;
+    box-sizing: border-box;
+    transition: ease-in-out 0.2s;
+    border: 2px solid transparent; 
+}
+
+.botao-excluir[type="button"]:hover {
+    background-color: white;
+    color: black;
+    border: black 2px solid;
+}
+
+
+
+/* Responsividade */
+@media (max-width: 700px) {
+
+    .content-container {
+        width: 90%;
+
+    }
+
+    .cabecalho {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+
+    }
+}

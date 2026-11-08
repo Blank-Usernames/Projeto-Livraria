@@ -6,6 +6,7 @@ import { CadastroLivrosComponent } from './pages/cadastro-livros/cadastro-livros
 import { CarrinhoComponent } from './pages/carrinho/carrinho.component';
 import { AjudaFeedbackComponent } from './pages/ajuda-feedback/ajuda-feedback.component';
 import { PerfilUsuarioComponent } from './pages/perfil-usuario/perfil-usuario.component';
+import { AdminUsuarioComponent } from './admin/admin-usuario/admin-usuario.component';
 
 
 
@@ -16,5 +17,6 @@ export const routes: Routes = [
     { path: 'cadastro-livros', component: CadastroLivrosComponent, title:"Cadastro de Livros"},
     { path: 'carrinho', component: CarrinhoComponent, title:"Carrinho"},
     { path: 'ajuda-feedback', component: AjudaFeedbackComponent, title:"Ajuda e Feedback"},
-    { path: 'perfil-usuario', component: PerfilUsuarioComponent, title:"Perfil de Usuário"}
+    { path: 'perfil-usuario', component: PerfilUsuarioComponent, title:"Perfil de Usuário"},
+    {path: 'admin-usuario',component:AdminUsuarioComponent,title:"Administração de Usuarios"},
 ];
