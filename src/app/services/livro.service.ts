@@ -7,7 +7,17 @@ import { Livro } from '../models/Livro';
 export class LivroService {
 
   constructor() { }
-
+ 
+ 
+ 
+  todosLivros(): Livro[] {
+    return [
+      ...this.livroDestaques(),
+      ...this.livrosMaisVendidos(),
+      ...this.livroRecentes(),
+      ...this.livroStephen()
+    ];
+  }
   livroDestaques(): Livro[] {
     return [
       {

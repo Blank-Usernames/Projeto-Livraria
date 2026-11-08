@@ -77,20 +77,20 @@
   font-weight: bold;
   font-family: sans-serif;
   color: #1a1a1a;
-  padding-bottom: 20px; /* Espaço entre o texto e a linha */
+  padding-bottom: 20px; 
   margin: 0;
 }
 
-/* Cria a linha personalizada abaixo do título */
+
 .titulo-secao::after {
   content: "";
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 230px;          /* Comprimento da linha (altere como preferir) */
-  height: 4px;          /* Espessura da linha */
-  background: #8b0000;  /* Cor da linha (pode ser hex, RGB ou gradiente) */
-  border-radius: 3px;   /* Arredonda as pontas da linha */
+  width: 230px;      
+  height: 4px;         
+  background: #8b0000;  
+  border-radius: 3px;   
 }
 
 
