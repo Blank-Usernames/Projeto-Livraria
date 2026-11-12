@@ -32,16 +32,6 @@ export class LivroService {
     return this.http.put<Livro>(`${this.API}/${livro.id}`, livro);
   }
 
-  todosLivros(): Livro[] {
-    return [
-      ...this.livroDestaques(),
-      ...this.livrosMaisVendidos(),
-      ...this.livroRecentes(),
-      ...this.livroStephen()
-    ];
-  }
-
-
   livroDestaques(): Livro[] {
     return [
       {

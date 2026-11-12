@@ -36,6 +36,28 @@
       "precoLivro": "49,90",
       "imagemLivro": "Imagens_Livros/livro2.png",
       "id": "jcuDKHh"
+    },
+    {
+      "tituloLivro": "O Exorcista",
+      "autorLivro": "William Peter Blatty",
+      "genero": "Terror",
+      "descricao": "Quando uma jovem começa a apresentar comportamentos inexplicáveis e cada vez mais assustadores, sua família busca respostas onde a ciência não consegue chegar. Diante de uma força sobrenatural que parece dominar seu corpo e sua mente, um padre é chamado para enfrentar uma presença demoníaca determinada a não partir sem deixar sua marca...",
+      "dataLancamento": "2019-08-12",
+      "qtdPagina": "336",
+      "precoLivro": "60",
+      "imagemLivro": "Imagens_Livros/livro7.png",
+      "id": "1qEWDTs"
+    },
+    {
+      "tituloLivro": "1984",
+      "autorLivro": "George Orwell",
+      "genero": "Ficção",
+      "descricao": "\"O passado fora anulado, o ato da anulação fora esquecido, a mentira se tornara verdade\". Em um futuro próximo, um único soberano governa o estado totalitário da Oceania: o Grande Irmão. Embora nunca tenha sido visto, ninguém escapa à vigilância asfixiante do olho que tudo vê, ao poder da Polícia do Pensamento ou às imposições do Ministério da Verdade. Nada, entretanto, é aparentemente proibido, pois vigora uma única regra: rejeitar as provas materiais que seus olhos e ouvidos oferecem...",
+      "dataLancamento": "1949-06-08",
+      "qtdPagina": "336",
+      "precoLivro": "19",
+      "imagemLivro": "Imagens_Livros/livro9.jpg",
+      "id": "Pbp8DM9"
     }
   ],
   "carrinho": [
