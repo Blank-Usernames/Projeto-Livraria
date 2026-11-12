@@ -21,8 +21,8 @@ export class CadastroLivrosComponent implements OnInit {
   ngOnInit(): void {
     if (this.livroId) {
       this.service.buscarPorId(this.livroId).subscribe({
-        next: (cliente) => this.livro = cliente,
-        error: () => alert('Cliente não encontrado.')
+        next: (livro) => this.livro = livro,
+        error: () => alert('Livro não encontrado.')
       });
     } else {
 
