@@ -14,7 +14,11 @@
             <div id="perfil-container">
                 <form action="" id="perfil-usuario">
                     <div class="section-title">
-                        <h1>Meu Perfil</h1>
+                        @if(modoAdmin) {
+                          <h1>Perfil de {{ user.nomeUsuario }}</h1>  
+                        } @else {
+                            <h1>Meu Perfil</h1>
+                        }      
                     </div>
 
                     <div class="input-container">
@@ -45,7 +49,7 @@
                     <section id="perfil-controllers">
                         <div id="perfil-buttons">
                             <button type="button" [disabled]="isDisabled" (click)="atualizarPerfil()">Atualizar</button>
-                            <button class="button-alter" type="button">Cancelar</button>
+                            <button type="button" class="button-alter">Cancelar</button>
                         </div>
                     </section>
                 </form>
@@ -61,7 +65,7 @@
                                 Todos os dados associados à sua conta serão removidos.
                             </p>
                             <div id="deletar-controllers">
-                                <button class="delete-button" type="button">Deletar</button>
+                                <button class="delete-button" (click)="excluirUsuario(user.id!)" type="button">Deletar</button>
                             </div>
                         </div>
 

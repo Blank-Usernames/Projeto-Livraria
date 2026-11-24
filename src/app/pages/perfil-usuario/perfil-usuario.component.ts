@@ -17,6 +17,7 @@ export class PerfilUsuarioComponent implements OnInit {
 
   private route = inject(ActivatedRoute);
   userId: string | null = this.route.snapshot.paramMap.get('id');
+  modoAdmin: boolean = false;
 
   ngOnInit(): void {
     if (this.userId) {
@@ -27,6 +28,7 @@ export class PerfilUsuarioComponent implements OnInit {
     } else {
 
     }
+    this.modoAdmin = localStorage.getItem('adminLogado') === 'true';
   }
 
   confirmarSenha: string = "";
@@ -59,5 +61,23 @@ export class PerfilUsuarioComponent implements OnInit {
       },
       error: () => alert('Erro ao alterar o usuário.')
     });
+  }
+
+  excluirUsuario(id: string) {
+    if (id) {
+      this.service.excluir(id).subscribe({
+        next: () => {
+          localStorage.removeItem('usuarioLogado');
+
+          if (this.modoAdmin) {
+            alert("Usuário deletado com sucess")
+            window.location.href = '/admin-usuario';
+          } else {
+            window.location.href = '/';
+          }
+        },
+        error: () => alert('Erro ao excluir usuário.')
+      });
+    }
   }
 }

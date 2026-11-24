@@ -22,7 +22,7 @@ export class AdminUsuarioComponent implements OnInit {
     });
   }
 
-  excluir(id: string) {
+  excluirUsuario(id: string) {
     this.service.excluir(id).subscribe({
       next: () => {
         this.listaClientes = this.listaClientes.filter(cliente => cliente.id !== id);
