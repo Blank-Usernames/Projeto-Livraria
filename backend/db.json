@@ -1,5 +1,13 @@
 {
-  "clientes": [],
+  "clientes": [
+    {
+      "nomeUsuario": "Carl Johnson",
+      "senhaUsuario": "gtasa",
+      "email": "cjohnson@rockstargames.com",
+      "cpf": "434.324.345-07",
+      "id": 1
+    }
+  ],
   "livros": [
     {
       "tituloLivro": "Nosferatu - Saga DarkSide",
