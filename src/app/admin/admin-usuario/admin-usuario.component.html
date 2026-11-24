@@ -8,9 +8,6 @@
             Gerencie os clientes cadastrados na plataforma.
         </p>
     </div>
-    <button class="botao-novo" type="button">
-        + Novo cliente
-    </button>
 </div>
 
 
@@ -33,10 +30,10 @@
                 <td>{{ cliente.cpf }}</td>
                 <td>{{ cliente.email }}</td>
                 <td class="acoes">
-                    <button class="botao-editar" type="button" [routerLink]="['/admin-usuario', cliente.id]">
+                    <button class="botao-editar" type="button" [routerLink]="['/perfil-usuario', cliente.id]">
                         Editar
                     </button>
-                    <button class="botao-excluir" type="button" (click)="excluir(cliente.id!)">
+                    <button class="botao-excluir" type="button" (click)="excluirUsuario(cliente.id!)">
                         Excluir
                     </button>
                 </td>
