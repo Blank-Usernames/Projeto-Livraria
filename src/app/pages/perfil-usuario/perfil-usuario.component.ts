@@ -28,4 +28,36 @@ export class PerfilUsuarioComponent implements OnInit {
 
     }
   }
+
+  confirmarSenha: string = "";
+  isDisabled: boolean = true;
+
+  validarFormularioPerfil() {
+    if (this.user.nomeUsuario?.trim() !== '' &&
+      this.user.senhaUsuario?.trim() !== '' &&
+      this.user.email?.trim() !== '' &&
+      this.confirmarSenha.trim() !== '' &&
+      this.user.senhaUsuario === this.confirmarSenha
+    ) {
+      this.isDisabled = false;
+    } else {
+      this.isDisabled = true;
+    }
+  }
+
+
+  atualizarPerfil() {
+    if (!this.user.id) {
+      alert('ID do usuário não encontrado.');
+      return;
+    }
+
+    this.service.editar(this.user).subscribe({
+      next: (userAtualizado) => {
+        this.user = userAtualizado;
+        alert('Perfil atualizado com sucesso!');
+      },
+      error: () => alert('Erro ao alterar o usuário.')
+    });
+  }
 }

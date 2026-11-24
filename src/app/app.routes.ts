@@ -18,6 +18,6 @@ export const routes: Routes = [
     { path: 'cadastro-livros-editar/:id', component: CadastroLivrosComponent, title:"Cadastro de Livros"},
     { path: 'carrinho', component: CarrinhoComponent, title:"Carrinho"},
     { path: 'ajuda-feedback', component: AjudaFeedbackComponent, title:"Ajuda e Feedback"},
-    { path: 'perfil-usuario', component: PerfilUsuarioComponent, title:"Perfil de Usuário"},
+    { path: 'perfil-usuario/:id', component: PerfilUsuarioComponent, title:"Perfil de Usuário"},
     { path: 'admin-usuario',component:AdminUsuarioComponent,title:"Administração de Usuarios"},
 ];

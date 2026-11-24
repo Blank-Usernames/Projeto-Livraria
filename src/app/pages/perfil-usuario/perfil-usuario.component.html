@@ -19,7 +19,7 @@
 
                     <div class="input-container">
                         <label for="nome-input">Nome:</label>
-                        <input type="text" [(ngModel)]="user.nomeUsuario" name="nome-input" id="nome-input" required>
+                        <input type="text" [(ngModel)]="user.nomeUsuario" name="nome-input" id="nome-input" required (keyup)="validarFormularioPerfil()">
                     </div>
 
                     <div class="input-container">
@@ -29,22 +29,22 @@
 
                     <div class="input-container">
                         <label for="email-input">E-mail:</label>
-                        <input type="email" [(ngModel)]="user.email" name="email-input" id="email-input" required>
+                        <input type="email" [(ngModel)]="user.email" name="email-input" id="email-input" required (keyup)="validarFormularioPerfil()">
                     </div>
 
                     <div class="input-container">
                         <label for="senha-input">Senha:</label>
-                        <input type="password" [(ngModel)]="user.senhaUsuario" name="senha-input" id="senha-input" required>
+                        <input type="password" [(ngModel)]="user.senhaUsuario" name="senha-input" id="senha-input" required (keyup)="validarFormularioPerfil()">
                     </div>
 
                     <div class="input-container">
                         <label for="confirmar-senha-input">Confirmar Senha:</label>
-                        <input type="password" name="confirmar-senha-input" id="confirmar-senha-input" required>
+                        <input type="password" [(ngModel)]="confirmarSenha" name="confirmar-senha-input" id="confirmar-senha-input" required (keyup)="validarFormularioPerfil()">
                     </div>
 
                     <section id="perfil-controllers">
                         <div id="perfil-buttons">
-                            <button type="submit">Atualizar</button>
+                            <button type="button" [disabled]="isDisabled" (click)="atualizarPerfil()">Atualizar</button>
                             <button class="button-alter" type="button">Cancelar</button>
                         </div>
                     </section>

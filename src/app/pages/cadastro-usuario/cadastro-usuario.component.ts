@@ -95,9 +95,15 @@ export class CadastroUsuarioComponent {
             cliente.senhaUsuario === this.senhaUsuarioLog
           );
           if (usuarioEncontrado) {
+            // Isso tá aqui por causa do undefined
+            if (!usuarioEncontrado.id) {
+              return;
+            }
+
             alert(`Usuário ${usuarioEncontrado.nomeUsuario} logado com sucesso!`);
             localStorage.setItem('usuarioLogado', 'true');
             localStorage.setItem('adminLogado', 'false');
+            localStorage.setItem('userId', usuarioEncontrado.id);
             this.router.navigate(['/catalogo']).then(() => {
               window.location.reload();
             });
