@@ -54,7 +54,7 @@
           <h3 class="nome-produto">{{ livro.tituloLivro }}</h3>
           <p class="autor-produto">{{ livro.autorLivro }}</p>
           <p class="preco-produto">{{ "R$ " + livro.precoLivro }}</p>
-          <button class="btn-comprar" (click)="adicionarCarrinho($event, livro)">Comprar</button>
+          <button class="btn-comprar" (click)="adicionarCarrinho(livro)">Comprar</button>
         </div>
         }
       </div>
@@ -70,7 +70,7 @@
           <h3 class="nome-produto">{{ livro.tituloLivro }}</h3>
           <p class="autor-produto">{{ livro.autorLivro }}</p>
           <p class="preco-produto">{{ "R$ " + livro.precoLivro }}</p>
-          <button class="btn-comprar" (click)="adicionarCarrinho($event, livro)">Comprar</button>
+          <button class="btn-comprar" (click)="adicionarCarrinho(livro)">Comprar</button>
         </div>
         }
       </div>
@@ -86,7 +86,7 @@
           <h3 class="nome-produto">{{ livro.tituloLivro }}</h3>
           <p class="autor-produto">{{ livro.autorLivro }}</p>
           <p class="preco-produto">{{ "R$ " + livro.precoLivro }}</p>
-          <button class="btn-comprar" (click)="adicionarCarrinho($event, livro)">Comprar</button>
+          <button class="btn-comprar" (click)="adicionarCarrinho(livro)">Comprar</button>
         </div>
         }
       </div>
@@ -103,7 +103,7 @@
           <h3 class="nome-produto">{{ livro.tituloLivro }}</h3>
           <p class="autor-produto">{{ livro.autorLivro }}</p>
           <p class="preco-produto">{{ "R$ " + livro.precoLivro}}</p>
-          <button class="btn-comprar" (click)="adicionarCarrinho($event, livro)">Comprar</button>
+          <button class="btn-comprar" (click)="adicionarCarrinho(livro)">Comprar</button>
         </div>
         }
       </div>
@@ -128,7 +128,7 @@
       <p class="modal-preco">{{ "R$ " + livroSelecionado.precoLivro }}</p>
 
       <div class="modal-botoes">
-        <button class="btn-comprar" (click)="adicionarCarrinho($event, livroSelecionado)">Comprar</button>
+        <button class="btn-comprar" (click)="adicionarCarrinho(livroSelecionado)">Comprar</button>
         @if (modoAdmin) {
         <button class="btn-editar" [routerLink]="['/cadastro-livros-editar', livroSelecionado.id]">Editar Produto</button>
         } @else {

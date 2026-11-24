@@ -14,20 +14,17 @@ import { ItemCarrinho } from '../../models/Carrinho';
 })
 export class CarrinhoComponent implements OnInit {
   itens: ItemCarrinho[] = [];
-
-  itensNew: ItemCarrinho = {} as ItemCarrinho;
   private service = inject(CarrinhoService);
   private router = inject(Router);
 
 
   ngOnInit(): void {
     this.service.listar().subscribe({
-        next: (itensNew) => {
-          this.itens = itensNew;
-        }
-      });
-
-    this.itens = this.service.listarCarrinho();
+      next: (itens) => {
+        this.itens = itens;
+      }
+    });
+    console.table(this.itens);
   }
 
   cupomDesconto: string = '';
@@ -43,12 +40,37 @@ export class CarrinhoComponent implements OnInit {
     }
   }
 
-  removerItem(id: number): void {
-    this.itens = this.itens.filter(item => item.id !== id);
+  removerItem(id: string | undefined): void {
+    if (!id) {
+      return;
+    }
+
+    this.service.excluir(id).subscribe({
+      next: () => {
+        this.itens = this.itens.filter(item => item.id !== id);
+        alert('Produto removido do carrinho!');
+      },
+      error: () => {
+        alert('Erro ao remover produto do carrinho.');
+      }
+    });
   }
 
   removerTodos(): void {
-    this.itens = [];
+    this.itens.forEach(item => {
+    if (item.id) {
+      this.service.excluir(item.id).subscribe({
+        next: () => {
+          this.itens = this.itens.filter(
+            i => i.id !== item.id
+          );
+        },
+        error: () => {
+          alert(`Erro ao remover ${item.titulo} do carrinho.`);
+        }
+      });
+    }
+  });
   }
 
   get valorSubTotal(): number {

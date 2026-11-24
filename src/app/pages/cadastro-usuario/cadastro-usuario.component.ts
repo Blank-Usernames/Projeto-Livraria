@@ -47,6 +47,7 @@ export class CadastroUsuarioComponent {
     this.service.incluir(this.cliente).subscribe({
       next: (cliente) => {
         this.cliente = cliente;
+        this.limparCadastro();
         alert(`Usuário ${this.cliente.nomeUsuario} cadastrado com sucesso!`);
       }
     });
