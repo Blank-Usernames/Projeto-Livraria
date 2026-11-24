@@ -13,6 +13,7 @@ export class CatalogoLivrosComponent implements OnInit {
   constructor(private router: Router) { }
   private service = inject(LivroService);
   isLogado: boolean = false;
+  modoAdmin: boolean = false;
 
   livros: Livro[] = [];
   livrosTerror: Livro[] = [];
@@ -27,6 +28,7 @@ export class CatalogoLivrosComponent implements OnInit {
       },
     });
     this.isLogado = localStorage.getItem('usuarioLogado') === 'true';
+    this.modoAdmin = localStorage.getItem('adminLogado') === 'true';
   }
 
   separarPorGenero() {

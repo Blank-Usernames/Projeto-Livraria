@@ -19,22 +19,22 @@
 
                     <div class="input-container">
                         <label for="nome-input">Nome:</label>
-                        <input type="text" name="nome-input" id="nome-input" required>
+                        <input type="text" [(ngModel)]="user.nomeUsuario" name="nome-input" id="nome-input" required>
                     </div>
 
                     <div class="input-container">
                         <label for="cpf-input">CPF:</label>
-                        <input type="text" name="cpf-input" id="cpf-input" readonly>
+                        <input type="text" [(ngModel)]="user.cpf" name="cpf-input" id="cpf-input" readonly>
                     </div>
 
                     <div class="input-container">
                         <label for="email-input">E-mail:</label>
-                        <input type="email" name="email-input" id="email-input" required>
+                        <input type="email" [(ngModel)]="user.email" name="email-input" id="email-input" required>
                     </div>
 
                     <div class="input-container">
                         <label for="senha-input">Senha:</label>
-                        <input type="password" name="senha-input" id="senha-input" required>
+                        <input type="password" [(ngModel)]="user.senhaUsuario" name="senha-input" id="senha-input" required>
                     </div>
 
                     <div class="input-container">

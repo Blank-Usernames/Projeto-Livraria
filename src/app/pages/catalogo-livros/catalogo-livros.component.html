@@ -129,7 +129,7 @@
 
       <div class="modal-botoes">
         <button class="btn-comprar" (click)="adicionarCarrinho($event, livroSelecionado)">Comprar</button>
-        @if (isLogado) {
+        @if (modoAdmin) {
         <button class="btn-editar" [routerLink]="['/cadastro-livros-editar', livroSelecionado.id]">Editar Produto</button>
         } @else {
 

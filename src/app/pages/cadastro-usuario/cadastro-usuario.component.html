@@ -49,8 +49,8 @@
                         </div>
 
                         <div id="cadastro-buttons">
-                            <button type="submit" [disabled]="isDisabledCadastro">Cadastrar</button>
-                            <button type="reset">Limpar</button>
+                            <button type="button" [disabled]="isDisabledCadastro" (click)="cadastrarUsuario()">Cadastrar</button>
+                            <button type="button" (click)="limparCadastro()">Limpar</button>
                         </div>
                     </section>
                 </form>
@@ -80,7 +80,7 @@
 
                     <section id="login-controllers">
                         <div id="login-buttons">
-                            <button type="submit" [disabled]="isDisabledLogin" (click)="login()">Entrar</button>
+                            <button type="button" [disabled]="isDisabledLogin" (click)="login()">Entrar</button>
                         </div>
                     </section>
                 </form>
