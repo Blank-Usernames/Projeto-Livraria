@@ -12,10 +12,12 @@ export class HeaderComponent {
   constructor(private router: Router) { }
   isLogado: boolean = false;
   modoAdmin: boolean = false;
+  clienteId: string | null = '';
 
   ngOnInit() {
     this.isLogado = localStorage.getItem('usuarioLogado') === 'true';
     this.modoAdmin = localStorage.getItem('adminLogado') === 'true';
+    this.clienteId = localStorage.getItem('userId');
   }
 
   sair() {
