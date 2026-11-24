@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class ClienteService {
 
-  private readonly API = 'http://localhost:3000/cliente';
+  private readonly API = 'http://localhost:3000/clientes';
 
   constructor(private http: HttpClient) { }
 
@@ -17,10 +17,18 @@ export class ClienteService {
     return this.http.get<Cliente[]>(this.API);
   }
 
-  incluir(livro: Cliente): Observable<Cliente> {
-    return this.http.post<Cliente>(this.API, livro);
+  incluir(cliente: Cliente): Observable<Cliente> {
+    return this.http.post<Cliente>(this.API, cliente);
   }
   excluir(id: string): Observable<void> {
     return this.http.delete<void>(`${this.API}/${id}`);
+  }
+
+  buscarPorId(id: string): Observable<Cliente> {
+    return this.http.get<Cliente>(`${this.API}/${id}`);
+  }
+
+  editar(cliente: Cliente): Observable<Cliente> {
+    return this.http.put<Cliente>(`${this.API}/${cliente.id}`, cliente);
   }
 }

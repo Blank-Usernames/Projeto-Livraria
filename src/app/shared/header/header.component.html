@@ -6,7 +6,7 @@
                 <li><a routerLink="/">Inicio</a></li>
                 <li><a routerLink="/catalogo">Catálogo</a></li>
                 <li><a routerLink="/ajuda-feedback">Ajuda</a></li>
-                @if (isLogado) {
+                @if (modoAdmin) {
                 <li><a routerLink="/cadastro-livros">Cadastrar Livro</a></li>
                 <li><a routerLink="/admin-usuario">Administração</a></li>
                 } @else {

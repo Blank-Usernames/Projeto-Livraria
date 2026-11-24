@@ -16,16 +16,13 @@
   <div class="subtitulo">
     <h2 class="titulo-secao">Destaques da Semana</h2>
   </div>
-
-
-
   <div class="colunas">
     @for (livro of livrosDestaque; track livro.tituloLivro) {
     <div class="card-produto" (click)="abrirModal(livro)">
       <img class="capa-produto" [src]="livro.imagemLivro" [alt]="'Capa do livro ' + livro.tituloLivro">
       <h3 class="nome-produto">{{ livro.tituloLivro }}</h3>
       <p class="autor-produto">{{ livro.autorLivro }}</p>
-      <p class="preco-produto">{{ formatarPreco(livro.precoLivro) }}</p>
+      <p class="preco-produto">{{ "R$ " + livro.precoLivro }}</p>
       <button class="btn-comprar" (click)="adicionarCarrinho($event, livro)">Comprar</button>
     </div>
     }
@@ -36,16 +33,13 @@
   <div class="subtitulo">
     <h2 class="titulo-secao">Best Selling</h2>
   </div>
-
-
-
   <div class="colunas">
-    @for (livro of livrosMaisVendidos; track livro.tituloLivro) {
+    @for (livro of bestSelling; track livro.tituloLivro) {
     <div class="card-produto" (click)="abrirModal(livro)">
       <img class="capa-produto" [src]="livro.imagemLivro" [alt]="'Capa do livro ' + livro.tituloLivro">
       <h3 class="nome-produto">{{ livro.tituloLivro }}</h3>
       <p class="autor-produto">{{ livro.autorLivro }}</p>
-      <p class="preco-produto">{{ formatarPreco(livro.precoLivro) }}</p>
+      <p class="preco-produto">{{ "R$ " + livro.precoLivro }}</p>
       <button class="btn-comprar" (click)="adicionarCarrinho($event, livro)">Comprar</button>
     </div>
     }
@@ -58,12 +52,12 @@
   </div>
 
   <div class="colunas">
-    @for (livro of livroRecentes; track livro.tituloLivro) {
+    @for (livro of livrosLancamento; track livro.tituloLivro) {
     <div class="card-produto" (click)="abrirModal(livro)">
       <img class="capa-produto" [src]="livro.imagemLivro" [alt]="'Capa do livro ' + livro.tituloLivro">
       <h3 class="nome-produto">{{ livro.tituloLivro }}</h3>
       <p class="autor-produto">{{ livro.autorLivro }}</p>
-      <p class="preco-produto">{{ formatarPreco(livro.precoLivro) }}</p>
+      <p class="preco-produto">{{ "R$ " + livro.precoLivro }}</p>
       <button class="btn-comprar" (click)="adicionarCarrinho($event, livro)">Comprar</button>
     </div>
     }
@@ -72,16 +66,16 @@
 
 <section class="secao-produtos">
   <div class="subtitulo">
-    <h2 class="titulo-secao">Melhores de Stephen King</h2>
+    <h2 class="titulo-secao">Melhores de {{autorSelecionado}}</h2>
   </div>
 
   <div class="colunas">
-    @for (livro of livroStephen; track livro.tituloLivro) {
+    @for (livro of livrosAutor; track livro.tituloLivro) {
     <div class="card-produto" (click)="abrirModal(livro)">
       <img class="capa-produto" [src]="livro.imagemLivro" [alt]="'Capa do livro ' + livro.tituloLivro">
       <h3 class="nome-produto">{{ livro.tituloLivro }}</h3>
       <p class="autor-produto">{{ livro.autorLivro }}</p>
-      <p class="preco-produto">{{ formatarPreco(livro.precoLivro)}}</p>
+      <p class="preco-produto">{{ "R$ " + livro.precoLivro }}</p>
       <button class="btn-comprar" (click)="adicionarCarrinho($event, livro)">Comprar</button>
     </div>
     }
@@ -100,11 +94,11 @@
       <h3>{{ livroSelecionado.tituloLivro }}</h3>
       <p class="modal-autor">{{ livroSelecionado.autorLivro }}</p>
       <p class="modal-descricao">{{ livroSelecionado.descricao }}</p>
-      <p class="modal-preco">{{ formatarPreco(livroSelecionado.precoLivro) }}</p>
+      <p class="modal-preco">{{ "R$ " + livroSelecionado.precoLivro }}</p>
 
       <div class="modal-botoes">
         <button class="btn-comprar" (click)="adicionarCarrinho($event, livroSelecionado)">Comprar</button>
-        @if (isLogado) {
+        @if (modoAdmin) {
           <button class="btn-editar" (click)="goToCadastroLivros()">Editar Produto</button>
         } @else {
 

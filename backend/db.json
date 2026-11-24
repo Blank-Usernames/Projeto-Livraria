@@ -1,7 +1,19 @@
 {
   "clientes": [
-    {},
-    {}
+    {
+      "nomeUsuario": "João Gomes",
+      "senhaUsuario": "12345",
+      "email": "joao.gomes@email.com",
+      "cpf": "345-245-214-01",
+      "id": 1
+    },
+    {
+      "nomeUsuario": "Luis Lopez",
+      "senhaUsuario": "tbogt",
+      "email": "luis.lopez@email.com",
+      "cpf": "535.324.231-04",
+      "id": 2
+    }
   ],
   "livros": [
     {
@@ -60,8 +72,5 @@
       "id": "Pbp8DM9"
     }
   ],
-  "carrinho": [
-    {},
-    {}
-  ]
+  "carrinho": []
 }

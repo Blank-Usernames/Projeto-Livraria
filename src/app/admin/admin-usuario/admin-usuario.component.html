@@ -26,18 +26,22 @@
             </tr>
         </thead>
         <tbody>
+            @for (cliente of listaClientes; track cliente.id) {
             <tr>
-                <td>1</td>
-                <td>Maria</td>
-                <td>Silvana&#64;gmail.com</td>
-                <td>890-776-396-52</td>
-               
-                <td>
-                   <button class="botao-excluir" type="button">Excluir</button>
-                   <button class="botao-editar" type="button">Editar</button>
+                <td>{{ cliente.id }}</td>
+                <td>{{ cliente.nomeUsuario }}</td>
+                <td>{{ cliente.cpf }}</td>
+                <td>{{ cliente.email }}</td>
+                <td class="acoes">
+                    <button class="botao-editar" type="button" [routerLink]="['/admin-usuario', cliente.id]">
+                        Editar
+                    </button>
+                    <button class="botao-excluir" type="button" (click)="excluir(cliente.id!)">
+                        Excluir
+                    </button>
                 </td>
-
             </tr>
+            }
         </tbody>
     </table>
 </div>

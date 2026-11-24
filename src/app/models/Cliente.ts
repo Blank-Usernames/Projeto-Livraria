@@ -1,5 +1,5 @@
 export interface Cliente {
-    idUsuario?: number;
+    id?: string;
     nomeUsuario: string;
     senhaUsuario?: string;
     cpf: string;

@@ -13,28 +13,61 @@ import { Livro } from '../../models/Livro';
 export class HomeComponent implements OnInit {
   constructor(private router: Router) { }
   isLogado: boolean = false;
+  modoAdmin: boolean = false;
 
   private service = inject(LivroService);
 
+  livros: Livro[] = [];
   livrosDestaque: Livro[] = [];
-  livrosMaisVendidos: Livro[] = [];
-  livroRecentes: Livro[] = [];
-  livroStephen: Livro[] = [];
+  livrosLancamento: Livro[] = [];
+  bestSelling: Livro[] = [];
+  livrosAutor: Livro[] = [];
+
+  autorSelecionado: string = '';
 
   ngOnInit(): void {
-    this.livrosDestaque = this.service.livroDestaques();
-    this.livrosMaisVendidos = this.service.livrosMaisVendidos();
-    this.livroRecentes = this.service.livroRecentes();
-    this.livroStephen = this.service.livroStephen();
+    this.service.listar().subscribe({
+      next: (livros) => {
+        this.livros = livros;
+        this.separarPorAutor();
+        this.livrosAleatorios(this.livrosDestaque);
+        this.livrosAleatorios(this.livrosLancamento);
+        this.livrosAleatorios(this.bestSelling);
+      },
+    });
     this.isLogado = localStorage.getItem('usuarioLogado') === 'true';
+    this.modoAdmin = localStorage.getItem('adminLogado') === 'true';
   }
 
-  formatarPreco(preco: number): string {
-  return preco.toLocaleString('pt-BR', {
-    style: 'currency',
-    currency: 'BRL'
-  });
-}
+  separarPorAutor() {
+    const livroAleatorio = this.livros[Math.floor(Math.random() * this.livros.length)];
+
+    this.autorSelecionado = livroAleatorio.autorLivro;
+
+    this.livrosAutor = this.livros.filter(
+      livro => livro.autorLivro === this.autorSelecionado
+    );
+  }
+
+  livrosAleatorios(sequenciaLivro: Livro[]) {
+    sequenciaLivro.length = 0;
+
+    const quantidade = Math.min(6, this.livros.length);
+    const indicesSelecionados = new Set<number>();
+
+    while (indicesSelecionados.size < quantidade) {
+      const indiceAleatorio = Math.floor(
+        Math.random() * this.livros.length
+      );
+
+      if (indicesSelecionados.has(indiceAleatorio)) {
+        continue;
+      }
+
+      indicesSelecionados.add(indiceAleatorio);
+      sequenciaLivro.push(this.livros[indiceAleatorio]);
+    }
+  }
 
   goToCadastroLivros() {
     this.router.navigate(['/cadastro-livros']);
