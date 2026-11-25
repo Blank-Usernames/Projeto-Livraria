@@ -6,40 +6,35 @@
 
     <div class="filtro">
       <label>Pesquisar</label>
-      <input type="text" placeholder="Nome do livro">
+      <input type="text" [(ngModel)]="termoTitulo" (input)="filtrarLivros()" placeholder="Nome do Livro">
+    </div>
+
+    <div class="filtro">
+      <label>Autor</label>
+      <input type="text"  [(ngModel)]="termoAutor" (input)="filtrarLivros()" placeholder="Autor do Livro">
     </div>
 
     <div class="filtro">
       <label>Gênero</label>
-      <select>
+      <select [(ngModel)]="generoSelecionado" (change)="filtrarLivros()">
         <option>Todos</option>
         <option>Terror</option>
         <option>Romance</option>
         <option>Fantasia</option>
         <option>Suspense</option>
+        <option>Ficção</option>
       </select>
     </div>
 
     <div class="filtro">
       <label>Preço</label>
-      <select>
+      <select [(ngModel)]="precoSelecionado" (change)="filtrarLivros()">
         <option>Todos</option>
-        <option>Até R$30</option>
-        <option>R$30 - R$50</option>
-        <option>Acima de R$50</option>
+        <option>Até R$30,00</option>
+        <option>R$30,00 - R$120,00</option>
+        <option>Acima de R$120,00</option>
       </select>
     </div>
-
-    <div class="filtro">
-      <label>Avaliação</label>
-      <select>
-        <option>Todas</option>
-        <option>5 estrelas</option>
-        <option>4 estrelas ou mais</option>
-        <option>3 estrelas ou mais</option>
-      </select>
-    </div>
-
   </div>
 
   <div class="conteudo-catalogo">
@@ -48,7 +43,7 @@
       <h2 class="titulo-secao">Catálogo Geral</h2>
 
       <div class="colunas">
-        @for (livro of livros; track livro.id) {
+        @for (livro of livrosFiltrados; track livro.id) {
         <div class="card-produto" (click)="abrirModal(livro)">
           <img class="capa-produto" [src]="livro.imagemLivro" [alt]="'Capa do livro ' + livro.tituloLivro">
           <h3 class="nome-produto">{{ livro.tituloLivro }}</h3>
@@ -130,7 +125,8 @@
       <div class="modal-botoes">
         <button class="btn-comprar" (click)="adicionarCarrinho(livroSelecionado)">Comprar</button>
         @if (modoAdmin) {
-        <button class="btn-editar" [routerLink]="['/cadastro-livros-editar', livroSelecionado.id]">Editar Produto</button>
+        <button class="btn-editar" [routerLink]="['/cadastro-livros-editar', livroSelecionado.id]">Editar
+          Produto</button>
         } @else {
 
         }

@@ -1,10 +1,11 @@
 import { Component} from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 
 
 @Component({
   selector: 'app-header',
-  imports: [ RouterLink ],
+  imports: [ RouterLink, FormsModule ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
@@ -13,6 +14,7 @@ export class HeaderComponent {
   isLogado: boolean = false;
   modoAdmin: boolean = false;
   clienteId: string | null = '';
+  termoBusca: string = '';
 
   ngOnInit() {
     this.isLogado = localStorage.getItem('usuarioLogado') === 'true';
@@ -27,4 +29,12 @@ export class HeaderComponent {
     window.location.reload();
     window.location.href = '/';
   }
+
+  pesquisar(): void {
+  const termo = this.termoBusca.trim();
+
+  this.router.navigate(['/catalogo'], {
+    queryParams: { busca: termo }
+  });
+}
 }

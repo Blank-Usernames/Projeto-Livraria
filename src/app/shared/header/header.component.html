@@ -20,8 +20,8 @@
     <header>
 
         <div class="BarraPesquisa">
-            <button type="submit" class="iconeBusca"><i class="fa-solid fa-magnifying-glass"></i></button>
-            <input type="text" placeholder="Buscar Produtos...">
+            <button type="button" (click)="pesquisar()" class="iconeBusca"><i class="fa-solid fa-magnifying-glass"></i></button>
+            <input type="text" [(ngModel)]="termoBusca" placeholder="Buscar Produtos...">
         </div>
         <div class="BlocoDireita">
             <nav class="acoesUsuarios">
@@ -39,7 +39,7 @@
 
                 </ul>
                 } @else {
-                    <ul>
+                <ul>
                     <li>
                         <a (click)="sair()">
                             <i class="fa-solid fa-user"></i>
@@ -54,9 +54,15 @@
                 }
             </nav>
             <div class="botaoCarrinho">
+                @if (!isLogado) {
+                <a routerLink="/cadastro-usuario" class="iconeCarrinho" aria-label="ver carrinho">
+                    <i class="fa-sharp fa-solid fa-cart-shopping"></i>
+                </a>
+                } @else {
                 <a routerLink="/carrinho" class="iconeCarrinho" aria-label="ver carrinho">
                     <i class="fa-sharp fa-solid fa-cart-shopping"></i>
                 </a>
+                }
             </div>
         </div>
 
