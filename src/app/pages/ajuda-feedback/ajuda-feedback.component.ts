@@ -17,16 +17,6 @@ export class AjudaFeedbackComponent {
   assunto: string = 'duvida'; // Valor padrão marcado
   mensagemTexto: string = '';
 
-  // Método botão Buscar
-  buscar(): void {
-    if (this.termoBusca.trim() === '') {
-      alert('Por favor, digite uma dúvida antes de buscar.');
-    } else {
-      alert(`Você pesquisou por: "${this.termoBusca}".`);
-      this.termoBusca = ''; // Limpa o campo automaticamente no HTML
-    }
-  }
-
   // Método evio formulario
   enviarFormulario(): void {
     if (this.nomeUsuario.trim() === '' || this.emailUsuario.trim() === '') {

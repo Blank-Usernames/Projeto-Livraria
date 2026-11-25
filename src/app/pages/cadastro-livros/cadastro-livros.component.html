@@ -59,13 +59,13 @@
 
                     <div class="input-container">
                         <label for="quantidadePagina-input">Quantidade de páginas: </label>
-                        <input type="text" [(ngModel)]="livro.qtdPagina" min="1" name="quantidadePagina-input"
+                        <input type="number" [(ngModel)]="livro.qtdPagina" min="1" name="quantidadePagina-input"
                             id="quantidadePagina-input" required>
                     </div>
 
                     <div class="input-container">
                         <label for="preco-input">Preço do livro: </label>
-                        <input type="text" [(ngModel)]="livro.precoLivro" name="preco-input" id="preco-input" required>
+                        <input type="number" step="0.01" min="0" [(ngModel)]="livro.precoLivro" name="preco-input" id="preco-input" required>
                     </div>
 
                     <div class="input-container">

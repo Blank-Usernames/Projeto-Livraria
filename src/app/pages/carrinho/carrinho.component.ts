@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, CurrencyPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Component, inject, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
@@ -8,7 +8,7 @@ import { ItemCarrinho } from '../../models/Carrinho';
 @Component({
   selector: 'app-carrinho',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule],
+  imports: [CommonModule, FormsModule, RouterModule, CurrencyPipe],
   templateUrl: './carrinho.component.html',
   styleUrl: './carrinho.component.css'
 })
