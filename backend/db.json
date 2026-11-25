@@ -1,46 +1,16 @@
 {
-  "clientes": [
-    {
-      "nomeUsuario": "Carl Johnson",
-      "senhaUsuario": "gtasa",
-      "email": "cjohnson@rockstargames.com",
-      "cpf": "434.324.345-07",
-      "id": 1
-    }
-  ],
+  "clientes": [],
   "livros": [
-    {
-      "tituloLivro": "Nosferatu - Saga DarkSide",
-      "autorLivro": "Bram Stoke",
-      "genero": "Terror",
-      "descricao": "Uma antiga presença retorna das sombras trazendo consigo uma maldição que atravessa gerações. Em uma cidade mergulhada em medo e mistério, uma série de acontecimentos inexplicáveis leva os moradores a descobrir que o verdadeiro perigo pode estar mais próximo do que imaginam...",
-      "dataLancamento": "2024-12-16",
-      "qtdPagina": "240",
-      "precoLivro": "109,90",
-      "imagemLivro": "Imagens_Livros/livro5.png",
-      "id": "t_ArH7c"
-    },
-    {
-      "tituloLivro": "Histórias de Terror",
-      "autorLivro": "Usborne",
-      "genero": "Terror",
-      "imagemLivro": "Imagens_Livros/livro3.png",
-      "descricao": "Prepare-se para mergulhar em um mundo repleto de mistérios, criaturas assustadoras e acontecimentos sobrenaturais. Entre casas mal-assombradas, fantasmas misteriosos e encontros arrepiantes, cada história revela um novo pesadelo capaz de despertar a imaginação e desafiar até os leitores mais corajosos.",
-      "dataLancamento": "2024-11-23",
-      "qtdPagina": "24",
-      "precoLivro": "78,99",
-      "id": "i5GMTSP"
-    },
     {
       "tituloLivro": "Pânico",
       "autorLivro": "Padraic Maroney",
       "genero": "Terror",
       "descricao": "Após anos de silêncio, Ghostface está de volta a Woodsboro, mas desta vez seus crimes parecem estar ligados a um segredo do passado que ninguém deveria descobrir. Enquanto um novo grupo de jovens tenta sobreviver aos ataques, eles percebem que o assassino conhece cada passo deles — e que, para escapar, precisarão descobrir quem está por trás da máscara antes do último grito.",
       "dataLancamento": "2025-05-26",
-      "qtdPagina": "304",
-      "precoLivro": "49,90",
+      "qtdPagina": 304,
+      "precoLivro": 49.9,
       "imagemLivro": "Imagens_Livros/livro2.png",
-      "id": "jcuDKHh"
+      "id": 1
     },
     {
       "tituloLivro": "O Exorcista",
@@ -48,21 +18,54 @@
       "genero": "Terror",
       "descricao": "Quando uma jovem começa a apresentar comportamentos inexplicáveis e cada vez mais assustadores, sua família busca respostas onde a ciência não consegue chegar. Diante de uma força sobrenatural que parece dominar seu corpo e sua mente, um padre é chamado para enfrentar uma presença demoníaca determinada a não partir sem deixar sua marca...",
       "dataLancamento": "2019-08-12",
-      "qtdPagina": "336",
-      "precoLivro": "60",
+      "qtdPagina": 336,
+      "precoLivro": 60,
       "imagemLivro": "Imagens_Livros/livro7.png",
-      "id": "1qEWDTs"
+      "id": 2
     },
     {
-      "tituloLivro": "1984",
-      "autorLivro": "George Orwell",
-      "genero": "Ficção",
-      "descricao": "\"O passado fora anulado, o ato da anulação fora esquecido, a mentira se tornara verdade\". Em um futuro próximo, um único soberano governa o estado totalitário da Oceania: o Grande Irmão. Embora nunca tenha sido visto, ninguém escapa à vigilância asfixiante do olho que tudo vê, ao poder da Polícia do Pensamento ou às imposições do Ministério da Verdade. Nada, entretanto, é aparentemente proibido, pois vigora uma única regra: rejeitar as provas materiais que seus olhos e ouvidos oferecem...",
-      "dataLancamento": "1949-06-08",
-      "qtdPagina": "336",
-      "precoLivro": "19",
-      "imagemLivro": "Imagens_Livros/livro9.jpg",
-      "id": "Pbp8DM9"
+      "tituloLivro": "Nosferatu - Saga DarkSide",
+      "autorLivro": "Bram Stoke",
+      "genero": "Terror",
+      "descricao": "Uma antiga presença retorna das sombras trazendo consigo uma maldição que atravessa gerações. Em uma cidade mergulhada em medo e mistério, uma série de acontecimentos inexplicáveis leva os moradores a descobrir que o verdadeiro perigo pode estar mais próximo do que imaginam...",
+      "precoLivro": 109.9,
+      "qtdPagina": 240,
+      "dataLancamento": "2024-12-16",
+      "imagemLivro": "Imagens_Livros/livro5.png",
+      "id": 3
+    },
+    {
+      "tituloLivro": "Histórias de Terror",
+      "autorLivro": "Usborne",
+      "genero": "Terror",
+      "descricao": "Prepare-se para mergulhar em um mundo repleto de mistérios, criaturas assustadoras e acontecimentos sobrenaturais. Entre casas mal-assombradas, fantasmas misteriosos e encontros arrepiantes, cada história revela um novo pesadelo capaz de despertar a imaginação e desafiar até os leitores mais corajosos.2",
+      "dataLancamento": "2024-11-23",
+      "qtdPagina": 24,
+      "precoLivro": 78.99,
+      "imagemLivro": "Imagens_Livros/livro3.png",
+      "id": 4
+    },
+    {
+      "tituloLivro": "A Maldição da Residência Hill",
+      "autorLivro": "Shirley Jackson",
+      "genero": "Terror",
+      "descricao": "Entre o passado e o presente, uma família abalada confronta memórias assustadoras de seu antigo lar e dos eventos aterrorizantes que os expulsaram de lá...",
+      "dataLancamento": "2021-07-26",
+      "qtdPagina": 200,
+      "precoLivro": 61.15,
+      "imagemLivro": "Imagens_Livros/livro4.png",
+      "id": 5
+    },
+    {
+      "tituloLivro": "Terras de Sonhos e Acasos",
+      "autorLivro": "Filipe de Campos Ribeiro",
+      "genero": "Suspense",
+      "descricao": "Após a morte dos pais, Ismael volta ao interior de São Paulo para reaver sua herança. Inundada por uma tempestade e isolada do mundo a pequena cidade de Rio das Almas está sob intervenção militar. Seus habitantes, acuados por estranhos crimes, professam uma inquietante religiosidade baseada num livro de autor desconhecido. Terra de sonhos e acaso narra a jornada de Ismael por esse território primitivo, que atrai seus personagens para um vórtice impiedoso. A obra é um mergulho na genealogia do interior do país, que se serve de seus terrores e mitos sertanejos para apresentar uma história verdadeiramente brasileira...",
+      "dataLancamento": "2019-02-11",
+      "qtdPagina": 305,
+      "precoLivro": 18,
+      "imagemLivro": "Imagens_Livros/livro6.png",
+      "id": 6
     }
   ],
   "carrinho": []

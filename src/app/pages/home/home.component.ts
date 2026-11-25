@@ -1,14 +1,15 @@
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { Component, inject, OnInit } from '@angular/core';
 import { LivroService } from '../../services/livro.service';
 import { Livro } from '../../models/Livro';
 import { CarrinhoService } from '../../services/carrinho.service';
 import { ItemCarrinho } from '../../models/Carrinho';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [],
+  imports: [RouterLink, CurrencyPipe],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -28,6 +29,13 @@ export class HomeComponent implements OnInit {
   bestSelling: Livro[] = [];
   livrosAutor: Livro[] = [];
 
+  paginaAtual: number = 1;
+  paginaDestaque: number = 1;
+  paginaLancamento: number = 1;
+  paginaSelling: number = 1;
+  paginaAutor: number = 1;
+  livrosPorPagina: number = 6;
+
   autorSelecionado: string = '';
 
   ngOnInit(): void {
@@ -38,6 +46,10 @@ export class HomeComponent implements OnInit {
         this.livrosAleatorios(this.livrosDestaque);
         this.livrosAleatorios(this.livrosLancamento);
         this.livrosAleatorios(this.bestSelling);
+
+        this.atualizarDestaque();
+        this.atualizarLancamento();
+        this.atualizarSelling();
       },
     });
 
@@ -52,6 +64,10 @@ export class HomeComponent implements OnInit {
   }
 
   separarPorAutor() {
+    if (this.livros.length === 0) {
+      return;
+    }
+
     const livroAleatorio = this.livros[Math.floor(Math.random() * this.livros.length)];
 
     this.autorSelecionado = livroAleatorio.autorLivro;
@@ -59,6 +75,10 @@ export class HomeComponent implements OnInit {
     this.livrosAutor = this.livros.filter(
       livro => livro.autorLivro === this.autorSelecionado
     );
+
+    this.paginaAutor = 1;
+
+    this.atualizarAutor();
   }
 
   livrosAleatorios(sequenciaLivro: Livro[]) {
@@ -128,7 +148,7 @@ export class HomeComponent implements OnInit {
           codigoItem: codigoItem,
           titulo: livro.tituloLivro,
           autor: livro.autorLivro,
-          preco: Number(String(livro.precoLivro).replace(',', '.')),
+          preco: livro.precoLivro,
           quantidade: 1,
           imagem: livro.imagemLivro
         };
@@ -147,4 +167,76 @@ export class HomeComponent implements OnInit {
       }
     });
   }
+
+  // PAGINAÇÃO
+  get destaquesPaginados(): Livro[] {
+    const inicio = (this.paginaDestaque - 1) * this.livrosPorPagina;
+
+    return this.livrosDestaque.slice(inicio, inicio + this.livrosPorPagina);
+  }
+
+  get lancamentosPaginados(): Livro[] {
+    const inicio = (this.paginaLancamento - 1) * this.livrosPorPagina;
+
+    return this.livrosLancamento.slice(inicio, inicio + this.livrosPorPagina);
+  }
+
+  get bestSellingPaginados(): Livro[] {
+    const inicio = (this.paginaSelling - 1) * this.livrosPorPagina;
+
+    return this.bestSelling.slice(inicio, inicio + this.livrosPorPagina);
+  }
+
+  get livrosAutorPaginados(): Livro[] {
+    const inicio = (this.paginaAutor - 1) * this.livrosPorPagina;
+
+    return this.livrosAutor.slice(inicio, inicio + this.livrosPorPagina);
+  }
+
+  paginasDestaque: number[] = [];
+  paginasLancamento: number[] = [];
+  paginasSelling: number[] = [];
+  paginasAutor: number[] = [];
+
+  atualizarDestaque(): void {
+    this.paginasDestaque = [];
+
+    const total = Math.ceil(this.livrosDestaque.length / this.livrosPorPagina);
+
+    for (let i = 1; i <= total; i++) {
+      this.paginasDestaque.push(i);
+    }
+  }
+
+  atualizarLancamento(): void {
+    this.paginasLancamento = [];
+
+    const total = Math.ceil(this.livrosLancamento.length / this.livrosPorPagina);
+
+    for (let i = 1; i <= total; i++) {
+      this.paginasLancamento.push(i);
+    }
+  }
+
+  atualizarSelling(): void {
+    this.paginasSelling = [];
+
+    const total = Math.ceil(this.bestSelling.length / this.livrosPorPagina);
+
+    for (let i = 1; i <= total; i++) {
+      this.paginasSelling.push(i);
+    }
+  }
+
+  atualizarAutor(): void {
+    this.paginasAutor = [];
+
+    const total = Math.ceil(this.livrosAutor.length / this.livrosPorPagina);
+
+    for (let i = 1; i <= total; i++) {
+      this.paginasAutor.push(i);
+    }
+  }
+
+
 }

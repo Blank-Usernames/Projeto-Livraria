@@ -11,7 +11,7 @@
 
     <div class="filtro">
       <label>Autor</label>
-      <input type="text"  [(ngModel)]="termoAutor" (input)="filtrarLivros()" placeholder="Autor do Livro">
+      <input type="text" [(ngModel)]="termoAutor" (input)="filtrarLivros()" placeholder="Autor do Livro">
     </div>
 
     <div class="filtro">
@@ -43,67 +43,194 @@
       <h2 class="titulo-secao">Catálogo Geral</h2>
 
       <div class="colunas">
-        @for (livro of livrosFiltrados; track livro.id) {
+        @for (livro of livrosPaginados; track livro.id) {
         <div class="card-produto" (click)="abrirModal(livro)">
           <img class="capa-produto" [src]="livro.imagemLivro" [alt]="'Capa do livro ' + livro.tituloLivro">
           <h3 class="nome-produto">{{ livro.tituloLivro }}</h3>
           <p class="autor-produto">{{ livro.autorLivro }}</p>
-          <p class="preco-produto">{{ "R$ " + livro.precoLivro }}</p>
+          <p class="preco-produto">{{ livro.precoLivro | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</p>
           <button class="btn-comprar" (click)="adicionarCarrinho(livro)">Comprar</button>
         </div>
         }
       </div>
     </section>
+
+    <div class="paginacao">
+      <button (click)="mudarPagina(paginaAtual - 1)" [disabled]="paginaAtual === 1">
+        Anterior
+      </button>
+
+      @for (pagina of paginas; track pagina) {
+      <button (click)="mudarPagina(pagina)" [class.ativa]="paginaAtual >= pagina">
+        {{ pagina }}
+      </button>
+      }
+
+      <button (click)="mudarPagina(paginaAtual + 1)" [disabled]="paginaAtual === totalPaginas">
+        Próxima
+      </button>
+    </div>
 
     <section class="secao-produtos">
       <h2 class="titulo-secao">Terror</h2>
 
       <div class="colunas">
-        @for (livro of livrosTerror; track livro.id) {
+        @for (livro of livrosTerrorPaginados; track livro.id) {
         <div class="card-produto" (click)="abrirModal(livro)">
           <img class="capa-produto" [src]="livro.imagemLivro" [alt]="'Capa do livro ' + livro.tituloLivro">
           <h3 class="nome-produto">{{ livro.tituloLivro }}</h3>
           <p class="autor-produto">{{ livro.autorLivro }}</p>
-          <p class="preco-produto">{{ "R$ " + livro.precoLivro }}</p>
+          <p class="preco-produto">{{ livro.precoLivro | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</p>
           <button class="btn-comprar" (click)="adicionarCarrinho(livro)">Comprar</button>
         </div>
         }
       </div>
     </section>
+
+    <div class="paginacao">
+      <button (click)="paginaTerror = paginaTerror - 1" [disabled]="paginaTerror === 1">
+        Anterior
+      </button>
+
+      @for (pagina of paginasTerror; track pagina) {
+      <button (click)="paginaTerror = pagina" [class.ativa]="paginaTerror === pagina">
+        {{ pagina }}
+      </button>
+      }
+
+      <button (click)="paginaTerror = paginaTerror + 1" [disabled]="paginaTerror >= paginasTerror.length">
+        Próxima
+      </button>
+    </div>
+
 
     <section class="secao-produtos">
       <h2 class="titulo-secao">Suspense</h2>
 
       <div class="colunas">
-        @for (livro of livrosSuspense; track livro.id) {
+        @for (livro of livrosSuspensePaginados; track livro.id) {
         <div class="card-produto" (click)="abrirModal(livro)">
           <img class="capa-produto" [src]="livro.imagemLivro" [alt]="'Capa do livro ' + livro.tituloLivro">
           <h3 class="nome-produto">{{ livro.tituloLivro }}</h3>
           <p class="autor-produto">{{ livro.autorLivro }}</p>
-          <p class="preco-produto">{{ "R$ " + livro.precoLivro }}</p>
+          <p class="preco-produto">{{ livro.precoLivro | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</p>
           <button class="btn-comprar" (click)="adicionarCarrinho(livro)">Comprar</button>
         </div>
         }
       </div>
     </section>
 
-    @if (livrosRomance.length > 0) {
+    <div class="paginacao">
+      <button (click)="paginaSuspense = paginaSuspense - 1" [disabled]="paginaSuspense === 1">
+        Anterior
+      </button>
+
+      @for (pagina of paginasSuspense; track pagina) {
+      <button (click)="paginaSuspense = pagina" [class.ativa]="paginaSuspense === pagina">
+        {{ pagina }}
+      </button>
+      }
+
+      <button (click)="paginaSuspense = paginaSuspense + 1" [disabled]="paginaSuspense >= paginasSuspense.length">
+        Próxima
+      </button>
+    </div>
+
     <section class="secao-produtos">
       <h2 class="titulo-secao">Romance</h2>
 
       <div class="colunas">
-        @for (livro of livrosRomance; track livro.id) {
+        @for (livro of livrosRomancePaginados; track livro.id) {
         <div class="card-produto" (click)="abrirModal(livro)">
           <img class="capa-produto" [src]="livro.imagemLivro" [alt]="'Capa do livro ' + livro.tituloLivro">
           <h3 class="nome-produto">{{ livro.tituloLivro }}</h3>
           <p class="autor-produto">{{ livro.autorLivro }}</p>
-          <p class="preco-produto">{{ "R$ " + livro.precoLivro}}</p>
+          <p class="preco-produto">{{ livro.precoLivro | currency:'BRL':'symbol':'1.2-2':'pt-BR'}}</p>
           <button class="btn-comprar" (click)="adicionarCarrinho(livro)">Comprar</button>
         </div>
         }
       </div>
     </section>
-    }
+
+    <div class="paginacao">
+      <button (click)="paginaRomance = paginaRomance - 1" [disabled]="paginaRomance === 1">
+        Anterior
+      </button>
+
+      @for (pagina of paginasRomance; track pagina) {
+      <button (click)="paginaRomance = pagina" [class.ativa]="paginaRomance === pagina">
+        {{ pagina }}
+      </button>
+      }
+
+      <button (click)="paginaRomance = paginaRomance + 1" [disabled]="paginaRomance >= paginasRomance.length">
+        Próxima
+      </button>
+    </div>
+
+    <section class="secao-produtos">
+      <h2 class="titulo-secao">Ficção</h2>
+
+      <div class="colunas">
+        @for (livro of livrosFiccaoPaginados; track livro.id) {
+        <div class="card-produto" (click)="abrirModal(livro)">
+          <img class="capa-produto" [src]="livro.imagemLivro" [alt]="'Capa do livro ' + livro.tituloLivro">
+          <h3 class="nome-produto">{{ livro.tituloLivro }}</h3>
+          <p class="autor-produto">{{ livro.autorLivro }}</p>
+          <p class="preco-produto">{{ livro.precoLivro | currency:'BRL':'symbol':'1.2-2':'pt-BR'}}</p>
+          <button class="btn-comprar" (click)="adicionarCarrinho(livro)">Comprar</button>
+        </div>
+        }
+      </div>
+    </section>
+
+    <div class="paginacao">
+      <button (click)="paginaFiccao = paginaFiccao - 1" [disabled]="paginaFiccao === 1">
+        Anterior
+      </button>
+
+      @for (pagina of paginasFiccao; track pagina) {
+      <button (click)="paginaFiccao = pagina" [class.ativa]="paginaFiccao === pagina">
+        {{ pagina }}
+      </button>
+      }
+
+      <button (click)="paginaFiccao = paginaFiccao + 1" [disabled]="paginaFiccao >= paginasFiccao.length">
+        Próxima
+      </button>
+    </div>
+
+    <section class="secao-produtos">
+      <h2 class="titulo-secao">Fantasia</h2>
+
+      <div class="colunas">
+        @for (livro of livrosFantasiaPaginados; track livro.id) {
+        <div class="card-produto" (click)="abrirModal(livro)">
+          <img class="capa-produto" [src]="livro.imagemLivro" [alt]="'Capa do livro ' + livro.tituloLivro">
+          <h3 class="nome-produto">{{ livro.tituloLivro }}</h3>
+          <p class="autor-produto">{{ livro.autorLivro }}</p>
+          <p class="preco-produto">{{ livro.precoLivro | currency:'BRL':'symbol':'1.2-2':'pt-BR'}}</p>
+          <button class="btn-comprar" (click)="adicionarCarrinho(livro)">Comprar</button>
+        </div>
+        }
+      </div>
+
+       <div class="paginacao">
+      <button (click)="paginaFantasia = paginaFantasia - 1" [disabled]="paginaFantasia === 1">
+        Anterior
+      </button>
+
+      @for (pagina of paginasFantasia; track pagina) {
+      <button (click)="paginaFantasia = pagina" [class.ativa]="paginaFantasia === pagina">
+        {{ pagina }}
+      </button>
+      }
+
+      <button (click)="paginaFantasia = paginaFantasia + 1" [disabled]="paginaFantasia >= paginasFantasia.length">
+        Próxima
+      </button>
+    </div>
+    </section>
 
   </div>
 
@@ -120,7 +247,7 @@
       <h3>{{ livroSelecionado.tituloLivro }}</h3>
       <p class="modal-autor">{{ livroSelecionado.autorLivro }}</p>
       <p class="modal-descricao">{{ livroSelecionado.descricao }}</p>
-      <p class="modal-preco">{{ "R$ " + livroSelecionado.precoLivro }}</p>
+      <p class="modal-preco">{{ livroSelecionado.precoLivro | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</p>
 
       <div class="modal-botoes">
         <button class="btn-comprar" (click)="adicionarCarrinho(livroSelecionado)">Comprar</button>

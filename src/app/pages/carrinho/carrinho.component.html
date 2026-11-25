@@ -27,7 +27,7 @@
             <p class="item-autor">{{ item.autor }}</p>
             <div class="item-preco-unitario">
               <span>Preço</span>
-              <strong>R$ {{ item.preco.toFixed(2).replace('.', ',') }}</strong>
+              <strong>{{ item.preco | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</strong>
             </div>
           </div>
 
@@ -44,7 +44,7 @@
 
           <div class="item-total-box">
             <span class="label-total">Total</span>
-            <strong class="valor-item-total">R$ {{ (item.preco * item.quantidade).toFixed(2).replace('.', ',') }}</strong>
+            <strong class="valor-item-total">{{ item.preco | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</strong>
           </div>
         </div>
       </div>
@@ -65,11 +65,11 @@
       <div class="caixa-sidebar caixa-totais">
         <div class="linha-valores">
           <span>Sub-Total</span>
-          <strong>R$ {{ valorSubTotal.toFixed(2).replace('.', ',') }}</strong>
+          <strong>{{ valorSubTotal | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</strong>
         </div>
         <div class="linha-valores">
           <span>Total</span>
-          <strong>R$ {{ valorTotal.toFixed(2).replace('.', ',') }}</strong>
+          <strong>{{ valorSubTotal | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</strong>
         </div>
 
         <a routerLink="/catalogo" class="btn-vermelho-largo">Continuar comprando</a>
