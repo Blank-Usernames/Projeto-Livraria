@@ -1,129 +1,260 @@
-* {
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
+:host {
+    display: block;
 }
 
-body {
-    margin: 0;
-    background-color: #f2f2f2;
-}
-
-/* Espaçamento da página */
+/* PÁGINA */
 #pagina-ajuda {
     width: 100%;
     margin-bottom: 50px;
+    font-family: Arial, sans-serif;
 }
 
-/* Estilo do cabeçalho da ajuda */
+/* FAIXA SUPERIOR */
 .faixa-topo {
-    background-color: #333333;
+    padding: 55px 20px;
+    background-color: var(--texto);
     color: white;
     text-align: center;
-    padding: 40px 20px;
 }
 
 .faixa-topo h1 {
-    color: #fdfdfd;
-    margin-top: 0;
-}
-
-/* Barra de pesquisa*/
-.caixa-busca input {
-    padding: 10px;
-    width: 300px;
-    border: 1px solid #ccc;
-}
-
-#botao-buscar {
-    padding: 10px 20px;
-    background-color: #7E1214;
+    margin-bottom: 12px;
     color: white;
-    border: none;
-    cursor: pointer;
+    font-size: 34px;
 }
 
-/* Limitador de largura para não ocupar tada a tela */
+.faixa-topo p {
+    color: #f1dada;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* CONTEÚDO */
 .conteudo-ajuda {
-    width: 80%;
+    width: min(1100px, 90%);
     margin: 0 auto;
-    padding-top: 30px;
+    padding-top: 35px;
 }
 
-/* Caixa branca para as perguntas */
+/* PERGUNTAS FREQUENTES */
 .seccao-perguntas {
-    background-color: white;
-    padding: 20px;
-    border: 1px solid #cccccc;
+    padding: 25px;
     margin-bottom: 30px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.04);
 }
 
-.seccao-perguntas h2 {
-    color: #7E1214;
+.seccao-perguntas h2,
+.info-contato h2,
+.caixa-formulario h2 {
+    margin-bottom: 20px;
+    color: var(--vermelho-escuro);
+    font-size: 22px;
 }
 
 .lista-perguntas {
-    border-bottom: 1px solid #eeeeee;
-    padding: 10px 0;
+    display: flex;
+    flex-direction: column;
 }
 
-.item-pergunta{
-    margin-top: 15px;
+.item-pergunta {
+    padding: 15px 5px;
+    border-bottom: 1px solid #eee;
     cursor: pointer;
 }
 
-/* Organização lado a lado */
+.item-pergunta:last-child {
+    border-bottom: none;
+}
+
+.item-pergunta summary {
+    color: var(--texto);
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.item-pergunta summary::marker {
+    color: var(--vermelho-principal);
+}
+
+.item-pergunta p {
+    margin-top: 12px;
+    padding-left: 20px;
+    color: #666;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+/* ÁREA DE CONTATO */
 .area-contato-formulario {
     display: flex;
+    align-items: stretch;
     justify-content: space-between;
+    gap: 25px;
 }
 
-/* Caixa de informações */
+/* INFORMAÇÕES DE CONTATO */
 .info-contato {
-    background-color: white;
     width: 35%;
-    padding: 20px;
-    border: 1px solid #cccccc;
-}
-
-.info-contato h2 {
-    color: #7E1214;
-}
-
-/* Caixa do formulário */
-.caixa-formulario {
+    padding: 25px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
     background-color: white;
-    width: 60%;
-    padding: 20px;
-    border: 1px solid #cccccc;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.04);
 }
 
-.caixa-formulario h2 {
-    color: #7E1214;
+.info-contato p {
+    margin-bottom: 18px;
+    color: #555;
+    font-size: 14px;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
 }
 
-/* Inputs do formulário ocupando 100% da caixa */
+.info-contato strong {
+    color: var(--vermelho-escuro);
+}
+
+/* FORMULÁRIO */
+.caixa-formulario {
+    width: 65%;
+    padding: 25px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.04);
+}
+
+.caixa-formulario form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.caixa-formulario form>label {
+    margin-top: 8px;
+    color: var(--texto);
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* CAMPOS DE TEXTO */
 .caixa-formulario input[type="text"],
 .caixa-formulario input[type="email"],
 .caixa-formulario textarea {
     width: 100%;
-    padding: 8px;
-    margin-top: 5px;
-    border: 1px solid #999999;
+    padding: 11px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+    background-color: #fafafa;
+    color: var(--texto);
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-/* Botões ao final do formulário */
-#botao-enviar {
-    background-color: #7E1214;
-    color: white;
-    padding: 10px 15px;
-    border: none;
+.caixa-formulario input[type="text"]:focus,
+.caixa-formulario input[type="email"]:focus,
+.caixa-formulario textarea:focus {
+    border-color: var(--vermelho-principal);
+    box-shadow: 0 0 0 3px rgba(204, 25, 25, 0.12);
+}
+
+.caixa-formulario textarea {
+    min-height: 130px;
+    resize: vertical;
+}
+
+/* OPÇÕES DE ASSUNTO */
+.opcoes-assunto {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 20px;
+}
+
+.opcao-assunto {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 6px;
+}
+
+.opcao-assunto input[type="radio"] {
+    margin: 0;
+    accent-color: var(--vermelho-principal);
     cursor: pointer;
 }
 
-#botao-limpar {
-    background-color: #dddddd;
-    color: black;
-    padding: 10px 15px;
-    border: none;
+.opcao-assunto label {
+    margin: 0;
+    font-size: 14px;
+    font-weight: normal;
     cursor: pointer;
+}
+
+/* BOTÕES */
+.btn-container {
+    display: flex;
+    gap: 10px;
+}
+
+.caixa-formulario button {
+    align-self: flex-start;
+    margin-top: 8px;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 800px) {
+    .conteudo-ajuda {
+        width: 92%;
+    }
+
+    .area-contato-formulario {
+        flex-direction: column;
+    }
+
+    .info-contato,
+    .caixa-formulario {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .faixa-topo {
+        padding: 40px 15px;
+    }
+
+    .faixa-topo h1 {
+        font-size: 27px;
+    }
+
+    .faixa-topo p {
+        font-size: 14px;
+    }
+
+    .conteudo-ajuda {
+        width: 95%;
+        padding-top: 20px;
+    }
+
+    .seccao-perguntas,
+    .info-contato,
+    .caixa-formulario {
+        padding: 18px;
+    }
+
+    .seccao-perguntas h2,
+    .info-contato h2,
+    .caixa-formulario h2 {
+        font-size: 19px;
+    }
+
+    .caixa-formulario button {
+        width: 100%;
+    }
 }

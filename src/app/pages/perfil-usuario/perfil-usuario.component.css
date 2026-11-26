@@ -1,183 +1,178 @@
-* {
-    box-sizing: border-box;
+:host {
+    display: block;
 }
 
-/* TAG */
-
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    background-color: #ebebeb;
-}
-
+/* ESTRUTURA PRINCIPAL */
 main {
     display: flex;
     justify-content: center;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0 1rem;
-    width: 50%;
-    height: 100%;
-    border-radius: 10px;
-    background-color: #FFFFFF;
+    width: min(850px, 92%);
+    margin: 40px auto;
+    padding: 35px;
+    border-radius: 12px;
+    background-color: white;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    font-family: Arial, sans-serif;
 }
 
-h1 {
-    color: #3b3b3b;
-    margin: 0;
-}
-
-h2 {
-    color: #3b3b3b;
-}
-
-hr {
-    width: 100%;
-    margin: 2rem 0;
-    border: black solid 0.1px;
-}
-
-button {
-    width: 6rem;
-    height: 2rem;
-    border-radius: 5px;
-    border: none;
-    color: #FFFFFF;
-    background-color: rgb(154, 26, 26);
-    transition: ease-in-out, 0.3s;
-}
-
-button:hover {
-    transform: scale(1.1);
-    background-color: rgb(215, 51, 51);
-}
-
-/* ID */
-
-#section-perfil {
-    height: 85%;
-    flex: 1;
-    padding: 2rem;
-}
-
-div#perfil-container {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    width: min(100%, 600px);
-}
-
-div#deletar-container {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-form#perfil-usuario {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    flex: 1;
-    width: min(100%, 600px);
-    gap: 0.5rem;
-}
-
+/* CONTAINER */
 #section-perfil {
     display: flex;
     justify-content: center;
-    flex-direction: column;
-    align-items: center;
-}
-
-section#perfil-controllers {
-    display: flex;
-    height: 10%;
     width: 100%;
 }
 
-div#deletar-controllers {
+#perfil-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 650px;
+    gap: 25px;
+}
+
+/* TÍTULO */
+.section-title {
+    padding: 10px 0 15px;
+}
+
+.section-title h1 {
+    color: var(--vermelho-escuro);
+    font-size: 30px;
+}
+
+/* FORMULÁRIO */
+#perfil-usuario {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 18px;
+}
+
+/* CAMPOS */
+.input-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 7px;
+}
+
+.input-container label {
+    color: var(--texto);
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.input-container input {
+    width: 100%;
+    height: 42px;
+    padding: 0 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+    background-color: #fafafa;
+    color: var(--texto);
+    font-size: 15px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input-container input:focus {
+    border-color: var(--vermelho-principal);
+    box-shadow: 0 0 0 3px rgba(204, 25, 25, 0.12);
+}
+
+/* CAMPOS SOMENTE LEITURA */
+.input-container input[readonly] {
+    background-color: #e9e9e9;
+    color: #777;
+    cursor: not-allowed;
+}
+
+/* BOTÕES DO PERFIL */
+#perfil-controllers {
+    width: 100%;
+    margin-top: 10px;
+}
+
+#perfil-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* DIVISÃO */
+#perfil-container hr {
+    width: 100%;
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 5px 0;
+}
+
+/* ÁREA DE EXCLUSÃO */
+#deletar-zone {
+    width: 100%;
+}
+
+#deletar-container {
+    width: 100%;
+}
+
+#deletar-info {
+    padding: 22px;
+    border: 1px solid #f3b0b0;
+    border-left: 5px solid var(--vermelho-principal);
+    border-radius: 8px;
+    background-color: #fff5f5;
+}
+
+#deletar-info h2 {
+    margin-bottom: 12px;
+    color: var(--vermelho-escuro);
+    font-size: 21px;
+}
+
+#deletar-info p {
+    margin-bottom: 18px;
+    color: #555;
+    font-size: 14px;
+    line-height: 1.7;
+    text-align: justify;
+}
+
+#deletar-info p::before {
+    content: "⚠️ ";
+}
+
+/* BOTÃO DE EXCLUSÃO */
+#deletar-controllers {
     display: flex;
     justify-content: flex-end;
 }
 
-div#perfil-buttons {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    width: 100%;
-    gap: 0.5rem;
-}
+/* RESPONSIVIDADE */
+@media (max-width: 600px) {
+    main {
+        width: 94%;
+        margin: 20px auto;
+        padding: 20px;
+    }
 
-#deletar-info {
-    text-align: justify;
-    padding: 1rem;  
-    border-radius: 8px;
-    border: 1px solid #f3b0b0;
-    background-color: #fff5f5;
-}
+    .section-title h1 {
+        font-size: 25px;
+    }
 
-#deletar-info p::before {
-    content: "⚠️";
-}
+    #deletar-info {
+        padding: 16px;
+    }
 
-/* CLASS */
+    #perfil-buttons {
+        flex-direction: column;
+    }
 
-div.input-container {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    width: 100%;
-}
+    #perfil-buttons button {
+        width: 100%;
+    }
 
-div.section-title {
-    padding: 1rem 0;
-}
-
-button.delete-button {
-    box-sizing: border-box;
-    border: #ea0b0b 2px solid;
-    background-color: white;
-    color: #ea0b0b;
-}
-
-button.delete-button:hover {
-    background-color: #ea0b0b;
-    color: #FFFFFF;
-}
-
-.button-alter {
-    box-sizing: border-box;
-    border: black 2px solid;
-    background-color: white;
-    color: black;
-}
-
-.button-alter:hover {
-    background-color: black;
-    color: #FFFFFF;
-}
-
-/* SUB TAG */
-
-form input {
-    height: 2rem;
-    font-size: large;
-    padding-left: 2%;
-    border-radius: 4px;
-    border: 1px solid #8f8f9d;
-    color: rgb(36, 36, 36);
-}
-
-.form-title h1 {
-    margin: 0;
-}
-
-/* TIPO */
-
-input[readonly] {
-    cursor: not-allowed;
-    background-color: #eeeeee;
+    #deletar-controllers button {
+        width: 100%;
+    }
 }

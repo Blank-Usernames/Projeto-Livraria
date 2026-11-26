@@ -33,7 +33,7 @@ export class CatalogoLivrosComponent implements OnInit {
   paginaRomance: number = 1;
   paginaFantasia: number = 1;
   paginaFiccao: number = 1;
-  livrosPorPagina: number = 5;
+  livrosPorPagina: number = 15;
 
   livros: Livro[] = [];
   itens: ItemCarrinho[] = [];
@@ -49,7 +49,6 @@ export class CatalogoLivrosComponent implements OnInit {
       next: (livros) => {
         this.livros = livros;
         this.livrosFiltrados = livros;
-        this.separarPorGenero();
         this.filtrarLivros();
       },
     });
@@ -67,30 +66,6 @@ export class CatalogoLivrosComponent implements OnInit {
 
     this.isLogado = localStorage.getItem('usuarioLogado') === 'true';
     this.modoAdmin = localStorage.getItem('adminLogado') === 'true';
-  }
-
-  separarPorGenero() {
-    this.livrosTerror = this.livros.filter(livro => livro.genero === 'Terror');
-    this.livrosSuspense = this.livros.filter(livro => livro.genero === 'Suspense');
-    this.livrosFantasia = this.livros.filter(livro => livro.genero === 'Fantasia');
-    this.livrosRomance = this.livros.filter(livro => livro.genero === 'Romance');
-    this.livrosFiccao = this.livros.filter(livro => livro.genero === 'Ficção');
-
-    this.paginaTerror = 1;
-    this.paginaSuspense = 1;
-    this.paginaFantasia = 1;
-    this.paginaRomance = 1;
-    this.paginaFiccao = 1;
-
-    this.atualizarTerror();
-    this.atualizarSuspense();
-    this.atualizarRomance();
-    this.atualizarFiccao();
-    this.atualizarFantasia();
-  }
-
-  goToCadastroLivros() {
-    this.router.navigate(['/cadastro-livros']);
   }
 
   livroSelecionado: Livro | null = null;
@@ -143,7 +118,7 @@ export class CatalogoLivrosComponent implements OnInit {
     const codigoItem = livro.id;
 
     if (!idUsuario || !codigoItem) {
-      alert('Não foi possível identificar o usuário ou o livro.');
+      this.mostrarPopup('Não foi possível identificar o usuário ou o livro.', 'erro');
       return;
     }
 
@@ -155,7 +130,7 @@ export class CatalogoLivrosComponent implements OnInit {
         );
 
         if (livroJaAdicionado) {
-          alert('Este livro já está no seu carrinho!');
+          this.mostrarPopup('Este livro já está no seu carrinho!', 'aviso');
           return;
         }
 
@@ -171,17 +146,29 @@ export class CatalogoLivrosComponent implements OnInit {
 
         this.carrinhoService.incluir(itemCarrinho).subscribe({
           next: () => {
-            alert(`Livro: ${livro.tituloLivro} adicionado ao carrinho!`);
+            this.mostrarPopup(`Livro: ${livro.tituloLivro} adicionado ao carrinho!`);
           },
           error: () => {
-            alert('Erro ao adicionar livro ao carrinho.');
+            this.mostrarPopup('Erro ao adicionar livro ao carrinho.', 'erro');
           }
         });
       },
       error: () => {
-        alert('Erro ao consultar o carrinho.');
+        this.mostrarPopup('Erro ao adicionar livro.', 'erro');
       }
     });
+  }
+
+  mensagemPopup = '';
+  tipoPopup = '';
+
+  mostrarPopup(mensagem: string, tipo: string = 'sucesso') {
+    this.mensagemPopup = mensagem;
+    this.tipoPopup = tipo;
+
+    setTimeout(() => {
+      this.mensagemPopup = '';
+    }, 3000);
   }
 
   // PAGINAÇÃO
@@ -198,98 +185,13 @@ export class CatalogoLivrosComponent implements OnInit {
     return Math.ceil(this.livrosFiltrados.length / this.livrosPorPagina);
   }
 
-  get livrosTerrorPaginados(): Livro[] {
-    const inicio = (this.paginaTerror - 1) * this.livrosPorPagina;
-
-    return this.livrosTerror.slice(inicio, inicio + this.livrosPorPagina);
-  }
-
-  get livrosSuspensePaginados(): Livro[] {
-    const inicio = (this.paginaSuspense - 1) * this.livrosPorPagina;
-
-    return this.livrosSuspense.slice(inicio, inicio + this.livrosPorPagina);
-  }
-
-  get livrosRomancePaginados(): Livro[] {
-    const inicio = (this.paginaRomance - 1) * this.livrosPorPagina;
-
-    return this.livrosRomance.slice(inicio, inicio + this.livrosPorPagina);
-  }
-
-  get livrosFiccaoPaginados(): Livro[] {
-    const inicio = (this.paginaFiccao - 1) * this.livrosPorPagina;
-
-    return this.livrosFiccao.slice(inicio, inicio + this.livrosPorPagina);
-  }
-
-  get livrosFantasiaPaginados(): Livro[] {
-    const inicio = (this.paginaFantasia - 1) * this.livrosPorPagina;
-
-    return this.livrosFantasia.slice(inicio, inicio + this.livrosPorPagina);
-  }
-
   paginas: number[] = [];
-  paginasTerror: number[] = [];
-  paginasSuspense: number[] = [];
-  paginasRomance: number[] = [];
-  paginasFiccao: number[] = [];
-  paginasFantasia: number[] = [];
 
   atualizarPaginas(): void {
     this.paginas = [];
 
     for (let i = 1; i <= this.totalPaginas; i++) {
       this.paginas.push(i);
-    }
-  }
-
-  atualizarTerror(): void {
-    this.paginasTerror = [];
-
-    const total = Math.ceil(this.livrosTerror.length / this.livrosPorPagina);
-
-    for (let i = 1; i <= total; i++) {
-      this.paginasTerror.push(i);
-    }
-  }
-
-  atualizarSuspense(): void {
-    this.paginasSuspense = [];
-
-    const total = Math.ceil(this.livrosSuspense.length / this.livrosPorPagina);
-
-    for (let i = 1; i <= total; i++) {
-      this.paginasSuspense.push(i);
-    }
-  }
-
-  atualizarRomance(): void {
-    this.paginasRomance = [];
-
-    const total = Math.ceil(this.livrosRomance.length / this.livrosPorPagina);
-
-    for (let i = 1; i <= total; i++) {
-      this.paginasRomance.push(i);
-    }
-  }
-
-  atualizarFiccao(): void {
-    this.paginasFiccao = [];
-
-    const total = Math.ceil(this.livrosFiccao.length / this.livrosPorPagina);
-
-    for (let i = 1; i <= total; i++) {
-      this.paginasFiccao.push(i);
-    }
-  }
-
-  atualizarFantasia(): void {
-    this.paginasFantasia = [];
-
-    const total = Math.ceil(this.livrosFantasia.length / this.livrosPorPagina);
-
-    for (let i = 1; i <= total; i++) {
-      this.paginasFantasia.push(i);
     }
   }
 

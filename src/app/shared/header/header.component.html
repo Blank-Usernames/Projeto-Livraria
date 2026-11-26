@@ -1,70 +1,97 @@
-<div class="posicao">
-    <div class="TopoSecundario">
-        <div class="MarcaSecundaria">Ars Libris</div>
-        <nav>
+<div class="header-sticky">
+
+    <!-- Barra superior -->
+    <div class="header-topo">
+
+        <div class="marca">
+            Ars Libris
+        </div>
+
+        <nav class="navegacao-principal">
             <ul>
-                <li><a routerLink="/">Inicio</a></li>
+                <li><a routerLink="/">Início</a></li>
                 <li><a routerLink="/catalogo">Catálogo</a></li>
                 <li><a routerLink="/ajuda-feedback">Ajuda</a></li>
-                @if (modoAdmin) {
-                <li><a routerLink="/cadastro-livros">Cadastrar Livro</a></li>
-                <li><a routerLink="/admin-usuario">Administração</a></li>
-                } @else {
 
+                @if (modoAdmin) {
+                    <li><a routerLink="/cadastro-livros">Cadastrar Livro</a></li>
+                    <li><a routerLink="/admin-usuario">Administração</a></li>
                 }
             </ul>
         </nav>
+
     </div>
 
+    <!-- Barra principal -->
+    <header class="header-principal">
 
-    <header>
+        <div class="barra-pesquisa">
+            <button
+                type="button"
+                class="btn btn-primary btn-busca"
+                (click)="pesquisar()"
+                aria-label="Pesquisar">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
 
-        <div class="BarraPesquisa">
-            <button type="button" (click)="pesquisar()" class="iconeBusca"><i class="fa-solid fa-magnifying-glass"></i></button>
-            <input type="text" [(ngModel)]="termoBusca" placeholder="Buscar Produtos...">
+            <input
+                type="text"
+                [(ngModel)]="termoBusca"
+                placeholder="Buscar produtos...">
         </div>
-        <div class="BlocoDireita">
-            <nav class="acoesUsuarios">
+
+        <div class="acoes-direita">
+
+            <nav class="acoes-usuarios">
                 @if (!isLogado) {
-                <ul>
-                    <li>
-                        <a routerLink="/cadastro-usuario">
-                            <i class="fa-solid fa-user"></i>
-                            Entrar
-                        </a>
-                    </li>
-                    <li>
-                        <a routerLink="/cadastro-usuario">/ Criar Conta</a>
-                    </li>
-
-                </ul>
+                    <ul>
+                        <li>
+                            <a routerLink="/cadastro-usuario">
+                                <i class="fa-solid fa-user"></i>
+                                Entrar
+                            </a>
+                        </li>
+                        <li>
+                            <a routerLink="/cadastro-usuario">
+                                Criar Conta
+                            </a>
+                        </li>
+                    </ul>
                 } @else {
-                <ul>
-                    <li>
-                        <a (click)="sair()">
-                            <i class="fa-solid fa-user"></i>
-                            Sair
-                        </a>
-                    </li>
-                    <li>
-                        <a [routerLink]="['/perfil-usuario', clienteId]">/ Meu Perfil</a>
-                    </li>
-
-                </ul>
+                    <ul>
+                        <li>
+                            <button type="button" class="link-sair" (click)="sair()">
+                                <i class="fa-solid fa-user"></i>
+                                Sair
+                            </button>
+                        </li>
+                        <li>
+                            <a [routerLink]="['/perfil-usuario', clienteId]">
+                                Meu Perfil
+                            </a>
+                        </li>
+                    </ul>
                 }
             </nav>
-            <div class="botaoCarrinho">
+
+            <div class="area-carrinho">
                 @if (!isLogado) {
-                <a routerLink="/cadastro-usuario" class="iconeCarrinho" aria-label="ver carrinho">
-                    <i class="fa-sharp fa-solid fa-cart-shopping"></i>
-                </a>
+                    <a routerLink="/cadastro-usuario"
+                       class="icone-carrinho"
+                       aria-label="Entrar para acessar o carrinho">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </a>
                 } @else {
-                <a routerLink="/carrinho" class="iconeCarrinho" aria-label="ver carrinho">
-                    <i class="fa-sharp fa-solid fa-cart-shopping"></i>
-                </a>
+                    <a routerLink="/carrinho"
+                       class="icone-carrinho"
+                       aria-label="Ver carrinho">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </a>
                 }
             </div>
+
         </div>
 
     </header>
+
 </div>

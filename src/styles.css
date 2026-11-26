@@ -1,5 +1,77 @@
+:root {
+  /* CORES */
+  --vermelho-claro: #db4343;
+  --vermelho-principal: #cc1919;
+  --vermelho-escuro: #751717;
+
+  --background: #e7e7e7;
+  --texto: #292929;
+}
+
+/* ESPAÇAMENTO */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container-pagina {
+  width: 100%;
+  padding: 40px 5%;
+}
+
+/* CONFIGURAÇÕES GERAIS */
 body {
-    margin: 0;
-    padding: 0;
-    background-color: #ebebeb;
+  background-color: var(--background);
+  color: var(--texto);
+  font-family: Arial, sans-serif;
+}
+
+/* BOTÕES */
+.btn {
+  padding: 10px 20px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-primary {
+  background-color: var(--vermelho-escuro);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: var(--vermelho-principal);
+}
+
+.btn-secondary {
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+}
+
+.btn-secondary:hover {
+  background-color: black;
+  color: white;
+}
+
+.btn-delete {
+  background-color: white;
+  color: var(--vermelho-principal);
+  border: 1px solid var(--vermelho-principal);
+}
+
+.btn-delete:hover {
+  background-color: var(--vermelho-principal);
+  color: white;
+}
+
+.btn:disabled {
+  background-color: #292929;
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  pointer-events: none;
 }
