@@ -22,7 +22,7 @@ export class CadastroLivrosComponent implements OnInit {
     if (this.livroId) {
       this.service.buscarPorId(this.livroId).subscribe({
         next: (livro) => this.livro = livro,
-        error: () => alert('Livro não encontrado.')
+        error: () => this.mostrarPopup('Livro não encontrado.', 'erro')
       });
     } else {
 
@@ -33,17 +33,16 @@ export class CadastroLivrosComponent implements OnInit {
     if (this.livroId) {
       this.service.editar(this.livro).subscribe({
         next: (livro) => {
-          alert(`Os dados de ${livro.tituloLivro}, foram alterados com sucesso.`);
+          this.mostrarPopup(`Os dados de ${livro.tituloLivro} foram atualizados com sucesso!`);
           this.livro = livro;
           this.router.navigate(['/catalogo']);
         },
-        error: () => alert('Erro ao alterar o livro.')
+        error: () => this.mostrarPopup('Erro ao alterar o livro.', 'erro')
       })
     } else {
       this.service.incluir(this.livro).subscribe({
         next: (livro) => {
-          alert(`Livro: ${livro.tituloLivro} \nID: ${livro.id}`)
-          this.router.navigate(["/catalogo"]);
+          this.mostrarPopup(`Livro: ${livro.tituloLivro} Cadastrado. \nID: ${livro.id}`);
         }
       });
     }
@@ -55,5 +54,17 @@ export class CadastroLivrosComponent implements OnInit {
         this.router.navigate(['/catalogo']);
       })
     }
+  }
+
+  mensagemPopup = '';
+  tipoPopup = '';
+
+  mostrarPopup(mensagem: string, tipo: string = 'sucesso') {
+    this.mensagemPopup = mensagem;
+    this.tipoPopup = tipo;
+
+    setTimeout(() => {
+      this.mensagemPopup = '';
+    }, 3000);
   }
 }

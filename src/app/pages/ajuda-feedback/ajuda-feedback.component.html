@@ -1,95 +1,98 @@
-<body>
+@if (mensagemPopup) {
+<div class="popup" [class.popup-sucesso]="tipoPopup === 'sucesso'" [class.popup-aviso]="tipoPopup === 'aviso'"
+    [class.popup-erro]="tipoPopup === 'erro'" role="status" aria-live="polite">
+    <span class="popup-mensagem">{{ mensagemPopup }}</span>
+</div>
+}
 
 
-    <div id="pagina-ajuda">
+<div id="pagina-ajuda">
 
-        <!-- Faixa escura no topo -->
-        <div class="faixa-topo">
-            <h1>Como podemos ajudar?</h1>
-            <p>Encontre respostas rápidas ou fale com a nossa equipe.</p>
+    <!-- Faixa escura no topo -->
+    <div class="faixa-topo">
+        <h1>Como podemos ajudar?</h1>
+        <p>Encontre respostas rápidas ou fale com a nossa equipe.</p>
+    </div>
+
+    <!-- Área central com o conteúdo -->
+    <div class="conteudo-ajuda">
+
+        <!-- Perguntas Frequentes FAQ -->
+        <div class="seccao-perguntas">
+            <h2>Perguntas Frequentes (FAQ)</h2>
+            <div class="lista-perguntas">
+                <details class="item-pergunta">
+                    <summary><strong>Como rastrear o pedido do meu livro?</strong></summary>
+                    <p>Faça login, vá à aba "Meus Pedidos" e clique em "Rastrear Entrega".</p>
+                </details>
+                <details class="item-pergunta">
+                    <summary><strong>Quais as formas de pagamento aceites?</strong></summary>
+                    <p>Aceitamos cartão de crédito, PayPal, Pix e Boleto Bancário.</p>
+                </details>
+                <details class="item-pergunta">
+                    <summary><strong>Qual é a política de frete grátis?</strong></summary>
+                    <p>Oferecemos frete grátis para compras acima de R$ 150,00.</p>
+                </details>
+            </div>
         </div>
+        <!-- Fale Conosco -->
+        <div class="area-contato-formulario">
 
-        <!-- Área central com o conteúdo -->
-        <div class="conteudo-ajuda">
-
-            <!-- Perguntas Frequentes FAQ -->
-            <div class="seccao-perguntas">
-                <h2>Perguntas Frequentes (FAQ)</h2>
-                <div class="lista-perguntas">
-                    <details class="item-pergunta">
-                        <summary><strong>Como rastrear o pedido do meu livro?</strong></summary>
-                        <p>Faça login, vá à aba "Meus Pedidos" e clique em "Rastrear Entrega".</p>
-                    </details>
-                    <details class="item-pergunta">
-                        <summary><strong>Quais as formas de pagamento aceites?</strong></summary>
-                        <p>Aceitamos cartão de crédito, PayPal, Pix e Boleto Bancário.</p>
-                    </details>
-                    <details class="item-pergunta">
-                        <summary><strong>Qual é a política de frete grátis?</strong></summary>
-                        <p>Oferecemos frete grátis para compras acima de R$ 150,00.</p>
-                    </details>
-                </div>
-            </div>
-            <!-- Fale Conosco -->
-            <div class="area-contato-formulario">
-
-                <div class="info-contato">
-                    <h2>Fale Conosco</h2>
-                    <p><strong>E-mail:</strong> ArsLibris&#64;gmail.com.br</p>
-                    <p><strong>Telefone:</strong> (11) 4002-8922</p>
-                    <p><strong>Horário:</strong> Segunda-Feira a Sexta-Feira: 09h às 18h</p>
-                    <p><strong>Endereço:</strong> Av. Paulista, 1578 — Bela Vista - São Paulo — SP, 01310-200
-                        Brasil</p>
-
-                </div>
-                <!-- Formulário contato -->
-                <div class="caixa-formulario">
-                    <h2>Envie o seu Feedback</h2>
-
-                    <form (ngSubmit)="enviarFormulario()">
-
-                        <label for="nome-usuario">Nome Completo:*</label><br>
-                        <input type="text" id="nome-usuario" name="nome" [(ngModel)]="nomeUsuario">
-
-                        <label for="email-usuario">E-mail:*</label><br>
-                        <input type="email" id="email-usuario" name="email" [(ngModel)]="emailUsuario">
-
-                        <label>Assunto:</label>
-
-                        <div class="opcoes-assunto">
-
-                            <div class="opcao-assunto">
-                                <input type="radio" id="assunto-duvida" name="assunto" value="duvida"
-                                    [(ngModel)]="assunto">
-                                <label for="assunto-duvida">Dúvida</label>
-                            </div>
-
-                            <div class="opcao-assunto">
-                                <input type="radio" id="assunto-sugestao" name="assunto" value="sugestao"
-                                    [(ngModel)]="assunto">
-                                <label for="assunto-sugestao">Sugestão</label>
-                            </div>
-
-                            <div class="opcao-assunto">
-                                <input type="radio" id="assunto-reclamacao" name="assunto" value="reclamacao"
-                                    [(ngModel)]="assunto">
-                                <label for="assunto-reclamacao">Reclamação</label>
-                            </div>
-
-                        </div>
-
-                        <label for="mensagem-texto">Mensagem:*</label>
-                        <textarea id="mensagem-texto" name="mensagem" rows="5" [(ngModel)]="mensagemTexto"></textarea>
-
-                        <div class="btn-container">
-                            <button type="button" id="botao-enviar" class="btn btn-primary">Enviar Mensagem</button>
-                            <button type="button" id="botao-limpar" class="btn btn-secondary"
-                                (click)="limparFormulario()">Limpar</button>
-                        </div>
-                    </form>
-                </div>
+            <div class="info-contato">
+                <h2>Fale Conosco</h2>
+                <p><strong>E-mail:</strong> ArsLibris&#64;gmail.com.br</p>
+                <p><strong>Telefone:</strong> (11) 4002-8922</p>
+                <p><strong>Horário:</strong> Segunda-Feira a Sexta-Feira: 09h às 18h</p>
+                <p><strong>Endereço:</strong> Av. Paulista, 1578 — Bela Vista - São Paulo — SP, 01310-200
+                    Brasil</p>
 
             </div>
+            <!-- Formulário contato -->
+            <div class="caixa-formulario">
+                <h2>Envie o seu Feedback</h2>
+
+                <form (ngSubmit)="enviarFormulario()">
+
+                    <label for="nome-usuario">Nome Completo:*</label><br>
+                    <input type="text" id="nome-usuario" name="nome" [(ngModel)]="nomeUsuario">
+
+                    <label for="email-usuario">E-mail:*</label><br>
+                    <input type="email" id="email-usuario" name="email" [(ngModel)]="emailUsuario">
+
+                    <label>Assunto:</label>
+
+                    <div class="opcoes-assunto">
+
+                        <div class="opcao-assunto">
+                            <input type="radio" id="assunto-duvida" name="assunto" value="duvida" [(ngModel)]="assunto">
+                            <label for="assunto-duvida">Dúvida</label>
+                        </div>
+
+                        <div class="opcao-assunto">
+                            <input type="radio" id="assunto-sugestao" name="assunto" value="sugestao"
+                                [(ngModel)]="assunto">
+                            <label for="assunto-sugestao">Sugestão</label>
+                        </div>
+
+                        <div class="opcao-assunto">
+                            <input type="radio" id="assunto-reclamacao" name="assunto" value="reclamacao"
+                                [(ngModel)]="assunto">
+                            <label for="assunto-reclamacao">Reclamação</label>
+                        </div>
+
+                    </div>
+
+                    <label for="mensagem-texto">Mensagem:*</label>
+                    <textarea id="mensagem-texto" name="mensagem" rows="5" [(ngModel)]="mensagemTexto"></textarea>
+
+                    <div class="btn-container">
+                        <button type="button" id="botao-enviar" class="btn btn-primary">Enviar Mensagem</button>
+                        <button type="button" id="botao-limpar" class="btn btn-secondary"
+                            (click)="limparFormulario()">Limpar</button>
+                    </div>
+                </form>
+            </div>
+
         </div>
     </div>
-</body>
+</div>

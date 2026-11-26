@@ -2,6 +2,54 @@
     display: block;
 }
 
+/* POP-UP */
+.popup {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 3000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    width: min(380px, calc(100% - 40px));
+    padding: 16px 20px;
+    color: white;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
+    animation: popup-entrar 0.3s ease;
+}
+
+.popup-sucesso {
+    background-color: #51cf7b;
+}
+
+.popup-aviso {
+    background-color: #b87e20;
+}
+
+.popup-erro {
+    background-color: #bd3030;
+}
+
+.popup-mensagem {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.popup-fechar {
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 23px;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.popup-fechar:hover {
+    opacity: 0.7;
+}
+
 /* PÁGINA */
 #pagina-ajuda {
     width: 100%;

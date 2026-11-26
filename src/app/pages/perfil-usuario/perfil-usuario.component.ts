@@ -1,12 +1,12 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Cliente } from '../../models/Cliente';
 import { ClienteService } from '../../services/cliente.service';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-perfil-usuario',
-  imports: [FormsModule],
+  imports: [FormsModule, RouterLink],
   templateUrl: './perfil-usuario.component.html',
   styleUrl: './perfil-usuario.component.css'
 })
@@ -23,7 +23,7 @@ export class PerfilUsuarioComponent implements OnInit {
     if (this.userId) {
       this.service.buscarPorId(this.userId).subscribe({
         next: (user) => this.user = user,
-        error: () => alert('Usuário não encontrado.')
+        error: () => this.mostrarPopup('Usuário não encontrado.','erro')
       });
     } else {
 
@@ -50,16 +50,16 @@ export class PerfilUsuarioComponent implements OnInit {
 
   atualizarPerfil() {
     if (!this.user.id) {
-      alert('ID do usuário não encontrado.');
+      this.mostrarPopup('ID do usuário não encontrado.','erro');
       return;
     }
 
     this.service.editar(this.user).subscribe({
       next: (userAtualizado) => {
         this.user = userAtualizado;
-        alert('Perfil atualizado com sucesso!');
+        this.mostrarPopup('Perfil atualizado com sucesso!');
       },
-      error: () => alert('Erro ao alterar o usuário.')
+      error: () => this.mostrarPopup('Erro ao alterar o usuário.','erro')
     });
   }
 
@@ -70,14 +70,26 @@ export class PerfilUsuarioComponent implements OnInit {
           localStorage.removeItem('usuarioLogado');
 
           if (this.modoAdmin) {
-            alert("Usuário deletado com sucess")
+            this.mostrarPopup(`Usuário ${id} deletado com sucesso.`)
             window.location.href = '/admin-usuario';
           } else {
             window.location.href = '/';
           }
         },
-        error: () => alert('Erro ao excluir usuário.')
+        error: () => this.mostrarPopup('Erro ao excluir usuário.', 'erro')
       });
     }
+  }
+
+  mensagemPopup = '';
+  tipoPopup = '';
+
+  mostrarPopup(mensagem: string, tipo: string = 'sucesso') {
+    this.mensagemPopup = mensagem;
+    this.tipoPopup = tipo;
+
+    setTimeout(() => {
+      this.mensagemPopup = '';
+    }, 3000);
   }
 }
