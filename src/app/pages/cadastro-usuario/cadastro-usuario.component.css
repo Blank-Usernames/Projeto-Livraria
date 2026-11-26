@@ -1,203 +1,233 @@
-* {
-    box-sizing: border-box;
+:host {
+    display: block;
 }
 
-/* TAG */
-
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    background-color: #ebebeb;
-}
-
+/* ESTRUTURA PRINCIPAL */
 main {
     display: flex;
     justify-content: center;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0 1rem;
-    height: 85%;
-    width: 80%;
-    border-radius: 10px;
-    background-color: #FFFFFF;
+    align-items: stretch;
+    width: min(1100px, 92%);
+    min-height: 650px;
+    margin: 40px auto;
+    padding: 30px;
+    gap: 30px;
+    border-radius: 12px;
+    background-color: white;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    font-family: Arial, sans-serif;
 }
 
 h1 {
-    color: #3b3b3b;
+    color: var(--vermelho-escuro);
+    font-size: 30px;
     margin: 0;
 }
 
 hr {
-    width: 100%;
-    border: black solid 0.1px;
-}
-
-button {
-    width: 6rem;
-    height: 2rem;
-    border-radius: 5px;
     border: none;
-    color: #FFFFFF;
-    background-color: rgb(154, 26, 26);
-    transition: ease-in-out, 0.3s;
+    border-left: 2px dashed #ccc;
 }
 
-button:disabled {
-    background-color: rgb(62, 59, 59);
-    transition: ease-in-out, 0.3s;
-}
-
-button:not(:disabled):hover {
-    transform: scale(1.1);
-    background-color: rgb(215, 51, 51);
-}
-
-/* ID */
-
+/* SEÇÕES */
 #section-cadastro,
 #section-login {
-    height: 85%;
-    flex: 1;
-    padding: 2rem;
-}
-
-div#cadastro-container {
     display: flex;
-    flex-direction: column;
     flex: 1;
-    width: min(100%, 600px);
-}
-
-div#login-container {
-    display: flex;
-    flex-direction: column;
-    min-height: 0;
-    flex: 1;
-    gap: 1rem;
-    width: min(100%, 600px);
-}
-
-form#cadastro-usuario {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    flex: 1;
-    width: min(100%, 600px);
-    gap: 0.5rem;
-}
-
-form#login-usuario {
-    display: flex;
-    flex-direction: column;
     justify-content: center;
-    width: min(100%, 600px);
-    gap: 1rem;
+    min-width: 0;
+    padding: 20px;
 }
 
 #section-cadastro {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
     align-items: center;
-    border-right: black dashed 3px;
 }
 
 #section-login {
+    align-items: flex-start;
+}
+
+#section-cadastro {
+    border-right: 2px dashed #ccc;
+}
+
+/* CONTAINERS */
+#cadastro-container,
+#login-container {
     display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 480px;
+    gap: 20px;
+}
+
+#login-container {
     justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    border-radius: 0 10px 10px 0;
 }
 
-section#cadastro-controllers {
-    display: flex;
-    height: 10%;
-    width: 100%;
-}
-
-section#login-controllers {
-    display: flex;
-    height: 40%;
-    width: 100%;
-}
-
-div#information-text {
-    text-align: justify;
-    font-weight: bold;
-    font-size: large;
-    color: #3b3b3b;
-}
-
-div#termos-input {
-    width: 50%;
-}
-
-div#cadastro-buttons {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    width: 50%;
-    gap: 0.5rem;
-}
-
-div#login-buttons {
-    display: flex;
-    justify-content: flex-start;
-    width: 50%;
-    gap: 0.5rem;   
-}
-
-div#termos-input {
-    display: flex;
-    align-items: center;
-    font-size: small;
-    gap: 0.5rem;
-}
-
-/* CLASS */
-
-div.input-container {
+/* FORMULÁRIOS */
+#cadastro-usuario,
+#login-usuario {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
     width: 100%;
+    gap: 18px;
 }
 
-div.form-title {
-    padding: 1rem 0;
-}
-
-/* SUB TAG */
-
-form input {
-    height: 2rem;
-    font-size: large;
-    padding-left: 2%;
-    color: rgb(36, 36, 36);
+.form-title {
+    margin-bottom: 10px;
 }
 
 .form-title h1 {
-    margin: 0;
+    font-size: 32px;
 }
 
-div#login-able a {
-    font-size: small;
+/* CAMPOS */
+.input-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 7px;
 }
 
-/* TIPO */
-
-button[type=reset] {
-    box-sizing: border-box;
-    border: black 2px solid;
-    background-color: white;
-    color: black;
+.input-container label {
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--texto);
 }
 
-button[type=reset]:hover {
-    background-color: black;
-    color: #FFFFFF;
+form input:not([type="checkbox"]) {
+    width: 100%;
+    height: 42px;
+    padding: 0 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+    background-color: #fafafa;
+    color: var(--texto);
+    font-size: 15px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+form input:not([type="checkbox"]):focus {
+    border-color: var(--vermelho-principal);
+    box-shadow: 0 0 0 3px rgba(204, 25, 25, 0.12);
+}
+
+/* CONTROLES DO CADASTRO */
+#cadastro-controllers {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 10px;
+}
+
+#termos-input {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+}
+
+#termos-checkbox {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--vermelho-principal);
+    cursor: pointer;
+}
+
+#termos-input label {
+    line-height: 1.5;
+}
+
+#termos-input a,
+#login-able a {
+    color: var(--vermelho-principal);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#termos-input a:hover,
+#login-able a:hover {
+    text-decoration: underline;
+}
+
+#cadastro-buttons,
+#login-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+#cadastro-buttons {
+    justify-content: flex-start;
+}
+
+#login-buttons {
+    justify-content: flex-start;
+}
+
+/* LOGIN */
+#information-container {
+    margin-top: 10px;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f8eeee;
+    border-left: 4px solid var(--vermelho-principal);
+}
+
+#information-text {
+    color: var(--texto);
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 1.7;
+    text-align: justify;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 800px) {
+    main {
+        flex-direction: column;
+        width: 92%;
+        padding: 20px;
+        gap: 20px;
+    }
+
+    #section-cadastro {
+        border-right: none;
+        border-bottom: 2px dashed #ccc;
+        padding-bottom: 35px;
+    }
+
+    #section-login {
+        padding-top: 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    main {
+        width: 95%;
+        margin: 20px auto;
+        padding: 15px;
+    }
+
+    #section-cadastro,
+    #section-login {
+        padding: 15px 5px;
+    }
+
+    .form-title h1 {
+        font-size: 27px;
+    }
+
+    #cadastro-buttons {
+        flex-direction: column;
+    }
+
+    #cadastro-buttons button {
+        width: 100%;
+    }
+
+    #information-text {
+        font-size: 14px;
+    }
 }

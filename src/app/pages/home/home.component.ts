@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit {
   paginaLancamento: number = 1;
   paginaSelling: number = 1;
   paginaAutor: number = 1;
-  livrosPorPagina: number = 6;
+  livrosPorPagina: number = 5;
 
   autorSelecionado: string = '';
 
@@ -82,28 +82,20 @@ export class HomeComponent implements OnInit {
   }
 
   livrosAleatorios(sequenciaLivro: Livro[]) {
-    sequenciaLivro.length = 0;
+  sequenciaLivro.length = 0;
 
-    const quantidade = Math.min(6, this.livros.length);
-    const indicesSelecionados = new Set<number>();
+  const livrosEmbaralhados = this.livros;
 
-    while (indicesSelecionados.size < quantidade) {
-      const indiceAleatorio = Math.floor(
-        Math.random() * this.livros.length
-      );
+  for (let i = livrosEmbaralhados.length - 1; i > 0; i--) {
+    const indiceAleatorio = Math.floor(Math.random() * (i + 1));
 
-      if (indicesSelecionados.has(indiceAleatorio)) {
-        continue;
-      }
-
-      indicesSelecionados.add(indiceAleatorio);
-      sequenciaLivro.push(this.livros[indiceAleatorio]);
-    }
+    [livrosEmbaralhados[i], livrosEmbaralhados[indiceAleatorio]] = [livrosEmbaralhados[indiceAleatorio], livrosEmbaralhados[i]];
   }
 
-  goToCadastroLivros() {
-    this.router.navigate(['/cadastro-livros']);
+  for (let i = 0; i < livrosEmbaralhados.length; i++) {
+    sequenciaLivro.push(livrosEmbaralhados[i]);
   }
+}
 
   livroSelecionado: Livro | null = null;
 
@@ -127,7 +119,7 @@ export class HomeComponent implements OnInit {
     const codigoItem = livro.id;
 
     if (!idUsuario || !codigoItem) {
-      alert('Não foi possível identificar o usuário ou o livro.');
+      this.mostrarPopup('Não foi possível identificar o usuário ou o livro.', 'erro');
       return;
     }
 
@@ -139,7 +131,7 @@ export class HomeComponent implements OnInit {
         );
 
         if (livroJaAdicionado) {
-          alert('Este livro já está no seu carrinho!');
+          this.mostrarPopup('Este livro já está no seu carrinho!', 'aviso');
           return;
         }
 
@@ -155,18 +147,30 @@ export class HomeComponent implements OnInit {
 
         this.carrinhoService.incluir(itemCarrinho).subscribe({
           next: () => {
-            alert(`Livro: ${livro.tituloLivro} adicionado ao carrinho!`);
+            this.mostrarPopup(`Livro: ${livro.tituloLivro} adicionado ao carrinho!`);
           },
           error: () => {
-            alert('Erro ao adicionar livro ao carrinho.');
+            this.mostrarPopup('Erro ao adicionar livro ao carrinho.', 'erro');
           }
         });
       },
       error: () => {
-        alert('Erro ao consultar o carrinho.');
+        this.mostrarPopup('Erro ao adicionar livro.', 'erro');
       }
     });
   }
+
+mensagemPopup = '';
+tipoPopup = '';
+
+mostrarPopup(mensagem: string, tipo: string = 'sucesso') {
+  this.mensagemPopup = mensagem;
+  this.tipoPopup = tipo;
+
+  setTimeout(() => {
+    this.mensagemPopup = '';
+  }, 3000);
+}
 
   // PAGINAÇÃO
   get destaquesPaginados(): Livro[] {

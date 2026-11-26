@@ -1,16 +1,27 @@
+@if (mensagemPopup) {
+  <div class="popup"
+       [class.popup-sucesso]="tipoPopup === 'sucesso'"
+       [class.popup-aviso]="tipoPopup === 'aviso'"
+       [class.popup-erro]="tipoPopup === 'erro'"
+       role="status"
+       aria-live="polite">
+
+    <span class="popup-mensagem">{{ mensagemPopup }}</span>
+  </div>
+}
+
 <div class="Banner">
   <div class="BannerLados">
     <div class="BannerEsquerdo">
       <h2>Pânico — o novo livro chegou.</h2>
       <p>Uma nova história está prestes a começar. Mas desta vez, quem será a próxima vitima?</p>
-      <button>Comprar Agora &#8594;</button>
+      <button class="btn btn-primary btn-banner">Comprar Agora &#8594;</button>
     </div>
     <div class="BannerDireito">
       <img src="Imagens_Livros/livroPan.png" alt="Livro-Panico-Novo">
     </div>
   </div>
 </div>
-
 
 <section class="secao-produtos">
   <div class="subtitulo">
@@ -23,14 +34,15 @@
       <h3 class="nome-produto">{{ livro.tituloLivro }}</h3>
       <p class="autor-produto">{{ livro.autorLivro }}</p>
       <p class="preco-produto">{{ livro.precoLivro | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</p>
-      <button class="btn-comprar" (click)="adicionarCarrinho(livro)">Comprar</button>
+      <button class="btn btn-primary btn-comprar"
+        (click)="$event.stopPropagation(); adicionarCarrinho(livro)">Comprar</button>
     </div>
     }
   </div>
 </section>
 
 <div class="paginacao">
-  <button (click)="paginaDestaque = paginaDestaque - 1" [disabled]="paginaDestaque === 1">
+  <button class="btn btn-secondary" (click)="paginaDestaque = paginaDestaque - 1" [disabled]="paginaDestaque === 1">
     Anterior
   </button>
 
@@ -40,7 +52,8 @@
   </button>
   }
 
-  <button (click)="paginaDestaque = paginaDestaque + 1" [disabled]="paginaDestaque >= paginasDestaque.length">
+  <button class="btn btn-secondary" (click)="paginaDestaque = paginaDestaque + 1"
+    [disabled]="paginaDestaque >= paginasDestaque.length">
     Próxima
   </button>
 </div>
@@ -56,14 +69,15 @@
       <h3 class="nome-produto">{{ livro.tituloLivro }}</h3>
       <p class="autor-produto">{{ livro.autorLivro }}</p>
       <p class="preco-produto">{{ livro.precoLivro | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</p>
-      <button class="btn-comprar" (click)="adicionarCarrinho(livro)">Comprar</button>
+      <button class="btn btn-primary btn-comprar"
+        (click)="$event.stopPropagation(); adicionarCarrinho(livro)">Comprar</button>
     </div>
     }
   </div>
 </section>
 
 <div class="paginacao">
-  <button (click)="paginaSelling = paginaSelling - 1" [disabled]="paginaSelling === 1">
+  <button class="btn btn-secondary" (click)="paginaSelling = paginaSelling - 1" [disabled]="paginaSelling === 1">
     Anterior
   </button>
 
@@ -73,7 +87,8 @@
   </button>
   }
 
-  <button (click)="paginaSelling = paginaSelling + 1" [disabled]="paginaSelling >= paginasSelling.length">
+  <button class="btn btn-secondary" (click)="paginaSelling = paginaSelling + 1"
+    [disabled]="paginaSelling >= paginasSelling.length">
     Próxima
   </button>
 </div>
@@ -90,14 +105,16 @@
       <h3 class="nome-produto">{{ livro.tituloLivro }}</h3>
       <p class="autor-produto">{{ livro.autorLivro }}</p>
       <p class="preco-produto">{{ livro.precoLivro | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</p>
-      <button class="btn-comprar" (click)="adicionarCarrinho(livro)">Comprar</button>
+      <button class="btn btn-primary btn-comprar"
+        (click)="$event.stopPropagation(); adicionarCarrinho(livro)">Comprar</button>
     </div>
     }
   </div>
 </section>
 
 <div class="paginacao">
-  <button (click)="paginaLancamento = paginaLancamento - 1" [disabled]="paginaLancamento === 1">
+  <button class="btn btn-secondary" (click)="paginaLancamento = paginaLancamento - 1"
+    [disabled]="paginaLancamento === 1">
     Anterior
   </button>
 
@@ -107,7 +124,8 @@
   </button>
   }
 
-  <button (click)="paginaLancamento = paginaLancamento + 1" [disabled]="paginaLancamento >= paginasLancamento.length">
+  <button class="btn btn-secondary" (click)="paginaLancamento = paginaLancamento + 1"
+    [disabled]="paginaLancamento >= paginasLancamento.length">
     Próxima
   </button>
 </div>
@@ -124,14 +142,15 @@
       <h3 class="nome-produto">{{ livro.tituloLivro }}</h3>
       <p class="autor-produto">{{ livro.autorLivro }}</p>
       <p class="preco-produto">{{ livro.precoLivro | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</p>
-      <button class="btn-comprar" (click)="adicionarCarrinho(livro)">Comprar</button>
+      <button class="btn btn-primary btn-comprar"
+        (click)="$event.stopPropagation(); adicionarCarrinho(livro)">Comprar</button>
     </div>
     }
   </div>
 </section>
 
 <div class="paginacao">
-  <button (click)="paginaAutor = paginaAutor - 1" [disabled]="paginaAutor === 1">
+  <button class="btn btn-secondary" (click)="paginaAutor = paginaAutor - 1" [disabled]="paginaAutor === 1">
     Anterior
   </button>
 
@@ -141,11 +160,11 @@
   </button>
   }
 
-  <button (click)="paginaAutor = paginaAutor + 1" [disabled]="paginaAutor >= paginasAutor.length">
+  <button class="btn btn-secondary" (click)="paginaAutor = paginaAutor + 1"
+    [disabled]="paginaAutor >= paginasAutor.length">
     Próxima
   </button>
 </div>
-
 
 @if (livroSelecionado) {
 <div class="modal-overlay" (click)="fecharModal()">
@@ -157,16 +176,39 @@
     <div class="modal-info">
       <h3>{{ livroSelecionado.tituloLivro }}</h3>
       <p class="modal-autor">{{ livroSelecionado.autorLivro }}</p>
+
       <p class="modal-descricao">{{ livroSelecionado.descricao }}</p>
-      <p class="modal-preco">{{ livroSelecionado.precoLivro | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</p>
+
+      <div class="modal-detalhes">
+        <div class="detalhe-item">
+          <span>Gênero</span>
+          <strong>{{ livroSelecionado.genero }}</strong>
+        </div>
+
+        <div class="detalhe-item">
+          <span>Páginas</span>
+          <strong>{{ livroSelecionado.qtdPagina }}</strong>
+        </div>
+
+        <div class="detalhe-item">
+          <span>Lançamento</span>
+          <strong>{{ livroSelecionado.dataLancamento }}</strong>
+        </div>
+      </div>
+
+      <p class="modal-preco">
+        {{ livroSelecionado.precoLivro | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}
+      </p>
 
       <div class="modal-botoes">
-        <button class="btn-comprar" (click)="adicionarCarrinho(livroSelecionado)">Comprar</button>
-        @if (modoAdmin) {
-        <button class="btn-editar" [routerLink]="['/cadastro-livros-editar', livroSelecionado.id]">Editar
-          Produto</button>
-        } @else {
+        <button class="btn btn-primary btn-comprar" (click)="adicionarCarrinho(livroSelecionado)">
+          Comprar
+        </button>
 
+        @if (modoAdmin) {
+        <button class="btn-editar" [routerLink]="['/cadastro-livros-editar', livroSelecionado.id]">
+          Editar Produto
+        </button>
         }
       </div>
     </div>

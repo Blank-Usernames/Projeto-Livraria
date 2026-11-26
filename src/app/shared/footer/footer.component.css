@@ -1,96 +1,173 @@
+:host {
+    display: block;
+}
 
-.container {
+/* FOOTER GERAL */
+.footer {
+    background-color: var(--vermelho-escuro);
+    color: white;
+}
+
+/* ÁREA DE INFORMAÇÕES */
+.footer-conteudo {
     display: flex;
     justify-content: space-between;
-    
-    background: linear-gradient(0deg, #800a0a 100%, #5c0a0a 80%);
-    padding: 40px;
-    gap: 20px;
-    color: #d8cfc7;
-    border-top: 2px solid #2b0505;
+    gap: 40px;
+    padding: 40px 5%;
+    background: linear-gradient(to bottom, var(--vermelho-principal), var(--vermelho-escuro));
+    border-top: 3px solid var(--vermelho-claro);
 }
 
-.rodape-coluna h3 {
-    color: #fff;
-    font-size: 15px;
-    margin-bottom: 15px;
+/* COLUNAS */
+.footer-coluna {
+    flex: 1;
 }
 
-.redesSociais{
-    display: flex;
-    gap: 40px;     
+.footer-coluna h3 {
+    margin-bottom: 18px;
+    color: white;
+    font-size: 17px;
+    letter-spacing: 1px;
 }
-.redesSociais  a i{
-    color: #d8cfc7;
-    font-size: 30px;  
-    transition: color 0.2s ease, transform 0.4s ease;  
-}
-.redesSociais :hover{
-    opacity: 70%;
-    transform: translateY(3px)
-    
-}
-.rodape-coluna ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-.rodape-coluna li {
-    margin-bottom: 10px;
-    color: #d8cfc7;
+
+.footer-coluna p,
+.footer-coluna li {
+    color: #e8dede;
     font-size: 14px;
     line-height: 1.8;
 }
-.rodape-coluna a {
-    color: #d8cfc7;
-    text-decoration: none;
+
+.footer-coluna ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-coluna li {
+    margin-bottom: 10px;
+}
+
+.footer-coluna a {
     display: inline-block;
-    transition: color 0.2s ease, transform 0.2s ease;
+
+    color: #e8dede;
+    text-decoration: none;
+
+    transition: all 0.3s ease-in-out;
 }
 
-.rodape-coluna a:hover {
-    color: #d8cfc7;
-    transform: translateX(4px);
-}   
-
-
-.rodape {
-    display: flex;
-    color: #fff;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    padding: 20px 0;
-    background: linear-gradient(180deg, #800a0a 80%, #5c0a0a 100%);
+.footer-coluna a:hover {
+    color: white;
+    transform: translateX(5px);
 }
 
-.rodape h3{
-    font-size: 20px;
-    letter-spacing: 1.5px;
+.titulo-contato {
+    margin-top: 25px;
 }
-.rodape P{
-    font-size: 12px;
-    letter-spacing: 1.5px;
-}
+
+/* FORMAS DE PAGAMENTO */
 .formas-pagamento {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
+    grid-template-columns: repeat(4, 50px);
+    gap: 12px;
     margin-top: 20px;
-    max-width: 260px;
 }
 
 .metodo-pagamento {
-    background-color: #fff;
-    border-radius: 8px;
-    height: 50px;
-    width: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+}
+
+.metodo-pagamento:hover {
+    transform: translateY(-4px);
 }
 
 .metodo-pagamento i {
-    font-size: 20px;
-    color: #4b0c0c;
+    color: var(--vermelho-escuro);
+    font-size: 23px;
+}
+
+/* ÁREA INSTITUCIONAL */
+.footer-institucional {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 30px 5%;
+    background-color: var(--vermelho-escuro);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: center;
+}
+
+.footer-institucional h3 {
+    font-size: 23px;
+    letter-spacing: 3px;
+}
+
+.footer-institucional p {
+    max-width: 650px;
+    color: #e8dede;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.footer-institucional .footer-copyright {
+    font-size: 12px;
+    opacity: 0.8;
+}
+
+/* REDES SOCIAIS */
+.redes-sociais {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    margin-top: 5px;
+}
+
+.redes-sociais a {
+    color: white;
+    font-size: 27px;
+    transition: all 0.3s ease-in-out;
+}
+
+.redes-sociais a:hover {
+    color: red;
+    transform: translateY(-4px);
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 768px) {
+    .footer-conteudo {
+        flex-wrap: wrap;
+        gap: 35px;
+    }
+
+    .footer-coluna {
+        flex: 1 1 40%;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-conteudo {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .footer-coluna {
+        width: 100%;
+    }
+
+    .footer-institucional {
+        padding: 25px 5%;
+    }
+
+    .footer-institucional p {
+        font-size: 12px;
+    }
 }

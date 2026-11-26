@@ -9,8 +9,6 @@ import { FormsModule } from '@angular/forms';
 })
 export class AjudaFeedbackComponent {
 
-  termoBusca: string = '';
-
   // Variaveis formulario
   nomeUsuario: string = '';
   emailUsuario: string = '';
@@ -29,5 +27,13 @@ export class AjudaFeedbackComponent {
     }
 
     alert(`Obrigado pelo seu feedback, ${this.nomeUsuario}! Sua mensagem foi registrada.`);
+  }
+
+  // Limpar formulario
+  limparFormulario() {
+    this.nomeUsuario = '';
+    this.emailUsuario = '';
+    this.assunto = '';
+    this.mensagemTexto = '';
   }
 }

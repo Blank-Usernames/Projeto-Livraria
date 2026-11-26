@@ -1,80 +1,78 @@
-.content-container {
-    width: 80%;
-    margin: 50px auto 0;
+:host {
+    display: block;
+}
+
+/* PÁGINA */
+.pagina-admin {
+    background-color: white;
+    width: 90%;
+    margin: 60px auto 70px;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+/* CABEÇALHO */
+.cabecalho {
+    padding: 30px;
+    margin-bottom: 30px;
+    background-color: white;
+    border-left: 6px solid var(--vermelho-escuro);
+    border-radius: 8px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.04);
 }
 
 .subtitulo {
-    color: #5c0a0a;
-    font-size: 13px;
+    color: var(--vermelho-principal);
+    font-size: 12px;
     font-weight: 700;
     letter-spacing: 1.5px;
 }
 
-.cabecalho {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;     
-    margin-bottom: 30px;
-}
-
 .cabecalho h1 {
-    margin: 8px 0;
-    color: #172033;
+    margin: 10px 0;
+    color: var(--texto);
     font-size: 32px;
 }
 
 .cabecalho p {
-    margin: 0;
-    color: #475569;
-    font-size: 16px;
-}
-
-.botao-novo {
-    padding: 11px 20px;
-    color: #ffffff;
-    background-color: #0055b8;
-    border: none;
-    border-radius: 5px;
+    color: #666;
     font-size: 15px;
-    font-weight: 600;
-    cursor: pointer;
+    line-height: 1.6;
 }
 
-.botao-novo:hover {
-    background-color: #003b7a;
-}
-
+/* TABELA */
 .tabela-container {
     overflow-x: auto;
-    background-color: #ffffff;
-    border: 1px solid #e2e8f0;
-    border-radius: 8px;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.04);
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
+    text-align: left;
 }
 
 thead {
-    background-color: #f8fafc;
+    background-color: #f5f5f5;
 }
 
 th {
-    padding: 16px;
-    color: #172033;
+    padding: 17px 16px;
+    color: var(--vermelho-escuro);
     font-size: 14px;
     font-weight: 700;
-    text-align: left;
-    border-bottom: 1px solid #e2e8f0;
+    border-bottom: 2px solid #ddd;
+    white-space: nowrap;
 }
 
 td {
     padding: 16px;
-    color: #475569;
-    font-size: 15px;
-    border-bottom: 1px solid #e2e8f0;
+    color: #555;
+    font-size: 14px;
+    border-bottom: 1px solid #eee;
 }
 
 tbody tr:last-child td {
@@ -82,63 +80,44 @@ tbody tr:last-child td {
 }
 
 tbody tr:hover {
-    background-color: #f8fafc;
+    background-color: #faf5f5;
 }
 
+/* AÇÕES */
 .acoes {
     white-space: nowrap;
 }
 
-.botao-editar,
-.botao-excluir {
-    padding: 8px 14px;
-    border: none;
-    border-radius: 4px;
-    font-size: 14px;
-    cursor: pointer;
+.acoes .btn {
+    padding: 8px 13px;
+    font-size: 13px;
 }
 
-.botao-editar {
-    margin-right: 8px;
-    color: #ffffff;
-    background-color: rgb(154, 26, 26);;
-    transition: ease-in 0.2s;
+.acoes .btn + .btn {
+    margin-left: 7px;
 }
 
-.botao-editar:hover {
-    transform: scale(1.1);
-    background-color: rgb(215, 51, 51);
-}
-
-
-.botao-excluir[type="button"] {
-    background-color: black;
-    color: white;
-    box-sizing: border-box;
-    transition: ease-in-out 0.2s;
-    border: 2px solid transparent; 
-}
-
-.botao-excluir[type="button"]:hover {
-    background-color: white;
-    color: black;
-    border: black 2px solid;
-}
-
-
-
-/* Responsividade */
+/* RESPONSIVIDADE */
 @media (max-width: 700px) {
-
-    .content-container {
-        width: 90%;
-
+    .pagina-admin {
+        width: 94%;
+        margin-top: 25px;
     }
 
     .cabecalho {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 20px;
+        padding: 22px;
+    }
 
+    .cabecalho h1 {
+        font-size: 27px;
+    }
+
+    .tabela-container {
+        border-radius: 7px;
+    }
+
+    th,
+    td {
+        padding: 13px 12px;
     }
 }

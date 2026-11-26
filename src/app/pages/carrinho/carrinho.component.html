@@ -20,7 +20,7 @@
       <div class="lista-itens">
         <div class="item-linha" *ngFor="let item of itens">
           <img [src]="item.imagem" [alt]="item.titulo" class="item-capa">
-          
+
           <div class="item-info">
             <span class="item-codigo">(Cód. item: {{ item.codigoItem }})</span>
             <h3 class="item-titulo">{{ item.titulo }}</h3>
@@ -57,7 +57,7 @@
         <h4>Obter Desconto</h4>
         <div class="campo-com-botao">
           <input type="text" placeholder="Insira o código do cupom" [(ngModel)]="cupomDesconto">
-          <button type="button" class="btn-vermelho">Aplicar</button>
+          <button type="button" class="btn btn-primary">Aplicar</button>
         </div>
       </div>
 
@@ -72,14 +72,12 @@
           <strong>{{ valorSubTotal | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</strong>
         </div>
 
-        <a routerLink="/catalogo" class="btn-vermelho-largo">Continuar comprando</a>
-        <button type="button" class="btn-vermelho-largo">Finalizar</button>
+        <a routerLink="/catalogo" class="btn btn-secondary btn-vermelho-largo">Continuar comprando</a>
+        <button type="button" class="btn btn-primary btn-vermelho-largo">Finalizar</button>
       </div>
 
       <div class="link-remover-todos-container">
-        <button type="button" class="btn-remover-todos" (click)="removerTodos()">
-          Remover todos os produtos
-        </button>
+        <button type="button" class="btn-remover-todos" (click)="removerTodos()">Remover todos os produtos</button>
       </div>
     </div>
   </div>

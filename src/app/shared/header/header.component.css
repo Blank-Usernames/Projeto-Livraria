@@ -1,166 +1,197 @@
-body {
-    margin: 0;
-    padding: 0;
-    background-color: rgb(248, 241, 241);
-}
-.posicao{
+:host {
+    display: block;
     position: sticky;
     top: 0;
     z-index: 1000;
 }
-.TopoSecundario {
+
+/* ESTRUTURA GERAL */
+.header-sticky {
+    top: 0;
+    z-index: 1000;
+}
+
+/* BARRA SUPERIOR */
+.header-topo {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 8px 40px;
-    height: 20px;
-    background: linear-gradient(180deg, #a81717 0%, #881919 70%);
-    font-size: 15px;
+    padding: 10px 5%;
+    background: linear-gradient(to bottom, var(--vermelho-principal), var(--vermelho-escuro));
+    color: white;
 }
 
-.MarcaSecundaria {
-    width: 100px;
-    display: flex;
-    justify-content: center;
-    color: #e2e7e9;
-    font-weight: 600px;
-    letter-spacing: 1px;
-    font-family: fantasy;
+/* MARCA */
+.marca {
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: 3px;
 }
 
-.TopoSecundario nav ul {
-    text-transform: uppercase;
-    font-size: 10px;
-    letter-spacing: 1.5px;
-    font-weight: 300px;
-    list-style: none;
+/* NAVEGAÇÃO PRINCIPAL */
+.navegacao-principal ul {
     display: flex;
-    gap: 0px;
+    align-items: center;
+    gap: 10px;
     margin: 0;
     padding: 0;
+    list-style: none;
 }
 
-.TopoSecundario nav ul li {
-    padding: 0 15px;
-    border-right: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-.TopoSecundario nav ul li:last-child {
-    border-right: none;
-    padding-right: 0;
-}
-
-.TopoSecundario nav ul li:first-child {
-    padding-left: 0;
-}
-
-.TopoSecundario nav a {
-    display: inline-block;
-    color: #F2F0EF;
+.navegacao-principal a {
+    display: block;
+    padding: 8px 12px;
+    color: white;
     text-decoration: none;
-    padding: 6px 10px;
-    border-radius: 4px;
-    transition: background-color 0.2s ease, color 0.2s ease;
-
-}
-
-.TopoSecundario nav a:hover {
-    background-color: rgba(243, 240, 240, 0.1);
-    color: #fff;
-}
-
-header {
-    display: flex;
-    align-items: center;
-    padding: 15px 40px;
-    gap: 40px;
-    background: linear-gradient(180deg, #800a0a 80%, #5c0a0a 100%);
-    border-bottom: 2px solid #2b0505;
-
-}
-
-.BarraPesquisa {
-    display: flex;
-    align-items: center;
-    background-color: #f2f2f2;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 1px;
     border-radius: 5px;
-    overflow: hidden;
-    width: 600px;
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
-    justify-self: center;
+    transition: all 0.3s ease-in-out;
 }
 
-.iconeBusca {
-    background-color: #1d060a;
-    border: none;
-    width: 50px;
-    height: 50px;
+.navegacao-principal a:hover {
+    background-color: black;
+}
+
+/* BARRA PRINCIPAL */
+.header-principal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    padding: 15px 5%;
+    background-color: var(--vermelho-escuro);
+    border-bottom: 3px solid var(--vermelho-claro);
+}
+
+/* PESQUISA */
+.barra-pesquisa {
     display: flex;
     align-items: center;
-    justify-content: center;
-    color: #fff;
-    font-size: 20px;
-    cursor: pointer;
+    width: 100%;
+    max-width: 600px;
+    height: 45px;
+    overflow: hidden;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.btn-busca {
+    background-color: rgb(0, 0, 0);
+    width: 50px;
+    height: 45px;
+    padding: 0;
+    border-radius: 0;
     flex-shrink: 0;
 }
 
-.iconeBusca:hover {
-    background-color: #3d151c;
+.btn-busca:hover {
+    background-color: rgb(61, 4, 4);
 }
 
-.BarraPesquisa input {
-    background: transparent;
-    border: none;
-    outline: none;
-    color: #333;
-    font-weight: 700;
-    padding: 8px 12px;
-    font-size: 12px;
-    letter-spacing: 1px;
+.barra-pesquisa input {
     width: 100%;
-
+    height: 100%;
+    padding: 0 15px;
+    border: none;
+    background-color: transparent;
+    color: var(--texto);
+    font-size: 14px;
 }
 
-.acoesUsuarios ul {
-    list-style: none;
+/* AÇÕES DO USUÁRIO */
+.acoes-direita {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.acoes-usuarios ul {
+    display: flex;
+    align-items: center;
+    gap: 12px;
     margin: 0;
     padding: 0;
-    display: flex;
-    align-items: self-end;
-    gap: 4px;
+    list-style: none;
 }
 
-.acoesUsuarios ul li a {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    text-decoration: none;
-    color: #F2F0EF;
-    font-size: 18px;
-}
-
-nav.acoesUsuarios a:hover {
-    text-decoration: underline;
-    transform: translateY(-2px);
-    transition: all 0.2s;
-}
-
-.BlocoDireita {
-    margin-left: auto;
+.acoes-usuarios a,
+.link-sair {
     display: flex;
     align-items: center;
-    gap: 20px;
-}
-
-.iconeCarrinho {
+    gap: 7px;
+    padding: 5px 0;
+    color: white;
     background: none;
-    font-size: large;
     border: none;
-    color: #F2F0EF;
-    padding: 0;
+    font-family: inherit;
+    font-size: 15px;
+    text-decoration: none;
     cursor: pointer;
+    transition: all 0.3s ease-in-out;
 }
 
-.iconeCarrinho:hover {
-    color: rgb(195, 208, 221);
+.acoes-usuarios a:hover,
+.link-sair:hover {
+    color: red;
+}
+
+/* Carrinho */
+.icone-carrinho {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 24px;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.icone-carrinho:hover {
+    color: red;
+    transform: translateY(-2px);
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 768px) {
+    .header-topo {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .navegacao-principal ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .header-principal {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .barra-pesquisa {
+        max-width: none;
+    }
+
+    .acoes-direita {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .navegacao-principal ul {
+        gap: 3px;
+    }
+
+    .navegacao-principal a {
+        padding: 7px;
+        font-size: 10px;
+    }
+    
+    .acoes-usuarios a,
+    .link-sair {
+        font-size: 13px;
+    }
 }

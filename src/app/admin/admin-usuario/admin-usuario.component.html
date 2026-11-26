@@ -1,44 +1,45 @@
-<div class="cabecalho">
-    <div>
-        <span class="subtitulo">
-            ÁREA DE ADMINISTRAÇÃO
-        </span>
-        <h1>Clientes</h1>
-        <p>
-            Gerencie os clientes cadastrados na plataforma.
-        </p>
+<div class="pagina-admin">
+
+    <div class="cabecalho">
+        <div>
+            <span class="subtitulo">ÁREA DE ADMINISTRAÇÃO</span>
+            <h1>Clientes</h1>
+            <p>Gerencie os clientes cadastrados na plataforma.</p>
+        </div>
     </div>
-</div>
 
+    <div class="tabela-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>CPF</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
 
-<div class="tabela-container">
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nome</th>
-                <th>Email</th>
-                <th>Cpf</th>
-                <th>Ações</th>
-            </tr>
-        </thead>
-        <tbody>
-            @for (cliente of listaClientes; track cliente.id) {
-            <tr>
-                <td>{{ cliente.id }}</td>
-                <td>{{ cliente.nomeUsuario }}</td>
-                <td>{{ cliente.cpf }}</td>
-                <td>{{ cliente.email }}</td>
-                <td class="acoes">
-                    <button class="botao-editar" type="button" [routerLink]="['/perfil-usuario', cliente.id]">
-                        Editar
-                    </button>
-                    <button class="botao-excluir" type="button" (click)="excluirUsuario(cliente.id!)">
-                        Excluir
-                    </button>
-                </td>
-            </tr>
-            }
-        </tbody>
-    </table>
+            <tbody>
+                @for (cliente of listaClientes; track cliente.id) {
+                <tr>
+                    <td>{{ cliente.id }}</td>
+                    <td>{{ cliente.nomeUsuario }}</td>
+                    <td>{{ cliente.email }}</td>
+                    <td>{{ cliente.cpf }}</td>
+                    <td class="acoes">
+                        <button class="btn btn-primary" type="button" [routerLink]="['/perfil-usuario', cliente.id]">
+                            Editar
+                        </button>
+
+                        <button class="btn btn-delete" type="button" (click)="excluirUsuario(cliente.id!)">
+                            Excluir
+                        </button>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
 </div>
