@@ -48,7 +48,7 @@ export class CadastroUsuarioComponent {
       next: (cliente) => {
         this.cliente = cliente;
         this.limparCadastro();
-        alert(`Usuário ${this.cliente.nomeUsuario} cadastrado com sucesso!`);
+        this.mostrarPopup(`Usuário ${this.nomeUsuarioCad} cadastrado com sucesso!`);
       }
     });
   }
@@ -77,6 +77,18 @@ export class CadastroUsuarioComponent {
     this.isDisabledCadastro = true;
   }
 
+  mensagemPopup = '';
+  tipoPopup = '';
+
+  mostrarPopup(mensagem: string, tipo: string = 'sucesso') {
+    this.mensagemPopup = mensagem;
+    this.tipoPopup = tipo;
+
+    setTimeout(() => {
+      this.mensagemPopup = '';
+    }, 3000);
+  }
+
   /* VALIDAR USUÁRIO */
   login() {
     /* LOGIN FIXO DO ADMIN */
@@ -100,8 +112,6 @@ export class CadastroUsuarioComponent {
             if (!usuarioEncontrado.id) {
               return;
             }
-
-            alert(`Usuário ${usuarioEncontrado.nomeUsuario} logado com sucesso!`);
             localStorage.setItem('usuarioLogado', 'true');
             localStorage.setItem('adminLogado', 'false');
             localStorage.setItem('userId', usuarioEncontrado.id);
@@ -109,7 +119,7 @@ export class CadastroUsuarioComponent {
               window.location.reload();
             });
           } else {
-            alert('Usuário ou senha incorretos!');
+            this.mostrarPopup('Usuário ou senha incorretos!', 'erro');
           }
         }
       });

@@ -66,6 +66,17 @@
       "precoLivro": 18,
       "imagemLivro": "Imagens_Livros/livro6.png",
       "id": 6
+    },
+    {
+      "tituloLivro": "1984",
+      "autorLivro": "George Orwell",
+      "genero": "Ficção",
+      "descricao": "\"O passado fora anulado, o ato da anulação fora esquecido, a mentira se tornara verdade\". Em um futuro próximo, um único soberano governa o estado totalitário da Oceania: o Grande Irmão. Embora nunca tenha sido visto, ninguém escapa à vigilância asfixiante do olho que tudo vê, ao poder da Polícia do Pensamento ou às imposições do Ministério da Verdade. Nada, entretanto, é aparentemente proibido, pois vigora uma única regra: rejeitar as provas materiais que seus olhos e ouvidos oferecem... ",
+      "dataLancamento": "1949-06-08",
+      "qtdPagina": 336,
+      "precoLivro": 19,
+      "imagemLivro": "Imagens_Livros/livro9.jpg",
+      "id": 7
     }
   ],
   "carrinho": []
