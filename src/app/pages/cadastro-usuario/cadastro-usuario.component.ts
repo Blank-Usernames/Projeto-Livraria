@@ -95,7 +95,7 @@ export class CadastroUsuarioComponent {
       localStorage.setItem('usuarioLogado', 'true'); /* PARA ACESSAR AS ROTAS */
       localStorage.setItem('adminLogado', 'true'); /* PARA TER FUNCIONALIDADES DE ADMIN */
       sessionStorage.setItem('avisoAdmin', 'true'); /* gracinha que eu coloquei para avisar quando você entrar no modo adm */
-      window.location.href = '/';
+      this.router.navigate(['/']).then(() => window.location.reload());
     } else {
       // LOGIN MODO USUÁRIO COMUM
       this.service.listar().subscribe({
@@ -114,7 +114,7 @@ export class CadastroUsuarioComponent {
             localStorage.setItem('adminLogado', 'false'); /* REMOVER O MODO ADMINISTRADOR */
             localStorage.setItem('userId', usuarioEncontrado.id); /* REGISTRAR SESSÃO */
             sessionStorage.setItem('avisoUsuario', 'true'); /* gracinha que coloquei para avisar que o login foi efetuado, adicionado no final do projeto */
-            window.location.href = '/catalogo';
+            this.router.navigate(['/catalogo']).then(() => window.location.reload());
           } else {
             this.mostrarPopup('Usuário ou senha incorretos!', 'erro');
           }
