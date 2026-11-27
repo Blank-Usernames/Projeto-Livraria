@@ -50,6 +50,11 @@ export class HomeComponent implements OnInit {
         this.atualizarDestaque();
         this.atualizarLancamento();
         this.atualizarSelling();
+
+        if (sessionStorage.getItem('avisoAdmin') === 'true') {
+          this.mostrarPopup('Você entrou no modo administrador!', 'admin');
+          sessionStorage.removeItem('avisoAdmin');
+        }
       },
     });
 
@@ -82,20 +87,20 @@ export class HomeComponent implements OnInit {
   }
 
   livrosAleatorios(sequenciaLivro: Livro[]) {
-  sequenciaLivro.length = 0;
+    sequenciaLivro.length = 0;
 
-  const livrosEmbaralhados = this.livros;
+    const livrosEmbaralhados = this.livros;
 
-  for (let i = livrosEmbaralhados.length - 1; i > 0; i--) {
-    const indiceAleatorio = Math.floor(Math.random() * (i + 1));
+    for (let i = livrosEmbaralhados.length - 1; i > 0; i--) {
+      const indiceAleatorio = Math.floor(Math.random() * (i + 1));
 
-    [livrosEmbaralhados[i], livrosEmbaralhados[indiceAleatorio]] = [livrosEmbaralhados[indiceAleatorio], livrosEmbaralhados[i]];
+      [livrosEmbaralhados[i], livrosEmbaralhados[indiceAleatorio]] = [livrosEmbaralhados[indiceAleatorio], livrosEmbaralhados[i]];
+    }
+
+    for (let i = 0; i < livrosEmbaralhados.length; i++) {
+      sequenciaLivro.push(livrosEmbaralhados[i]);
+    }
   }
-
-  for (let i = 0; i < livrosEmbaralhados.length; i++) {
-    sequenciaLivro.push(livrosEmbaralhados[i]);
-  }
-}
 
   livroSelecionado: Livro | null = null;
 
@@ -160,17 +165,17 @@ export class HomeComponent implements OnInit {
     });
   }
 
-mensagemPopup = '';
-tipoPopup = '';
+  mensagemPopup = '';
+  tipoPopup = '';
 
-mostrarPopup(mensagem: string, tipo: string = 'sucesso') {
-  this.mensagemPopup = mensagem;
-  this.tipoPopup = tipo;
+  mostrarPopup(mensagem: string, tipo: string = 'sucesso') {
+    this.mensagemPopup = mensagem;
+    this.tipoPopup = tipo;
 
-  setTimeout(() => {
-    this.mensagemPopup = '';
-  }, 3000);
-}
+    setTimeout(() => {
+      this.mensagemPopup = '';
+    }, 3000);
+  }
 
   // PAGINAÇÃO
   get destaquesPaginados(): Livro[] {

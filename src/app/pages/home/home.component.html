@@ -3,6 +3,7 @@
        [class.popup-sucesso]="tipoPopup === 'sucesso'"
        [class.popup-aviso]="tipoPopup === 'aviso'"
        [class.popup-erro]="tipoPopup === 'erro'"
+       [class.popup-admin]="tipoPopup === 'admin'"
        role="status"
        aria-live="polite">
 
@@ -15,7 +16,7 @@
     <div class="BannerEsquerdo">
       <h2>Pânico — o novo livro chegou.</h2>
       <p>Uma nova história está prestes a começar. Mas desta vez, quem será a próxima vitima?</p>
-      <button class="btn btn-primary btn-banner">Comprar Agora &#8594;</button>
+         <button class="btn btn-primary btn-banner" routerLink="/catalogo">Comprar Agora &#8594;</button>  
     </div>
     <div class="BannerDireito">
       <img src="Imagens_Livros/livroPan.png" alt="Livro-Panico-Novo">

@@ -1,3 +1,12 @@
+@if (mensagemPopup) {
+<div class="popup" [class.popup-sucesso]="tipoPopup === 'sucesso'" [class.popup-aviso]="tipoPopup === 'aviso'"
+  [class.popup-erro]="tipoPopup === 'erro'" role="status" aria-live="polite">
+
+  <span class="popup-mensagem">{{ mensagemPopup }}</span>
+</div>
+}
+
+
 <div class="carrinho-page">
 
   <h1 class="titulo-pagina">Carrinho de Compras</h1>
@@ -7,18 +16,40 @@
     <div class="coluna-produtos">
       <div class="filtro-organizar">
         <label>Organizar por</label>
+
         <div class="controles-filtro">
-          <select>
-            <option>Nome</option>
-            <option>Preço</option>
+          <select name="criterioOrdenacao" [(ngModel)]="criterioOrdenacao">
+            <option value="nome">Nome</option>
+            <option value="preco">Preço</option>
           </select>
-          <label class="radio-label"><input type="radio" name="ordem" checked> de A a Z</label>
-          <label class="radio-label"><input type="radio" name="ordem"> de Z a A</label>
+
+          @if (criterioOrdenacao === 'nome') {
+          <label class="radio-label">
+            <input type="radio" name="ordem" [(ngModel)]="ordemCrescente" [value]="true">
+            de A a Z
+          </label>
+
+          <label class="radio-label">
+            <input type="radio" name="ordem" [(ngModel)]="ordemCrescente" [value]="false">
+            de Z a A
+          </label>
+          }
+          @else {
+          <label class="radio-label">
+            <input type="radio" name="ordem" [(ngModel)]="ordemCrescente" [value]="false">
+            Maior para Menor
+          </label>
+
+          <label class="radio-label">
+            <input type="radio" name="ordem" [(ngModel)]="ordemCrescente" [value]="true">
+            Menor para Maior
+          </label>
+          }
         </div>
       </div>
 
       <div class="lista-itens">
-        <div class="item-linha" *ngFor="let item of itens">
+        <div class="item-linha" *ngFor="let item of itensOrdenados">
           <img [src]="item.imagem" [alt]="item.titulo" class="item-capa">
 
           <div class="item-info">
@@ -57,7 +88,7 @@
         <h4>Obter Desconto</h4>
         <div class="campo-com-botao">
           <input type="text" placeholder="Insira o código do cupom" [(ngModel)]="cupomDesconto">
-          <button type="button" class="btn btn-primary">Aplicar</button>
+          <button type="button" (click)="aplicarCupom()" class="btn btn-primary">Aplicar</button>
         </div>
       </div>
 
@@ -67,9 +98,19 @@
           <span>Sub-Total</span>
           <strong>{{ valorSubTotal | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</strong>
         </div>
+
+        @if (cupomAplicado) {
+        <div class="linha-valores">
+          <span>Desconto ({{ percentualDesconto }}%)</span>
+          <strong>
+            -{{ valorDesconto | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}
+          </strong>
+        </div>
+        }
+
         <div class="linha-valores">
           <span>Total</span>
-          <strong>{{ valorSubTotal | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</strong>
+          <strong>{{ valorTotal | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</strong>
         </div>
 
         <a routerLink="/catalogo" class="btn btn-secondary btn-vermelho-largo">Continuar comprando</a>

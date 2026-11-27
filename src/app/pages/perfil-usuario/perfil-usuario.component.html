@@ -5,6 +5,45 @@
 </div>
 }
 
+@if (mostrarModalExclusao) {
+<div class="modal-overlay">
+    <div class="modal-confirmacao">
+
+        <div class="modal-cabecalho">
+            <h2>Confirmar exclusão</h2>
+
+            <button type="button" class="modal-fechar" (click)="mostrarModalExclusao = false">
+                &times;
+            </button>
+        </div>
+
+        <div class="modal-conteudo">
+            <div class="modal-icone">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+            </div>
+
+            <h3>Tem certeza?</h3>
+
+            <p>
+                Esta ação não poderá ser desfeita.
+                O item será excluído permanentemente.
+            </p>
+        </div>
+
+        <div class="modal-acoes">
+            <button type="button" class="btn btn-secondary" (click)="mostrarModalExclusao = false">
+                Cancelar
+            </button>
+
+            <button type="button" class="btn btn-delete" (click)="confirmarExclusao()">
+                Excluir
+            </button>
+        </div>
+
+    </div>
+</div>
+}
+
 <main>
     <section id="section-perfil">
         <div id="perfil-container">
@@ -66,7 +105,7 @@
                             Todos os dados associados à sua conta serão removidos.
                         </p>
                         <div id="deletar-controllers">
-                            <button class="btn btn-delete" (click)="excluirUsuario(user.id!)" type="button">Deletar
+                            <button class="btn btn-delete" (click)="excluirUsuario()" type="button">Deletar
                                 Conta</button>
                         </div>
                     </div>

@@ -22,11 +22,38 @@ export class AdminUsuarioComponent implements OnInit {
     });
   }
 
+  idUsuarioExclusao: string = '';
+  mostrarModalExclusao: boolean = false;
+
   excluirUsuario(id: string) {
-    this.service.excluir(id).subscribe({
+    this.idUsuarioExclusao = id;
+    this.mostrarModalExclusao = true;
+  }
+
+  confirmarExclusao() {
+    this.service.excluir(this.idUsuarioExclusao).subscribe({
       next: () => {
-        this.listaClientes = this.listaClientes.filter(cliente => cliente.id !== id);
+        this.listaClientes = this.listaClientes.filter(
+          cliente => cliente.id !== this.idUsuarioExclusao
+        );
+
+        this.mostrarPopup('Usuário excluído com sucesso.');
+        this.mostrarModalExclusao = false;
       }
     });
   }
+
+  mensagemPopup = '';
+  tipoPopup = '';
+
+  mostrarPopup(mensagem: string, tipo: string = 'sucesso') {
+    this.mensagemPopup = mensagem;
+    this.tipoPopup = tipo;
+
+    setTimeout(() => {
+      this.mensagemPopup = '';
+    }, 3000);
+  }
+
+
 }
