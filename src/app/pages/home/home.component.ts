@@ -14,14 +14,13 @@ import { CurrencyPipe } from '@angular/common';
   styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit {
-  constructor(private router: Router) { }
-  isLogado: boolean = false;
-  modoAdmin: boolean = false;
-  idUsuario: string | null = localStorage.getItem('userId');
 
+  // SERVIÇOS
+  constructor(private router: Router) { }
   private livroService = inject(LivroService);
   private carrinhoService = inject(CarrinhoService);
 
+  // ESTRUTURAS DE DADOS
   livros: Livro[] = [];
   itens: ItemCarrinho[] = [];
   livrosDestaque: Livro[] = [];
@@ -29,24 +28,21 @@ export class HomeComponent implements OnInit {
   bestSelling: Livro[] = [];
   livrosAutor: Livro[] = [];
 
-  paginaAtual: number = 1;
-  paginaDestaque: number = 1;
-  paginaLancamento: number = 1;
-  paginaSelling: number = 1;
-  paginaAutor: number = 1;
-  livrosPorPagina: number = 5;
-
   autorSelecionado: string = '';
 
+  // CARREGAMENTOS
   ngOnInit(): void {
     this.livroService.listar().subscribe({
       next: (livros) => {
         this.livros = livros;
+
+        // CARREGAR LISTAS DE CADA SEÇÃO
         this.separarPorAutor();
         this.livrosAleatorios(this.livrosDestaque);
         this.livrosAleatorios(this.livrosLancamento);
         this.livrosAleatorios(this.bestSelling);
 
+        // ATUALIZAR PÁGINAS
         this.atualizarDestaque();
         this.atualizarLancamento();
         this.atualizarSelling();
@@ -68,24 +64,34 @@ export class HomeComponent implements OnInit {
     this.modoAdmin = localStorage.getItem('adminLogado') === 'true';
   }
 
+  // VARIÁVEIS [CONTROLE DE SESSÃO]
+  isLogado: boolean = false;
+  modoAdmin: boolean = false;
+  idUsuario: string | null = localStorage.getItem('userId');
+
   separarPorAutor() {
+    // ANTI-UNDEFINED
     if (this.livros.length === 0) {
       return;
     }
 
+    // ESCOLHER LIVRO ALEATÓRIO
     const livroAleatorio = this.livros[Math.floor(Math.random() * this.livros.length)];
 
+    // AUTOR DO LIVRO
     this.autorSelecionado = livroAleatorio.autorLivro;
 
+    // FILTRAR POR AUTOR
     this.livrosAutor = this.livros.filter(
       livro => livro.autorLivro === this.autorSelecionado
     );
 
+    // ATUALIZAR PÁGINAÇÃO
     this.paginaAutor = 1;
-
     this.atualizarAutor();
   }
 
+  // FISHER-YATES [ESTRUTURA ORDENADA | ESTRUTURA RANDOMIZADA]
   livrosAleatorios(sequenciaLivro: Livro[]) {
     sequenciaLivro.length = 0;
 
@@ -102,27 +108,35 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  // VARIÁVEIS [MODAL - LIVROS]
   livroSelecionado: Livro | null = null;
 
+  // CONTROLE [MODAL - LIVROS]
   abrirModal(livro: Livro) {
     this.livroSelecionado = livro;
   }
 
+  // CONTROLE [MODAL - LIVROS]
   fecharModal() {
     this.livroSelecionado = null;
   }
 
+  // ADICIONAR LIVRO AO CARRINHO
   adicionarCarrinho(livro: Livro) {
+    // VERIFICAÇÃO LOGIN
     const isLogado = localStorage.getItem('usuarioLogado') === 'true';
 
+    // REDIRECIONAR PARA LOGIN/CADASTRO
     if (!isLogado) {
       this.router.navigate(['/cadastro-usuario']);
       return;
     }
 
+    // VARIÁVEIS [ANTI-UNDEFINED]
     const idUsuario = this.idUsuario;
     const codigoItem = livro.id;
 
+    // ANTI-UNDEFINED
     if (!idUsuario || !codigoItem) {
       this.mostrarPopup('Não foi possível identificar o usuário ou o livro.', 'erro');
       return;
@@ -130,26 +144,30 @@ export class HomeComponent implements OnInit {
 
     this.carrinhoService.listar().subscribe({
       next: (itens) => {
+        // VERIFICAÇÃO DE LIVRO JÁ EXISTENTE [BOOLEANO]
         const livroJaAdicionado = itens.some(item =>
           item.idUsuario === idUsuario &&
           item.codigoItem === codigoItem
         );
 
+        // IMPEDIR ENVIO DO JSON
         if (livroJaAdicionado) {
           this.mostrarPopup('Este livro já está no seu carrinho!', 'aviso');
           return;
         }
 
+        // OBJETO JSON [CARRINHO]
         const itemCarrinho: ItemCarrinho = {
           idUsuario: idUsuario,
           codigoItem: codigoItem,
           titulo: livro.tituloLivro,
           autor: livro.autorLivro,
-          preco: livro.precoLivro,
+          preco: Number(String(livro.precoLivro).replace(',', '.')),
           quantidade: 1,
           imagem: livro.imagemLivro
         };
 
+        // ENVIO JSON [CARRINHO]
         this.carrinhoService.incluir(itemCarrinho).subscribe({
           next: () => {
             this.mostrarPopup(`Livro: ${livro.tituloLivro} adicionado ao carrinho!`);
@@ -165,19 +183,15 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  mensagemPopup = '';
-  tipoPopup = '';
+  // VARIÁVEIS [PAGINAÇÃO]
+  paginaAtual: number = 1;
+  paginaDestaque: number = 1;
+  paginaLancamento: number = 1;
+  paginaSelling: number = 1;
+  paginaAutor: number = 1;
+  livrosPorPagina: number = 5;
 
-  mostrarPopup(mensagem: string, tipo: string = 'sucesso') {
-    this.mensagemPopup = mensagem;
-    this.tipoPopup = tipo;
-
-    setTimeout(() => {
-      this.mensagemPopup = '';
-    }, 3000);
-  }
-
-  // PAGINAÇÃO
+  // SISTEMAS DE PAGINAÇÃO
   get destaquesPaginados(): Livro[] {
     const inicio = (this.paginaDestaque - 1) * this.livrosPorPagina;
 
@@ -202,11 +216,13 @@ export class HomeComponent implements OnInit {
     return this.livrosAutor.slice(inicio, inicio + this.livrosPorPagina);
   }
 
+  // ESTRUTURAS DE PAGINAÇÃO
   paginasDestaque: number[] = [];
   paginasLancamento: number[] = [];
   paginasSelling: number[] = [];
   paginasAutor: number[] = [];
 
+  // ATUALIZAÇÃO DE PÁGINAS
   atualizarDestaque(): void {
     this.paginasDestaque = [];
 
@@ -217,6 +233,7 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  // ATUALIZAÇÃO DE PÁGINAS
   atualizarLancamento(): void {
     this.paginasLancamento = [];
 
@@ -227,6 +244,7 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  // ATUALIZAÇÃO DE PÁGINAS
   atualizarSelling(): void {
     this.paginasSelling = [];
 
@@ -237,6 +255,7 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  // ATUALIZAÇÃO DE PÁGINAS
   atualizarAutor(): void {
     this.paginasAutor = [];
 
@@ -247,5 +266,17 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  // VARIÁVEIS [POP-UP]
+  mensagemPopup = '';
+  tipoPopup = '';
 
+  // POP-UP
+  mostrarPopup(mensagem: string, tipo: string = 'sucesso') {
+    this.mensagemPopup = mensagem;
+    this.tipoPopup = tipo;
+
+    setTimeout(() => {
+      this.mensagemPopup = '';
+    }, 3000);
+  }
 }

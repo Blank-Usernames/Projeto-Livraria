@@ -11,13 +11,19 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './cadastro-livros.component.css'
 })
 export class CadastroLivrosComponent implements OnInit {
-  livro: Livro = {} as Livro;
+
+  // SERVIÇOS
   private service = inject(LivroService);
   private router = inject(Router);
-
   private route = inject(ActivatedRoute);
+
+  // PARÂMETRO DA ROTA
   livroId: string | null = this.route.snapshot.paramMap.get('id');
 
+  // ESTRUTURAS DE DADOS
+  livro: Livro = {} as Livro;
+
+  // CARREGAMENTOS
   ngOnInit(): void {
     if (this.livroId) {
       this.service.buscarPorId(this.livroId).subscribe({
@@ -29,7 +35,9 @@ export class CadastroLivrosComponent implements OnInit {
     }
   }
 
+  // ENVIAR JSON [LIVRO]
   cadastrarLivro() {
+    // MODO UPDATE [IF ID = TRUE]
     if (this.livroId) {
       this.service.editar(this.livro).subscribe({
         next: (livro) => {
@@ -40,6 +48,7 @@ export class CadastroLivrosComponent implements OnInit {
         error: () => this.mostrarPopup('Erro ao alterar o livro.', 'erro')
       })
     } else {
+      // MODO CREATE [IF !ID]
       this.service.incluir(this.livro).subscribe({
         next: (livro) => {
           this.mostrarPopup(`Livro: ${livro.tituloLivro} Cadastrado. \nID: ${livro.id}`);
@@ -48,6 +57,7 @@ export class CadastroLivrosComponent implements OnInit {
     }
   }
 
+  // DELETAR JSON [LIVRO]
   excluirLivro(id: string) {
     if (id) {
       this.service.excluir(id).subscribe(() => {
@@ -56,9 +66,11 @@ export class CadastroLivrosComponent implements OnInit {
     }
   }
 
+  // VARIÁVEIS [POP-UP]
   mensagemPopup = '';
   tipoPopup = '';
 
+  // POP-UP
   mostrarPopup(mensagem: string, tipo: string = 'sucesso') {
     this.mensagemPopup = mensagem;
     this.tipoPopup = tipo;

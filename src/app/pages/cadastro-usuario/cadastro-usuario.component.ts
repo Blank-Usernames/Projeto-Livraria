@@ -11,17 +11,24 @@ import { Cliente } from '../../models/Cliente';
   styleUrl: './cadastro-usuario.component.css'
 })
 export class CadastroUsuarioComponent {
-  cliente: Cliente = {} as Cliente;
+
+  // SERVIÇOS
   private service = inject(ClienteService);
   private router = inject(Router);
 
+  // ESTRUTURAS DE DADOS
+  cliente: Cliente = {} as Cliente;
+
+  // VARIÁVEIS [FORMULÁRIO - CADASTRO]
   nomeUsuarioCad: string = "";
   senhaUsuarioCad: string = "";
   confirmarSenha: string = "";
   email: string = "";
   cpf: string = "";
   checkboxTermos: boolean = false;
+  isDisabledCadastro: boolean = true;
 
+  // VERIFICAÇÃO INPUTS [KEYUP - CADASTRO]
   validarFormularioCadastro() {
     if (this.nomeUsuarioCad.trim() !== '' &&
       this.senhaUsuarioCad.trim() !== '' &&
@@ -36,7 +43,9 @@ export class CadastroUsuarioComponent {
     }
   }
 
+  // CADASTRO DE USUÁRIO
   cadastrarUsuario() {
+    // OBJETO JSON [CLIENTE]
     this.cliente = {
       nomeUsuario: this.nomeUsuarioCad,
       senhaUsuario: this.senhaUsuarioCad,
@@ -44,6 +53,7 @@ export class CadastroUsuarioComponent {
       cpf: this.cpf
     } as Cliente;
 
+    // ENVIAR JSON [CLIENTE]
     this.service.incluir(this.cliente).subscribe({
       next: (cliente) => {
         this.cliente = cliente;
@@ -53,20 +63,7 @@ export class CadastroUsuarioComponent {
     });
   }
 
-  isDisabledLogin: boolean = true;
-  isDisabledCadastro: boolean = true;
-
-  nomeUsuarioLog: string = "";
-  senhaUsuarioLog: string = "";
-
-  validarFormularioLogin() {
-    if (this.nomeUsuarioLog.trim() !== '' && this.senhaUsuarioLog.trim() !== '') {
-      this.isDisabledLogin = false;
-    } else {
-      this.isDisabledLogin = true;
-    }
-  }
-
+  // LIMPAR FORMULÁRIO [FORMULÁRIO - CADASTRO]
   limparCadastro() {
     this.nomeUsuarioCad = '';
     this.senhaUsuarioCad = '';
@@ -77,45 +74,46 @@ export class CadastroUsuarioComponent {
     this.isDisabledCadastro = true;
   }
 
-  mensagemPopup = '';
-  tipoPopup = '';
+  // VARIÁVEIS [FORMULÁRIO - LOGIN]
+  nomeUsuarioLog: string = "";
+  senhaUsuarioLog: string = "";
+  isDisabledLogin: boolean = true;
 
-  mostrarPopup(mensagem: string, tipo: string = 'sucesso') {
-    this.mensagemPopup = mensagem;
-    this.tipoPopup = tipo;
-
-    setTimeout(() => {
-      this.mensagemPopup = '';
-    }, 3000);
+  // VERIFICAÇÃO INPUTS [KEYUP - LOGIN]
+  validarFormularioLogin() {
+    if (this.nomeUsuarioLog.trim() !== '' && this.senhaUsuarioLog.trim() !== '') {
+      this.isDisabledLogin = false;
+    } else {
+      this.isDisabledLogin = true;
+    }
   }
 
-  /* VALIDAR USUÁRIO */
+  // LOGIN DE USUÁRIO
   login() {
-    /* LOGIN FIXO DO ADMIN */
+    // LOGIN MODO ADMINISTRADOR
     if (this.nomeUsuarioLog === 'admin' && this.senhaUsuarioLog === '1234') {
-      localStorage.setItem('usuarioLogado', 'true');
-      localStorage.setItem('adminLogado', 'true');
-      sessionStorage.setItem('avisoAdmin', 'true');
+      localStorage.setItem('usuarioLogado', 'true'); /* PARA ACESSAR AS ROTAS */
+      localStorage.setItem('adminLogado', 'true'); /* PARA TER FUNCIONALIDADES DE ADMIN */
+      sessionStorage.setItem('avisoAdmin', 'true'); /* gracinha que eu coloquei para avisar quando você entrar no modo adm */
       window.location.href = '/';
     } else {
-      /* LOGIN DE USUÁRIO COMUM */
-
-
+      // LOGIN MODO USUÁRIO COMUM
       this.service.listar().subscribe({
         next: (clientes) => {
+          // VERIFICAR INPUTS [FORMULÁRIO - LOGIN]
           const usuarioEncontrado = clientes.find(cliente =>
             cliente.nomeUsuario === this.nomeUsuarioLog &&
             cliente.senhaUsuario === this.senhaUsuarioLog
           );
           if (usuarioEncontrado) {
-            // Isso tá aqui por causa do undefined
+            // ANTI-UNDEFINED
             if (!usuarioEncontrado.id) {
               return;
             }
-            localStorage.setItem('usuarioLogado', 'true');
-            localStorage.setItem('adminLogado', 'false');
-            localStorage.setItem('userId', usuarioEncontrado.id);
-            sessionStorage.setItem('avisoUsuario', 'true');
+            localStorage.setItem('usuarioLogado', 'true'); /* PARA ACESSAR AS ROTAS */
+            localStorage.setItem('adminLogado', 'false'); /* REMOVER O MODO ADMINISTRADOR */
+            localStorage.setItem('userId', usuarioEncontrado.id); /* REGISTRAR SESSÃO */
+            sessionStorage.setItem('avisoUsuario', 'true'); /* gracinha que coloquei para avisar que o login foi efetuado, adicionado no final do projeto */
             window.location.href = '/catalogo';
           } else {
             this.mostrarPopup('Usuário ou senha incorretos!', 'erro');
@@ -124,5 +122,18 @@ export class CadastroUsuarioComponent {
       });
     }
   }
-  /* VALIDAR USUÁRIO */
+
+  // VARIÁVEIS [POP-UP]
+  mensagemPopup = '';
+  tipoPopup = '';
+
+  // POP-UP
+  mostrarPopup(mensagem: string, tipo: string = 'sucesso') {
+    this.mensagemPopup = mensagem;
+    this.tipoPopup = tipo;
+
+    setTimeout(() => {
+      this.mensagemPopup = '';
+    }, 3000);
+  }
 }
