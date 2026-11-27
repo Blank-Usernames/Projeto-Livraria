@@ -114,11 +114,11 @@
         </div>
 
         <a routerLink="/catalogo" class="btn btn-secondary btn-vermelho-largo">Continuar comprando</a>
-        <button type="button" class="btn btn-primary btn-vermelho-largo">Finalizar</button>
+        <button type="button" (click)="finalizarCompra()" class="btn btn-primary btn-vermelho-largo">Finalizar</button>
       </div>
-
+''
       <div class="link-remover-todos-container">
-        <button type="button" (click)="finalizarCompra()" class="btn-remover-todos" (click)="removerTodos()">Remover todos os produtos</button>
+        <button type="button" class="btn-remover-todos" (click)="removerTodos()">Remover todos os produtos</button>
       </div>
     </div>
   </div>
