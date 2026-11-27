@@ -102,12 +102,12 @@ export class PerfilUsuarioComponent implements OnInit {
 
         // IF !modoAdmin EXCLUIR E LOGOUT ELSE REDIRECIONAR
         if (this.modoAdmin) {
-          window.location.href = '/admin-usuario';
+          this.router.navigate(['/admin-usuario']).then(() => window.location.reload());
         } else {
           localStorage.removeItem('usuarioLogado');
           localStorage.removeItem('adminLogado');
           localStorage.removeItem('userId');
-          window.location.href = '/';
+          this.router.navigate(['/']).then(() => window.location.reload());
         }
       },
       error: () => this.mostrarPopup('Erro ao excluir usuário.', 'erro')
