@@ -1,5 +1,13 @@
 {
-  "clientes": [],
+  "clientes": [
+    {
+      "nomeUsuario": "pedro",
+      "senhaUsuario": "1234",
+      "email": "pedro@gmail.com",
+      "cpf": "12345678912",
+      "id": 1
+    }
+  ],
   "livros": [
     {
       "tituloLivro": "Pânico",
