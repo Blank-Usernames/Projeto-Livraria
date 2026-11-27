@@ -154,6 +154,12 @@ export class CarrinhoComponent implements OnInit {
     });
   }
 
+  // FINALIZAR COMPRA
+  finalizarCompra(): void {
+    this.mostrarPopup('Compra finalizada!');
+    removerTodos();
+  }
+  
   // VARIÁVEIS [POP-UP]
   mensagemPopup = '';
   tipoPopup = '';
