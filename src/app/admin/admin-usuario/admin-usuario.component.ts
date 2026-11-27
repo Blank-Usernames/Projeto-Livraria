@@ -10,10 +10,14 @@ import { RouterLink } from '@angular/router';
   styleUrl: './admin-usuario.component.css'
 })
 export class AdminUsuarioComponent implements OnInit {
+
+  // SERVIÇOS
   private service = inject(ClienteService);
 
+  // ESTRUTURAS DE DADOS
   listaClientes: Cliente[] = [];
 
+  // CARREGAMENTOS
   ngOnInit(): void {
     this.service.listar().subscribe({
       next: (clientes) => {
@@ -22,14 +26,17 @@ export class AdminUsuarioComponent implements OnInit {
     });
   }
 
+  // VARIÁVEIS [EXCLUSÃO DE USUÁRIO]
   idUsuarioExclusao: string = '';
   mostrarModalExclusao: boolean = false;
 
+  // ABRIR MODAL
   excluirUsuario(id: string) {
     this.idUsuarioExclusao = id;
     this.mostrarModalExclusao = true;
   }
 
+  // EXCLUSÃO DE USUÁRIO
   confirmarExclusao() {
     this.service.excluir(this.idUsuarioExclusao).subscribe({
       next: () => {
@@ -43,9 +50,11 @@ export class AdminUsuarioComponent implements OnInit {
     });
   }
 
+  // POP-UP [VARIÁVEIS]
   mensagemPopup = '';
   tipoPopup = '';
 
+  // POP-UP
   mostrarPopup(mensagem: string, tipo: string = 'sucesso') {
     this.mensagemPopup = mensagem;
     this.tipoPopup = tipo;
@@ -54,6 +63,4 @@ export class AdminUsuarioComponent implements OnInit {
       this.mensagemPopup = '';
     }, 3000);
   }
-
-
 }

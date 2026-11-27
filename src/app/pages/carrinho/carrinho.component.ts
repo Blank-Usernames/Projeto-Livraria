@@ -13,39 +13,47 @@ import { ItemCarrinho } from '../../models/Carrinho';
   styleUrl: './carrinho.component.css'
 })
 export class CarrinhoComponent implements OnInit {
-  itens: ItemCarrinho[] = [];
+
+  // SERVIÇOS
   private service = inject(CarrinhoService);
   private router = inject(Router);
 
-  criterioOrdenacao: string = 'nome';
-  ordemCrescente: boolean = true;
+  // ESTRUTURAS DE DADOS
+  itens: ItemCarrinho[] = [];
 
-  cupomDesconto: string = '';
-  cupomAplicado: boolean = false;
-  percentualDesconto: number = 0;
-
+  // CARREGAMENTOS
   ngOnInit(): void {
     this.service.listar().subscribe({
       next: (itens) => {
         this.itens = itens;
       }
     });
-    console.table(this.itens);
   }
 
-  get itensOrdenados(): ItemCarrinho[] {
-    let lista = this.itens.slice();
+  // VARIÁVEIS [ORDENAÇÃO]
+  criterioOrdenacao: string = 'nome';
+  ordemCrescente: boolean = true;
 
+  // ORDERNAR [CARRINHO]
+  get itensOrdenados(): ItemCarrinho[] {
+    let lista = this.itens.slice(); /* CÓPIA DA LISTA */
+
+    // ORDENAÇÃO POR SORT [IF POSITIVO > | IF NEGATIVO <]
     lista.sort((a, b) => {
+      // VARIÁVEIS [RESULTADO DA COMPARAÇÃO]
       let comparacao = 0;
 
+      // ORDERNAR POR STRING ALFABÉTICA
       if (this.criterioOrdenacao === 'nome') {
         comparacao = a.titulo.localeCompare(b.titulo, 'pt-BR');
       }
+
+      // ORDERNAR POR NUMBER PREÇO
       else if (this.criterioOrdenacao === 'preco') {
         comparacao = a.preco - b.preco;
       }
 
+      // INVERTER LISTA [!ordemCrescente]
       if (this.ordemCrescente === false) {
         comparacao = comparacao * -1;
       }
@@ -56,6 +64,12 @@ export class CarrinhoComponent implements OnInit {
     return lista;
   }
 
+  // VARIÁVEIS [CUPOM]
+  cupomDesconto: string = '';
+  cupomAplicado: boolean = false;
+  percentualDesconto: number = 0;
+
+  // CUPOM
   aplicarCupom() {
     if (this.cupomDesconto.trim().toUpperCase() === 'GTAVI') {
       this.cupomAplicado = true;
@@ -76,21 +90,40 @@ export class CarrinhoComponent implements OnInit {
     }
   }
 
+  // CONTROLE QUANTIDADE [CARRINHO]
   aumentarQuantidade(item: ItemCarrinho): void {
     item.quantidade++;
   }
 
+  // CONTROLE QUANTIDADE [CARRINHO]
   diminuirQuantidade(item: ItemCarrinho): void {
     if (item.quantidade > 1) {
       item.quantidade--;
     }
   }
 
+  // CÁLCULO DESCONTO
+  get valorDesconto(): number {
+    return this.valorSubTotal * (this.percentualDesconto / 100);
+  }
+
+  // CÁLCULO SOMA
+  get valorSubTotal(): number {
+    return this.itens.reduce((soma, item) => soma + (item.preco * item.quantidade), 0);
+  }
+
+  // CÁLCULO TOTAL
+  get valorTotal(): number {
+    return this.valorSubTotal - this.valorDesconto;
+  }
+
   removerItem(id: string | undefined): void {
+    // ANTI-UNDEFINED
     if (!id) {
       return;
     }
 
+    // DELETAR JSON [CARRINHO]
     this.service.excluir(id).subscribe({
       next: () => {
         this.itens = this.itens.filter(item => item.id !== id);
@@ -102,7 +135,9 @@ export class CarrinhoComponent implements OnInit {
     });
   }
 
+  // DELETAR JSON [CARRINHO]
   removerTodos(): void {
+    // DELETAR A LISTA
     this.itens.forEach(item => {
       if (item.id) {
         this.service.excluir(item.id).subscribe({
@@ -119,9 +154,11 @@ export class CarrinhoComponent implements OnInit {
     });
   }
 
+  // VARIÁVEIS [POP-UP]
   mensagemPopup = '';
   tipoPopup = '';
 
+  // POP-UP
   mostrarPopup(mensagem: string, tipo: string = 'sucesso') {
     this.mensagemPopup = mensagem;
     this.tipoPopup = tipo;
@@ -129,17 +166,5 @@ export class CarrinhoComponent implements OnInit {
     setTimeout(() => {
       this.mensagemPopup = '';
     }, 3000);
-  }
-
-  get valorDesconto(): number {
-    return this.valorSubTotal * (this.percentualDesconto / 100);
-  }
-
-  get valorSubTotal(): number {
-    return this.itens.reduce((soma, item) => soma + (item.preco * item.quantidade), 0);
-  }
-
-  get valorTotal(): number {
-    return this.valorSubTotal - this.valorDesconto;
   }
 }

@@ -100,5 +100,48 @@
       "imagem": "Imagens_Livros/livro9.jpg",
       "id": 2
     }
-  ]
+  ],
+  "faq": [
+    {
+      "id": "1",
+      "pergunta": "Quais as formas de pagamento aceites?",
+      "resposta": "Aceitamos cartão de crédito, PayPal, Pix e Boleto Bancário."
+    },
+    {
+      "id": "2",
+      "pergunta": "Qual é a política de frete grátis?",
+      "resposta": "Oferecemos frete grátis para compras acima de R$ 150,00."
+    },
+    {
+      "id": "3",
+      "pergunta": "Qual é o prazo para troca ou devolução?",
+      "resposta": "Você pode solicitar troca ou devolução em até 7 dias corridos após o recebimento, desde que o livro esteja sem marcas de uso."
+    },
+    {
+      "id": "4",
+      "pergunta": "O que fazer se o livro chegar com avaria ou faltando páginas?",
+      "resposta": "Entre em contato pelo formulário desta página ou pelo nosso e-mail informando o número do pedido e enviando fotos do defeito."
+    },
+    {
+      "id": "5",
+      "pergunta": "Posso alterar o endereço de entrega após finalizar a compra?",
+      "resposta": "Antes do envio ser despachado, fale com nossa equipe de suporte informando o número do pedido para verificarmos a alteração."
+    },
+    {
+      "id": "6",
+      "pergunta": "Vocês emitem nota fiscal para todas as compras?",
+      "resposta": "Sim, toda compra acompanha nota fiscal, que fica disponível no detalhe do pedido e é enviada ao seu e-mail cadastrado."
+    },
+    {
+      "id": "7",
+      "pergunta": "Como posso sugerir um livro que não encontrei no catálogo?",
+      "resposta": "Use o formulário de feedback ao lado, selecione a opção \"Sugestão\" e informe o título, autor ou editora desejada."
+    },
+    {
+      "id": "8",
+      "pergunta": "Qual é o prazo médio de entrega dos pedidos?",
+      "resposta": "O prazo varia conforme o CEP e a modalidade de envio escolhida, sendo exibido no carrinho antes de concluir o pagamento."
+    }
+  ],
+  "feedbacks": []
 }

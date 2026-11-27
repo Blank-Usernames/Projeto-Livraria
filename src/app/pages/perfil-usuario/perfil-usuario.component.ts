@@ -11,14 +11,19 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './perfil-usuario.component.css'
 })
 export class PerfilUsuarioComponent implements OnInit {
-  user: Cliente = {} as Cliente;
+
+  // SERVIÇOS
   private service = inject(ClienteService);
   private router = inject(Router);
-
   private route = inject(ActivatedRoute);
-  userId: string | null = this.route.snapshot.paramMap.get('id');
-  modoAdmin: boolean = false;
 
+   // ESTRUTURAS DE DADOS
+  user: Cliente = {} as Cliente;
+  
+  // PARÂMETRO DA ROTA
+  userId: string | null = this.route.snapshot.paramMap.get('id');
+
+  // CARREGAMENTOS
   ngOnInit(): void {
     if (this.userId) {
       this.service.buscarPorId(this.userId).subscribe({
@@ -31,9 +36,16 @@ export class PerfilUsuarioComponent implements OnInit {
     this.modoAdmin = localStorage.getItem('adminLogado') === 'true';
   }
 
+  // VARIÁVEIS [CONTROLE DE SESSÃO]
+  modoAdmin: boolean = false;
+
+  // VARIÁVEIS [FORMULÁRIO]
   confirmarSenha: string = "";
+
+  // VARIÁVEIS [KEYUP]
   isDisabled: boolean = true;
 
+  // VERIFICAÇÃO INPUTS [KEYUP]
   validarFormularioPerfil() {
     if (this.user.nomeUsuario?.trim() !== '' &&
       this.user.senhaUsuario?.trim() !== '' &&
@@ -47,13 +59,15 @@ export class PerfilUsuarioComponent implements OnInit {
     }
   }
 
-
+  // ATUALIZAR DADOS DO USUÁRIO
   atualizarPerfil() {
+    // ANTI-UNDEFINED
     if (!this.user.id) {
       this.mostrarPopup('ID do usuário não encontrado.', 'erro');
       return;
     }
 
+    // UPDATE JSON [CLIENTE]
     this.service.editar(this.user).subscribe({
       next: (userAtualizado) => {
         this.user = userAtualizado;
@@ -63,10 +77,13 @@ export class PerfilUsuarioComponent implements OnInit {
     });
   }
 
+  // VARIÁVEIS [MODAL - EXCLUIR]
   idUsuarioExclusao: string = '';
   mostrarModalExclusao: boolean = false;
 
+  // ABRIR MODAL
   excluirUsuario() {
+    // ANTI-UNDEFINED
     if (!this.user.id) {
       this.mostrarPopup('ID do usuário não encontrado.', 'erro');
       return;
@@ -76,11 +93,14 @@ export class PerfilUsuarioComponent implements OnInit {
     this.mostrarModalExclusao = true;
   }
 
+  // EXCLUSÃO DE USUÁRIO
   confirmarExclusao() {
+    // DELETAR JSON [CLIENTE]
     this.service.excluir(this.idUsuarioExclusao).subscribe({
       next: () => {
         this.mostrarModalExclusao = false;
 
+        // IF !modoAdmin EXCLUIR E LOGOUT ELSE REDIRECIONAR
         if (this.modoAdmin) {
           window.location.href = '/admin-usuario';
         } else {
@@ -94,9 +114,11 @@ export class PerfilUsuarioComponent implements OnInit {
     });
   }
 
+  // VARIÁVEIS [POP-UP]
   mensagemPopup = '';
   tipoPopup = '';
 
+  // POP-UP
   mostrarPopup(mensagem: string, tipo: string = 'sucesso') {
     this.mensagemPopup = mensagem;
     this.tipoPopup = tipo;

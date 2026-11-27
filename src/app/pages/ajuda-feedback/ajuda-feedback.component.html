@@ -1,95 +1,106 @@
+<!-- Popup -->
 @if (mensagemPopup) {
 <div class="popup" [class.popup-sucesso]="tipoPopup === 'sucesso'" [class.popup-aviso]="tipoPopup === 'aviso'"
     [class.popup-erro]="tipoPopup === 'erro'" role="status" aria-live="polite">
+
     <span class="popup-mensagem">{{ mensagemPopup }}</span>
 </div>
 }
 
-
 <div id="pagina-ajuda">
 
-    <!-- Faixa escura no topo -->
+    <!-- Faixa superior -->
     <div class="faixa-topo">
         <h1>Como podemos ajudar?</h1>
         <p>Encontre respostas rápidas ou fale com a nossa equipe.</p>
+
+        <div class="caixa-busca">
+            <input type="text" [(ngModel)]="termoBusca" placeholder="Digite a sua dúvida...">
+
+            <button type="button" (click)="buscar()" id="botao-buscar">Buscar</button>
+
+            <button type="button" class="btn btn-secondary" (click)="limparBusca()">Limpar</button>
+        </div>
     </div>
 
-    <!-- Área central com o conteúdo -->
+    <!-- Conteúdo principal -->
     <div class="conteudo-ajuda">
 
-        <!-- Perguntas Frequentes FAQ -->
+        <!-- FAQ -->
         <div class="seccao-perguntas">
             <h2>Perguntas Frequentes (FAQ)</h2>
+
             <div class="lista-perguntas">
+                @for (item of perguntasFaq; track item.id ?? item.pergunta) {
                 <details class="item-pergunta">
-                    <summary><strong>Como rastrear o pedido do meu livro?</strong></summary>
-                    <p>Tem que ver com os caras lá.</p>
+                    <summary>
+                        <strong>{{ item.pergunta }}</strong>
+                    </summary>
+
+                    <p>{{ item.resposta }}</p>
                 </details>
-                <details class="item-pergunta">
-                    <summary><strong>Quais as formas de pagamento aceites?</strong></summary>
-                    <p>Pior que esqueceram de colocar isso no front, mas eu não vou fazer não chega.</p>
-                </details>
-                <details class="item-pergunta">
-                    <summary><strong>Qual é a política de frete grátis?</strong></summary>
-                    <p>Tem não irmão, mas eu fiz a lógica dos cupoms lá, coloca lá: SENAC, GTAVI ou FERNANDOTIMOTEO.</p>
-                </details>
+                }
+                @empty {
+                <p>Nenhuma pergunta encontrada no FAQ.</p>
+                }
             </div>
         </div>
-        <!-- Fale Conosco -->
+
+        <!-- Contato e formulário -->
         <div class="area-contato-formulario">
 
+            <!-- Informações de contato -->
             <div class="info-contato">
                 <h2>Fale Conosco</h2>
-                <p><strong>E-mail:</strong> ArsLibris&#64;gmail.com.br</p>
-                <p><strong>Telefone:</strong> (11) 4002-8922</p>
-                <p><strong>Horário:</strong> Segunda-Feira a Sexta-Feira: 09h às 18h</p>
-                <p><strong>Endereço:</strong> Av. Paulista, 1578 — Bela Vista - São Paulo — SP, 01310-200
-                    Brasil</p>
 
+                <p><strong>E-mail:</strong> ArsLibrisgmail.com.br</p>
+                <p><strong>Telefone:</strong> (11) 4002-8922</p>
+                <p><strong>Horário:</strong> Segunda-feira a sexta-feira: 09h às 18h</p>
+                <p><strong>Endereço:</strong> Av. Paulista, 1578 — Bela Vista - São Paulo — SP, 01310-200, Brasil</p>
             </div>
-            <!-- Formulário contato -->
+
+            <!-- Formulário -->
             <div class="caixa-formulario">
                 <h2>Envie o seu Feedback</h2>
 
                 <form (ngSubmit)="enviarFormulario()">
 
-                    <label for="nome-usuario">Nome Completo:*</label><br>
-                    <input type="text" id="nome-usuario" name="nome" [(ngModel)]="nomeUsuario">
+                    <label for="nome-usuario">Nome Completo:</label>
+                    <input type="text" id="nome-usuario" name="nome" [(ngModel)]="nomeUsuario" readonly>
 
-                    <label for="email-usuario">E-mail:*</label><br>
-                    <input type="email" id="email-usuario" name="email" [(ngModel)]="emailUsuario">
+                    <label for="email-usuario">E-mail:</label>
+                    <input type="email" id="email-usuario" name="email" [(ngModel)]="emailUsuario" readonly>
 
                     <label>Assunto:</label>
 
-                    <div class="opcoes-assunto">
+                    <div>
+                        <input type="radio" id="assunto-duvida" name="assunto" value="duvida" [(ngModel)]="assunto">
+                        <label for="assunto-duvida">Dúvida</label>
+                    </div>
 
-                        <div class="opcao-assunto">
-                            <input type="radio" id="assunto-duvida" name="assunto" value="duvida" [(ngModel)]="assunto">
-                            <label for="assunto-duvida">Dúvida</label>
-                        </div>
+                    <div>
+                        <input type="radio" id="assunto-sugestao" name="assunto" value="sugestao" [(ngModel)]="assunto">
+                        <label for="assunto-sugestao">Sugestão</label>
+                    </div>
 
-                        <div class="opcao-assunto">
-                            <input type="radio" id="assunto-sugestao" name="assunto" value="sugestao"
-                                [(ngModel)]="assunto">
-                            <label for="assunto-sugestao">Sugestão</label>
-                        </div>
-
-                        <div class="opcao-assunto">
-                            <input type="radio" id="assunto-reclamacao" name="assunto" value="reclamacao"
-                                [(ngModel)]="assunto">
-                            <label for="assunto-reclamacao">Reclamação</label>
-                        </div>
-
+                    <div>
+                        <input type="radio" id="assunto-reclamacao" name="assunto" value="reclamacao"
+                            [(ngModel)]="assunto">
+                        <label for="assunto-reclamacao">Reclamação</label>
                     </div>
 
                     <label for="mensagem-texto">Mensagem:*</label>
-                    <textarea id="mensagem-texto" name="mensagem" rows="5" [(ngModel)]="mensagemTexto"></textarea>
+                    <textarea id="mensagem-texto" name="mensagem" rows="5" [(ngModel)]="mensagemTexto"
+                        (keyup)="verificarCampos()">
+          </textarea>
 
-                    <div class="btn-container">
-                        <button type="button" id="botao-enviar" class="btn btn-primary">Enviar Mensagem</button>
-                        <button type="button" id="botao-limpar" class="btn btn-secondary"
-                            (click)="limparFormulario()">Limpar</button>
+                    <div class="acoes-formulario">
+                        <button type="submit" class="btn btn-primary" [disabled]="!formularioValido">Enviar
+                            Mensagem</button>
+
+                        <button type="button" class="btn btn-secondary" (click)="limparFormulario()">Limpar</button>
                     </div>
+
                 </form>
             </div>
 
