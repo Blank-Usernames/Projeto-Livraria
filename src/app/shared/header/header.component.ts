@@ -34,7 +34,7 @@ export class HeaderComponent {
     localStorage.removeItem('userId');
     this.isLogado = false;
     window.location.reload();
-    window.location.href = '/';
+    this.router.navigate(['/']).then(() => window.location.reload());
   }
 
   // VARIÁVEIS [PESQUISA]
