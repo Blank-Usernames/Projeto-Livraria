@@ -1,5 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Faq } from '../../models/Faq';
+import { FormularioFeedback } from '../../models/Formulario-feedback';
+import { FaqService } from '../../services/faq.service';
+import { FormularioFeedbackService } from '../../services/formulario-feedback.service';
 
 @Component({
   selector: 'app-ajuda-feedback',
@@ -7,27 +11,55 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './ajuda-feedback.component.html',
   styleUrl: './ajuda-feedback.component.css'
 })
-export class AjudaFeedbackComponent {
 
+export class AjudaFeedbackComponent implements OnInit {
   termoBusca: string = '';
 
-  // Variaveis formulario
+  perguntasFaq: Faq[] = [];
+  feedbacksEnviados: FormularioFeedback[] = [];
+  exibirFeedbacksNaTela: boolean = true;
+
   nomeUsuario: string = '';
   emailUsuario: string = '';
-  assunto: string = 'duvida'; // Valor padrão marcado
+  assunto: string = 'duvida';
   mensagemTexto: string = '';
+
+  constructor(
+    private faqService: FaqService,
+    private feedbackService: FormularioFeedbackService
+  ) {}
+
+  ngOnInit(): void {
+    this.carregarFaq();
+  }
+
+  carregarFaq(): void {
+    this.faqService.listarPerguntas().subscribe({
+      next: (dados) => {
+        this.perguntasFaq = dados;
+      },
+      error: () => {
+        alert('Não foi possível carregar o FAQ.');
+      }
+    });
+  }
 
   // Método botão Buscar
   buscar(): void {
-    if (this.termoBusca.trim() === '') {
-      alert('Por favor, digite uma dúvida antes de buscar.');
-    } else {
-      alert(`Você pesquisou por: "${this.termoBusca}".`);
-      this.termoBusca = ''; // Limpa o campo automaticamente no HTML
-    }
+    this.faqService.buscarPerguntas(this.termoBusca).subscribe({
+      next: (resultados) => {
+        this.perguntasFaq = resultados;
+        if (this.termoBusca.trim() !== '' && resultados.length === 0) {
+          alert(`Nenhuma pergunta encontrada para "${this.termoBusca}".`);
+        }
+      },
+      error: () => {
+        alert('Erro ao buscar no servidor.');
+      }
+    });
   }
 
-  // Método evio formulario
+  // Método envio formulário (salva no db.json via POST)
   enviarFormulario(): void {
     if (this.nomeUsuario.trim() === '' || this.emailUsuario.trim() === '') {
       alert('Atenção: Os campos Nome e E-mail são obrigatórios!');
@@ -38,6 +70,30 @@ export class AjudaFeedbackComponent {
       return;
     }
 
-    alert(`Obrigado pelo seu feedback, ${this.nomeUsuario}! Sua mensagem foi registrada.`);
+    const novoFeedback: FormularioFeedback = {
+      nomeUsuario: this.nomeUsuario.trim(),
+      emailUsuario: this.emailUsuario.trim(),
+      assunto: this.assunto,
+      mensagemTexto: this.mensagemTexto.trim(),
+      dataEnvio: new Date().toLocaleString('pt-BR')
+    };
+
+    this.feedbackService.enviarFeedback(novoFeedback).subscribe({
+      next: (salvo) => {
+        this.feedbacksEnviados.push(salvo);
+        alert(`Obrigado pelo seu feedback, ${novoFeedback.nomeUsuario}! Sua mensagem foi salva.`);
+        this.limparFormulario();
+      },
+      error: () => {
+        alert('Erro ao enviar o feedback.');
+      }
+    });
+  }
+
+  limparFormulario(): void {
+    this.nomeUsuario = '';
+    this.emailUsuario = '';
+    this.assunto = 'duvida';
+    this.mensagemTexto = '';
   }
 }

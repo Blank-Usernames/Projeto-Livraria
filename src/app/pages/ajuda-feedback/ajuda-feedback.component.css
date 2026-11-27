@@ -16,7 +16,10 @@ body {
 
 /* Estilo do cabeçalho da ajuda */
 .faixa-topo {
-    background-color: #333333;
+    background:
+        linear-gradient(90deg,
+            rgba(37, 0, 0, 0.9) 20%,
+            rgba(0, 0, 0, 0.89) 80%);
     color: white;
     text-align: center;
     padding: 40px 20px;
@@ -27,11 +30,17 @@ body {
     margin-top: 0;
 }
 
-/* Barra de pesquisa*/
+/* Barra de pesquisa */
 .caixa-busca input {
     padding: 10px;
     width: 300px;
     border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+}
+
+.caixa-busca input:focus {
+    border-color: #7E1214;
 }
 
 #botao-buscar {
@@ -39,10 +48,20 @@ body {
     background-color: #7E1214;
     color: white;
     border: none;
+    border-radius: 4px;
     cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
 }
 
-/* Limitador de largura para não ocupar tada a tela */
+#botao-buscar:hover {
+    background-color: #5e0d0f;
+}
+
+#botao-buscar:active {
+    transform: scale(0.98);
+}
+
+/* Limitador de largura para não ocupar toda a tela */
 .conteudo-ajuda {
     width: 80%;
     margin: 0 auto;
@@ -54,11 +73,13 @@ body {
     background-color: white;
     padding: 20px;
     border: 1px solid #cccccc;
+    border-radius: 4px;
     margin-bottom: 30px;
 }
 
 .seccao-perguntas h2 {
     color: #7E1214;
+    margin-top: 0;
 }
 
 .lista-perguntas {
@@ -66,15 +87,20 @@ body {
     padding: 10px 0;
 }
 
-.item-pergunta{
+.item-pergunta {
     margin-top: 15px;
     cursor: pointer;
+}
+
+.item-pergunta summary:hover {
+    color: #7E1214;
 }
 
 /* Organização lado a lado */
 .area-contato-formulario {
     display: flex;
     justify-content: space-between;
+    gap: 20px;
 }
 
 /* Caixa de informações */
@@ -83,10 +109,12 @@ body {
     width: 35%;
     padding: 20px;
     border: 1px solid #cccccc;
+    border-radius: 4px;
 }
 
 .info-contato h2 {
     color: #7E1214;
+    margin-top: 0;
 }
 
 /* Caixa do formulário */
@@ -95,10 +123,12 @@ body {
     width: 60%;
     padding: 20px;
     border: 1px solid #cccccc;
+    border-radius: 4px;
 }
 
 .caixa-formulario h2 {
     color: #7E1214;
+    margin-top: 0;
 }
 
 /* Inputs do formulário ocupando 100% da caixa */
@@ -109,21 +139,55 @@ body {
     padding: 8px;
     margin-top: 5px;
     border: 1px solid #999999;
+    border-radius: 4px;
+    outline: none;
 }
 
-/* Botões ao final do formulário */
+.caixa-formulario input[type="text"]:focus,
+.caixa-formulario input[type="email"]:focus,
+.caixa-formulario textarea:focus {
+    border-color: #7E1214;
+}
+
+/* Área dos botões ao final do formulário */
+.acoes-formulario {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
 #botao-enviar {
     background-color: #7E1214;
     color: white;
     padding: 10px 15px;
     border: none;
+    border-radius: 4px;
     cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+#botao-enviar:hover {
+    background-color: #5e0d0f;
+}
+
+#botao-enviar:active {
+    transform: scale(0.98);
 }
 
 #botao-limpar {
     background-color: #dddddd;
-    color: black;
+    color: #222222;
     padding: 10px 15px;
     border: none;
+    border-radius: 4px;
     cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+#botao-limpar:hover {
+    background-color: #c7c7c7;
+}
+
+#botao-limpar:active {
+    transform: scale(0.98);
 }
