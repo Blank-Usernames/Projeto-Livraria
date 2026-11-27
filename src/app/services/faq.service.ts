@@ -14,21 +14,4 @@ export class FaqService {
   listarPerguntas(): Observable<Faq[]> {
     return this.http.get<Faq[]>(this.apiUrl);
   }
-
-  buscarPerguntas(termo: string): Observable<Faq[]> {
-    const termoLimpo = termo.trim().toLowerCase();
-
-    return this.http.get<Faq[]>(this.apiUrl).pipe(
-      map((perguntas) => {
-        if (!termoLimpo) {
-          return perguntas;
-        }
-        return perguntas.filter(
-          (item) =>
-            item.pergunta.toLowerCase().includes(termoLimpo) ||
-            item.resposta.toLowerCase().includes(termoLimpo)
-        );
-      })
-    );
-  }
 }

@@ -46,18 +46,29 @@ export class AjudaFeedbackComponent implements OnInit {
 
   // Método botão Buscar
   buscar(): void {
-    this.faqService.buscarPerguntas(this.termoBusca).subscribe({
-      next: (resultados) => {
-        this.perguntasFaq = resultados;
-        if (this.termoBusca.trim() !== '' && resultados.length === 0) {
-          alert(`Nenhuma pergunta encontrada para "${this.termoBusca}".`);
-        }
-      },
-      error: () => {
-        alert('Erro ao buscar no servidor.');
+  const termoLimpo = this.termoBusca.trim().toLowerCase();
+
+  this.faqService.listarPerguntas().subscribe({
+    next: (perguntas) => {
+      if (!termoLimpo) {
+        this.perguntasFaq = perguntas;
+      } else {
+        this.perguntasFaq = perguntas.filter(
+          (item) =>
+            item.pergunta.toLowerCase().includes(termoLimpo) ||
+            item.resposta.toLowerCase().includes(termoLimpo)
+        );
       }
-    });
-  }
+
+      if (termoLimpo !== '' && this.perguntasFaq.length === 0) {
+        alert(`Nenhuma pergunta encontrada para "${this.termoBusca}".`);
+      }
+    },
+    error: () => {
+      alert('Erro ao buscar no servidor.');
+    }
+  });
+}
 
   // Método envio formulário (salva no db.json via POST)
   enviarFormulario(): void {
