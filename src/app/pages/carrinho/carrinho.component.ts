@@ -17,6 +17,12 @@ export class CarrinhoComponent implements OnInit {
   private service = inject(CarrinhoService);
   private router = inject(Router);
 
+  criterioOrdenacao: string = 'nome';
+  ordemCrescente: boolean = true;
+
+  cupomDesconto: string = '';
+  cupomAplicado: boolean = false;
+  percentualDesconto: number = 0;
 
   ngOnInit(): void {
     this.service.listar().subscribe({
@@ -27,8 +33,48 @@ export class CarrinhoComponent implements OnInit {
     console.table(this.itens);
   }
 
-  cupomDesconto: string = '';
-  cepFrete: string = '';
+  get itensOrdenados(): ItemCarrinho[] {
+    let lista = this.itens.slice();
+
+    lista.sort((a, b) => {
+      let comparacao = 0;
+
+      if (this.criterioOrdenacao === 'nome') {
+        comparacao = a.titulo.localeCompare(b.titulo, 'pt-BR');
+      }
+      else if (this.criterioOrdenacao === 'preco') {
+        comparacao = a.preco - b.preco;
+      }
+
+      if (this.ordemCrescente === false) {
+        comparacao = comparacao * -1;
+      }
+
+      return comparacao;
+    });
+
+    return lista;
+  }
+
+  aplicarCupom() {
+    if (this.cupomDesconto.trim().toUpperCase() === 'GTAVI') {
+      this.cupomAplicado = true;
+      this.percentualDesconto = 10;
+      this.mostrarPopup('Cupom aplicado com sucesso!');
+    } else if (this.cupomDesconto.trim().toUpperCase() === 'SENAC') {
+      this.cupomAplicado = true;
+      this.percentualDesconto = 25;
+      this.mostrarPopup('Cupom aplicado com sucesso!');
+    } else if (this.cupomDesconto.trim().toUpperCase() === 'FERNANDOTIMOTEO') {
+      this.cupomAplicado = true;
+      this.percentualDesconto = 100;
+      this.mostrarPopup('Cupom aplicado com sucesso!');
+    } else {
+      this.cupomAplicado = false;
+      this.percentualDesconto = 0;
+      this.mostrarPopup('Cupom inválido!', 'erro');
+    }
+  }
 
   aumentarQuantidade(item: ItemCarrinho): void {
     item.quantidade++;
@@ -48,29 +94,45 @@ export class CarrinhoComponent implements OnInit {
     this.service.excluir(id).subscribe({
       next: () => {
         this.itens = this.itens.filter(item => item.id !== id);
-        alert('Produto removido do carrinho!');
+        this.mostrarPopup('Produto removido do carrinho!');
       },
       error: () => {
-        alert('Erro ao remover produto do carrinho.');
+        this.mostrarPopup('Erro ao remover produto do carrinho.', 'erro');
       }
     });
   }
 
   removerTodos(): void {
     this.itens.forEach(item => {
-    if (item.id) {
-      this.service.excluir(item.id).subscribe({
-        next: () => {
-          this.itens = this.itens.filter(
-            i => i.id !== item.id
-          );
-        },
-        error: () => {
-          alert(`Erro ao remover ${item.titulo} do carrinho.`);
-        }
-      });
-    }
-  });
+      if (item.id) {
+        this.service.excluir(item.id).subscribe({
+          next: () => {
+            this.itens = this.itens.filter(
+              i => i.id !== item.id
+            );
+          },
+          error: () => {
+            this.mostrarPopup(`Erro ao remover ${item.titulo} do carrinho.`, 'erro');
+          }
+        });
+      }
+    });
+  }
+
+  mensagemPopup = '';
+  tipoPopup = '';
+
+  mostrarPopup(mensagem: string, tipo: string = 'sucesso') {
+    this.mensagemPopup = mensagem;
+    this.tipoPopup = tipo;
+
+    setTimeout(() => {
+      this.mensagemPopup = '';
+    }, 3000);
+  }
+
+  get valorDesconto(): number {
+    return this.valorSubTotal * (this.percentualDesconto / 100);
   }
 
   get valorSubTotal(): number {
@@ -78,6 +140,6 @@ export class CarrinhoComponent implements OnInit {
   }
 
   get valorTotal(): number {
-    return this.valorSubTotal;
+    return this.valorSubTotal - this.valorDesconto;
   }
 }

@@ -14,8 +14,8 @@
                 <li><a routerLink="/ajuda-feedback">Ajuda</a></li>
 
                 @if (modoAdmin) {
-                    <li><a routerLink="/cadastro-livros">Cadastrar Livro</a></li>
-                    <li><a routerLink="/admin-usuario">Administração</a></li>
+                <li><a routerLink="/cadastro-livros">Cadastrar Livro</a></li>
+                <li><a routerLink="/admin-usuario">Administração</a></li>
                 }
             </ul>
         </nav>
@@ -26,67 +26,56 @@
     <header class="header-principal">
 
         <div class="barra-pesquisa">
-            <button
-                type="button"
-                class="btn btn-primary btn-busca"
-                (click)="pesquisar()"
-                aria-label="Pesquisar">
+            <button type="button" class="btn btn-primary btn-busca" (click)="pesquisar()" aria-label="Pesquisar">
                 <i class="fa-solid fa-magnifying-glass"></i>
             </button>
 
-            <input
-                type="text"
-                [(ngModel)]="termoBusca"
-                placeholder="Buscar produtos...">
+            <input type="text" [(ngModel)]="termoBusca" placeholder="Buscar produtos...">
         </div>
 
         <div class="acoes-direita">
 
             <nav class="acoes-usuarios">
                 @if (!isLogado) {
-                    <ul>
-                        <li>
-                            <a routerLink="/cadastro-usuario">
-                                <i class="fa-solid fa-user"></i>
-                                Entrar
-                            </a>
-                        </li>
-                        <li>
-                            <a routerLink="/cadastro-usuario">
-                                Criar Conta
-                            </a>
-                        </li>
-                    </ul>
+                <ul>
+                    <li>
+                        <a routerLink="/cadastro-usuario">
+                            <i class="fa-solid fa-user"></i>
+                            Entrar
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="/cadastro-usuario">
+                            Criar Conta
+                        </a>
+                    </li>
+                </ul>
                 } @else {
-                    <ul>
-                        <li>
-                            <button type="button" class="link-sair" (click)="sair()">
-                                <i class="fa-solid fa-user"></i>
-                                Sair
-                            </button>
-                        </li>
-                        <li>
-                            <a [routerLink]="['/perfil-usuario', clienteId]">
-                                Meu Perfil
-                            </a>
-                        </li>
-                    </ul>
+                <ul>
+                    <li>
+                        <button type="button" class="link-sair" (click)="sair()">
+                            <i class="fa-solid fa-user"></i>
+                            Sair
+                        </button>
+                    </li>
+                    <li>
+                        @if (isLogado && !modoAdmin) {
+                        <a [routerLink]="['/perfil-usuario', clienteId]">Meu Perfil</a>
+                        }
+                    </li>
+                </ul>
                 }
             </nav>
 
             <div class="area-carrinho">
                 @if (!isLogado) {
-                    <a routerLink="/cadastro-usuario"
-                       class="icone-carrinho"
-                       aria-label="Entrar para acessar o carrinho">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                    </a>
+                <a routerLink="/cadastro-usuario" class="icone-carrinho" aria-label="Entrar para acessar o carrinho">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </a>
                 } @else {
-                    <a routerLink="/carrinho"
-                       class="icone-carrinho"
-                       aria-label="Ver carrinho">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                    </a>
+                <a routerLink="/carrinho" class="icone-carrinho" aria-label="Ver carrinho">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </a>
                 }
             </div>
 

@@ -23,7 +23,7 @@ export class PerfilUsuarioComponent implements OnInit {
     if (this.userId) {
       this.service.buscarPorId(this.userId).subscribe({
         next: (user) => this.user = user,
-        error: () => this.mostrarPopup('Usuário não encontrado.','erro')
+        error: () => this.mostrarPopup('Usuário não encontrado.', 'erro')
       });
     } else {
 
@@ -50,7 +50,7 @@ export class PerfilUsuarioComponent implements OnInit {
 
   atualizarPerfil() {
     if (!this.user.id) {
-      this.mostrarPopup('ID do usuário não encontrado.','erro');
+      this.mostrarPopup('ID do usuário não encontrado.', 'erro');
       return;
     }
 
@@ -59,26 +59,39 @@ export class PerfilUsuarioComponent implements OnInit {
         this.user = userAtualizado;
         this.mostrarPopup('Perfil atualizado com sucesso!');
       },
-      error: () => this.mostrarPopup('Erro ao alterar o usuário.','erro')
+      error: () => this.mostrarPopup('Erro ao alterar o usuário.', 'erro')
     });
   }
 
-  excluirUsuario(id: string) {
-    if (id) {
-      this.service.excluir(id).subscribe({
-        next: () => {
-          localStorage.removeItem('usuarioLogado');
+  idUsuarioExclusao: string = '';
+  mostrarModalExclusao: boolean = false;
 
-          if (this.modoAdmin) {
-            this.mostrarPopup(`Usuário ${id} deletado com sucesso.`)
-            window.location.href = '/admin-usuario';
-          } else {
-            window.location.href = '/';
-          }
-        },
-        error: () => this.mostrarPopup('Erro ao excluir usuário.', 'erro')
-      });
+  excluirUsuario() {
+    if (!this.user.id) {
+      this.mostrarPopup('ID do usuário não encontrado.', 'erro');
+      return;
     }
+
+    this.idUsuarioExclusao = this.user.id;
+    this.mostrarModalExclusao = true;
+  }
+
+  confirmarExclusao() {
+    this.service.excluir(this.idUsuarioExclusao).subscribe({
+      next: () => {
+        this.mostrarModalExclusao = false;
+
+        if (this.modoAdmin) {
+          window.location.href = '/admin-usuario';
+        } else {
+          localStorage.removeItem('usuarioLogado');
+          localStorage.removeItem('adminLogado');
+          localStorage.removeItem('userId');
+          window.location.href = '/';
+        }
+      },
+      error: () => this.mostrarPopup('Erro ao excluir usuário.', 'erro')
+    });
   }
 
   mensagemPopup = '';

@@ -95,7 +95,7 @@ export class CadastroUsuarioComponent {
     if (this.nomeUsuarioLog === 'admin' && this.senhaUsuarioLog === '1234') {
       localStorage.setItem('usuarioLogado', 'true');
       localStorage.setItem('adminLogado', 'true');
-      window.location.reload();
+      sessionStorage.setItem('avisoAdmin', 'true');
       window.location.href = '/';
     } else {
       /* LOGIN DE USUÁRIO COMUM */
@@ -115,9 +115,8 @@ export class CadastroUsuarioComponent {
             localStorage.setItem('usuarioLogado', 'true');
             localStorage.setItem('adminLogado', 'false');
             localStorage.setItem('userId', usuarioEncontrado.id);
-            this.router.navigate(['/catalogo']).then(() => {
-              window.location.reload();
-            });
+            sessionStorage.setItem('avisoUsuario', 'true');
+            window.location.href = '/catalogo';
           } else {
             this.mostrarPopup('Usuário ou senha incorretos!', 'erro');
           }

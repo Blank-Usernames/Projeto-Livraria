@@ -61,7 +61,7 @@
           <h3 class="nome-produto">{{ livro.tituloLivro }}</h3>
           <p class="autor-produto">{{ livro.autorLivro }}</p>
           <p class="preco-produto">{{ livro.precoLivro | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</p>
-          <button class="btn-comprar" (click)="adicionarCarrinho(livro)">Comprar</button>
+          <button class="btn-comprar" (click)="$event.stopPropagation(); adicionarCarrinho(livro)">Comprar</button>
         </div>
         }
       </div>

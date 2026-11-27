@@ -79,5 +79,26 @@
       "id": 7
     }
   ],
-  "carrinho": []
+  "carrinho": [
+    {
+      "idUsuario": "1",
+      "codigoItem": 2,
+      "titulo": "O Exorcista",
+      "autor": "William Peter Blatty",
+      "preco": 60,
+      "quantidade": 1,
+      "imagem": "Imagens_Livros/livro7.png",
+      "id": 1
+    },
+    {
+      "idUsuario": "1",
+      "codigoItem": 7,
+      "titulo": "1984",
+      "autor": "George Orwell",
+      "preco": 19,
+      "quantidade": 1,
+      "imagem": "Imagens_Livros/livro9.jpg",
+      "id": 2
+    }
+  ]
 }

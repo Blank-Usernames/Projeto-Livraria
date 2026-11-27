@@ -45,6 +45,11 @@ export class CatalogoLivrosComponent implements OnInit {
   livrosFiccao: Livro[] = [];
 
   ngOnInit(): void {
+    if (sessionStorage.getItem('avisoUsuario') === 'true') {
+      this.mostrarPopup("Bem-vindo!", 'sucesso');
+      sessionStorage.removeItem('avisoUsuario');
+    }
+
     this.livroService.listar().subscribe({
       next: (livros) => {
         this.livros = livros;
